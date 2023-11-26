@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import NavBar from "./components/NavBar";
+import { useState } from "react";
+import Home from "./containers/home/Home";
+import Paraphaser from "./containers/paraphaser/Paraphaser";
+import Grammar from "./containers/grammar/Grammar";
 function App() {
+  let Component;
+  // const [navBarSeleted, setNavBarSelected] = useState(0);
+  switch (window.location.pathname) {
+    case "/":
+    case "/home":
+      Component = Home;
+      break;
+    case "/paraphaser":
+      Component = Paraphaser;
+      break;
+    case "/grammar":
+      Component = Grammar;
+      break;
+    default:
+      break;
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="background-container">
+        <NavBar></NavBar>
+        <div className="content-container">
+          <Component />
+        </div>
+      </div>
     </div>
   );
 }
