@@ -1,6 +1,7 @@
-import "./NavBar.css";
+import React from 'react'
+import "./Navbar.css";
 
-export default function NavBar() {
+const Navbar = () => {
   return (
     <nav>
       <div className="placeholder"></div>
@@ -23,7 +24,7 @@ export default function NavBar() {
         <span className="material-symbols-rounded">account_circle</span>
       </div>
     </nav>
-  );
+  )
 }
 
 function CustomLink({ href, children, ...props }) {
@@ -38,3 +39,5 @@ function CustomLink({ href, children, ...props }) {
     </a>
   );
 }
+
+export default Navbar
