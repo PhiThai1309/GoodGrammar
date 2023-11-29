@@ -39,14 +39,14 @@ body > #root > div,
 }
 
 .section__padding {
-  padding: 4rem 6rem;
+  padding: 2rem 2rem;
 }
 
 .section__margin {
-  margin: 4rem 6rem;
+  margin: 2rem 2rem;
 }
 
-@media screen and (max-width: 700px) {
+/* @media screen and (max-width: 700px) {
   .section__padding {
     padding: 4rem;
   }
@@ -64,4 +64,4 @@ body > #root > div,
   .section__margin {
     margin: 4rem 2rem;
   }  
-}
+} */

@@ -1,0 +1,57 @@
+.paraphraser {
+    justify-content: space-between;
+    padding: 2rem;
+    padding-left: 1rem;
+}
+
+.paraphraser h1 {
+    color: #000;
+    font-family: var(--font-family);
+    font-size: 31px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.model {
+    display: flex;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.model h3 {
+    color: #000;
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 700;
+    padding-right: 4rem;
+}
+
+.model-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    width: 500px;
+    justify-content: space-between;
+    font-family: var(--font-family);
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.model-menu li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.model-menu hr {
+    border: none;
+    width: 150%;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--color-orange);
+    transform: translateY(0.5rem);
+}
