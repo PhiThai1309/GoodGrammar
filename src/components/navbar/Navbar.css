@@ -40,6 +40,6 @@ nav {
 }
 
 .selected {
-  background-color: #ededed;
+  background-color: var(--color-selected);
   border-radius: 8px;
 }
