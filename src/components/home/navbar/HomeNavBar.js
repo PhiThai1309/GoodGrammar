@@ -11,7 +11,9 @@ const HomeNavBar = () => {
         </div>
         <div className="navbar-links">
           <button className="dotted-btn">Sign up</button>
-          <button className="filled-btn">Log in</button>
+          <button className="filled-btn">
+            <a href="grammar">Log in</a>
+          </button>
         </div>
       </div>
       <div className="blur_background"></div>

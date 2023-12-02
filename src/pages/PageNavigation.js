@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "../components";
 //import { useState } from "react";
-import { Home, Grammar, Paraphraser } from "../pages";
+import { Home, Grammar, History } from "../pages";
 
 const PageNavigation = () => {
   return (
@@ -12,7 +12,7 @@ const PageNavigation = () => {
           <BrowserRouter>
             <Routes>
               {/* <Route index element={<Home />} /> */}
-              <Route path="paraphraser" element={<Paraphraser />} />
+              <Route path="history" element={<History />} />
               <Route path="grammar" element={<Grammar />} />
             </Routes>
           </BrowserRouter>
