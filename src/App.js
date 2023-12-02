@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navbar } from "./components"
 //import { useState } from "react";
-import { Home, Grammar, Paraphraser } from './pages'
+import { Home, Grammar, History } from './pages'
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route index element={<Home />} />
-              <Route path='paraphraser' element={<Paraphraser />} />
               <Route path='grammar' element={<Grammar />} />
+              <Route path='history' element={<History />} />
             </Routes>
           </BrowserRouter>
         </div>
