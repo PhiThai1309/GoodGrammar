@@ -1,8 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
-  --font-family: 'Inter', sans-serif;
-  
-  --color-orange: #ED7D31;
+  --color-orange: #e65603;
   --color-selected: #ededed;
+  --global-white: #f6f6f6;
+  --global-green: #1b4715;
+  --globalnav-backdrop-filter: saturate(180%) blur(20px);
+  --globalnav-background: rgba(250, 250, 252, 0.8);
+}
+
+html {
+  font-family: "Inter", sans-serif;
 }
