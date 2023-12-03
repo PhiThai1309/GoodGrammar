@@ -68,7 +68,6 @@
   font-weight: 700;
   line-height: 113.156%; /* 27.157px */
   letter-spacing: -0.24px;
-  color: var(--global-green, #1b4715);
 }
 
 .running_word_wrapper {

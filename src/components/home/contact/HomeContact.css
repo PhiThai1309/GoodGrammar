@@ -48,3 +48,14 @@
   border-radius: 100px;
   cursor: pointer;
 }
+
+.contact_form_submit:hover span {
+  transform: translateX(5px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact_form_submit > span {
+  padding-top: 4px;
+  font-weight: 600;
+  transition: transform 0.3s ease-in-out;
+}

@@ -18,3 +18,7 @@ a {
   color: white;
   text-decoration: none;
 }
+
+button:active {
+  transform: scale(0.95);
+}
