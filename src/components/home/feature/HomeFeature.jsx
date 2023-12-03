@@ -29,6 +29,9 @@ const HomeFeature = () => {
           </defs>
         </svg>
         <div className="section_block">
+          <div className="block_title orange_block">
+            <p>Paraphazer</p>
+          </div>
           <div className="section_container orange">
             <p>
               Transform your text effortlessly with our Paraphraser feature.
@@ -50,6 +53,9 @@ const HomeFeature = () => {
           </defs>
         </svg>
         <div className="section_block">
+        <div className="block_title green_block">
+            <p>Paraphazer</p>
+          </div>
           <div className="section_container green push_margin">
             <p>
             Seamless writing, impeccable results. Introducing our Grammar Checker – your key to polished, error-free communication!
