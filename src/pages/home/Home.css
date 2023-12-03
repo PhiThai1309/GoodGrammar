@@ -1,0 +1,11 @@
+.home_container {
+  overflow: hidden;
+}
+.home_heading_background {
+  background: linear-gradient(
+    180deg,
+    rgba(242, 81, 22, 0) 8.55%,
+    rgba(242, 81, 22, 0.24) 49.02%,
+    rgba(242, 81, 22, 0.55) 99.97%
+  );
+}

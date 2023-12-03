@@ -9,11 +9,11 @@ const Navbar = () => {
         <CustomLink href="/">
           <span className="material-symbols-rounded">home</span>
         </CustomLink>
-        <CustomLink href="/paraphraser">
-          <span className="material-symbols-rounded">format_paragraph</span>
-        </CustomLink>
         <CustomLink href="/grammar">
           <span className="material-symbols-rounded">spellcheck</span>
+        </CustomLink>
+        <CustomLink href="/history">
+          <span className="material-symbols-rounded">history</span>
         </CustomLink>
         <CustomLink href="/subscribe">
           <span className="material-symbols-rounded">workspace_premium</span>

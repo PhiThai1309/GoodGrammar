@@ -1,24 +1,19 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Navbar } from "./components"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { useState } from "react";
-import { Home, Grammar, Paraphraser } from './pages'
+import { Home, PageNavigation } from "./pages";
 
 function App() {
   return (
     <div className="App">
-      <div className="background-container">
-        <Navbar />
-        <div className="content-container">
-          <BrowserRouter>
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path='paraphraser' element={<Paraphraser />} />
-              <Route path='grammar' element={<Grammar />} />
-            </Routes>
-          </BrowserRouter>
-        </div>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="history" element={<PageNavigation content="history"/>} />
+          <Route path="grammar" element={<PageNavigation content="grammar"/>} />
+          <Route path="subscribe" element={<PageNavigation content="subscribe" />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
