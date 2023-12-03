@@ -12,3 +12,8 @@
 html {
   font-family: "Inter", sans-serif;
 }
+
+a {
+  color: white;
+  text-decoration: none;
+}

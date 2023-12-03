@@ -53,9 +53,9 @@
 .section_container {
   padding: 2rem;
   border-radius: 16px;
-  font-size: 16px;
+  font-size: 15px;
   /* font-style: normal; */
-  font-weight: 400;
+  /* font-weight: 400; */
   line-height: 154.304%;
   /* 33.947px */
 }
@@ -109,10 +109,15 @@
   background: var(--globalnav-background);
   backdrop-filter: var(--globalnav-backdrop-filter);
   -webkit-backdrop-filter: var(--globalnav-backdrop-filter);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 4px;
 }
 
 .block_title>p {
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: 113.156%;

@@ -30,6 +30,7 @@ const HomeFeature = () => {
         </svg>
         <div className="section_block">
           <div className="block_title orange_block">
+          <span class="material-symbols-rounded">format_paragraph</span>
             <p>Paraphazer</p>
           </div>
           <div className="section_container orange">
@@ -54,6 +55,7 @@ const HomeFeature = () => {
         </svg>
         <div className="section_block">
         <div className="block_title green_block">
+        <span class="material-symbols-rounded">format_paragraph</span>
             <p>Paraphazer</p>
           </div>
           <div className="section_container green push_margin">
