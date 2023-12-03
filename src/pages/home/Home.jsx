@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import { HomeNavBar, HomeHeading, HomeFeature, TrustedBy } from '../../components'
+import { HomeNavBar, HomeHeading, HomeFeature, TrustedBy, HomeContact } from '../../components'
 
 const Home = () => {
   return (
@@ -11,6 +11,7 @@ const Home = () => {
       </div>
       <TrustedBy></TrustedBy>
       <HomeFeature></HomeFeature>
+      <HomeContact></HomeContact>
     </div>
   );
 };
