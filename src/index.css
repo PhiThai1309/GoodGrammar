@@ -5,6 +5,7 @@
   --color-selected: #ededed;
   --global-white: #f6f6f6;
   --global-green: #1b4715;
+  --global-purple: #575ff2;
   --globalnav-backdrop-filter: saturate(180%) blur(20px);
   --globalnav-background: rgba(250, 250, 252, 0.8);
 }

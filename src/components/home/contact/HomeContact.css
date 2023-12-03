@@ -13,6 +13,7 @@
 }
 
 .contact_form_input {
+  max-width: 450px;
   border: 0;
   border-radius: 16px;
   width: 60vw;
