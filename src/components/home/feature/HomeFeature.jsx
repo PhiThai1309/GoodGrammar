@@ -40,6 +40,15 @@ const HomeFeature = () => {
         <img src={require("../../../assets/placeholder1.png")} alt="" />
       </div>
       <div className="homefeature_second_section section">
+        <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 877 880" fill="none">
+          <path d="M791.392 831.75C670.994 893.551 595.171 745.834 474.777 807.632C336.203 878.762 130.642 932.502 57.9013 790.788C-5.27623 667.707 139.17 593.563 75.9925 470.482C3.30019 328.863 -53.4727 119.6 85.15 48.4455C205.548 -13.3548 281.371 134.362 401.765 72.5641C540.29 1.45936 745.9 -52.3059 818.641 89.4075C881.821 212.493 737.326 286.662 800.504 409.744C873.273 551.643 929.966 760.621 791.392 831.75Z" fill="url(#paint0_linear_142_44)" />
+          <defs>
+            <linearGradient id="paint0_linear_142_44" x1="205.522" y1="-13.3411" x2="671.021" y2="893.537" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#DF99F7" />
+              <stop offset="1" stop-color="#FFDBB0" />
+            </linearGradient>
+          </defs>
+        </svg>
         <div className="first_section_block">
           <div className="section_container green">
             <p>
@@ -48,7 +57,7 @@ const HomeFeature = () => {
               with a fresh perspective. Your writing, reimagined.
             </p>
           </div>
-          
+
         </div>
         <img src={require("../../../assets/placeholder1.png")} alt="" />
       </div>
