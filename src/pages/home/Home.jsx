@@ -1,9 +1,6 @@
 import React from "react";
-import HomeNavBar from "../../components/home/navbar/HomeNavBar";
 import "./Home.css";
-import HomeHeading from "../../components/home/heading/HomeHeading";
-import TrustedBy from "../../components/home/trustedBy/TrustedBy";
-import HomeFeature from "../../components/home/feature/HomeFeature";
+import { HomeNavBar, HomeHeading, HomeFeature, TrustedBy } from '../../components'
 
 const Home = () => {
   return (
