@@ -70,16 +70,10 @@
   color: var(--global-green, #1b4715);
 }
 
-/* .selector {
-  animation: scrollText 5s infinite linear;
-} */
 .running_word_wrapper {
   overflow: hidden;
   display: flex;
 }
-/* .running_word_wrapper:nth-child(1) {
-  animation: scrollTextStart 2s infinite linear;
-} */
 
 .text {
   animation: animate_text 30s linear infinite;
@@ -87,9 +81,6 @@
 .text span {
   margin: 0 40px;
 }
-/* .running_word_wrapper:nth-child(2) {
-  animation: scrollTextEnd 2s infinite linear;
-} */
 
 @keyframes animate_text {
   from {
@@ -97,22 +88,5 @@
   }
   to {
     transform: translate3d(-100%, 0, 0);
-  }
-}
-
-@keyframes scrollTextStart {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-@keyframes scrollTextEnd {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
   }
 }
