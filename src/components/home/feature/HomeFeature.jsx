@@ -28,7 +28,7 @@ const HomeFeature = () => {
             </linearGradient>
           </defs>
         </svg>
-        <div className="first_section_block">
+        <div className="section_block">
           <div className="section_container orange">
             <p>
               Transform your text effortlessly with our Paraphraser feature.
@@ -49,12 +49,10 @@ const HomeFeature = () => {
             </linearGradient>
           </defs>
         </svg>
-        <div className="first_section_block">
-          <div className="section_container green">
+        <div className="section_block">
+          <div className="section_container green push_margin">
             <p>
-              Transform your text effortlessly with our Paraphraser feature.
-              Redefine clarity, eliminate redundancy, and express your ideas
-              with a fresh perspective. Your writing, reimagined.
+            Seamless writing, impeccable results. Introducing our Grammar Checker – your key to polished, error-free communication!
             </p>
           </div>
 

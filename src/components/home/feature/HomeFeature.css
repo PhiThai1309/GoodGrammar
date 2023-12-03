@@ -42,7 +42,7 @@
   align-items: flex-end;
 }
 
-.first_section_block {
+.section_block {
   width: 40%;
   flex-shrink: 0;
 }
@@ -76,6 +76,10 @@
 
 }
 
+.push_margin {
+  margin-bottom: 5rem;
+}
+
 .section > svg {
   position: absolute;
   width: 750px;
@@ -87,5 +91,5 @@
 }
 
 .homefeature_second_section > svg {
-  top: 5%;
+  top: 2%;
 }
