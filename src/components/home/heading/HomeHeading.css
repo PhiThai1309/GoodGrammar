@@ -32,3 +32,8 @@
   height: 723px;
   transform: translate(5%, -8%);
 }
+
+.filled-btn {
+  position: relative;
+  z-index: 1;
+}

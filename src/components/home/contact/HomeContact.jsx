@@ -16,7 +16,7 @@ const HomeContact = () => {
             />
           </form>
           <button className="contact_form_submit">
-            <span class="material-symbols-rounded">arrow_forward</span>
+            <span className="material-symbols-rounded">arrow_forward</span>
           </button>
         </div>
       </div>

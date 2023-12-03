@@ -6,7 +6,7 @@ const HomeHeading = () => {
       <svg
         className="blod-header"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 758 988; transform: scale(1)"
+        viewBox="0 0 758 988"
         fill="none"
       >
         <path
@@ -22,8 +22,8 @@ const HomeHeading = () => {
             y2="923.312"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#C5F263" />
-            <stop offset="1" stop-color="#F9ECFF" />
+            <stop stopColor="#C5F263" />
+            <stop offset="1" stopColor="#F9ECFF" />
           </linearGradient>
         </defs>
       </svg>

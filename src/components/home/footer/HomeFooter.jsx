@@ -3,14 +3,14 @@ const HomeFooter = () => {
   return (
     <div>
       <div className="running_word_wrapper">
-        <div class="text">
+        <div className="text">
           <span>READY TO REFINE YOUR WRITING?</span>
           <span>READY TO REFINE YOUR WRITING?</span>
           <span>READY TO REFINE YOUR WRITING?</span>
           <span>READY TO REFINE YOUR WRITING?</span>
           <span>READY TO REFINE YOUR WRITING?</span>
         </div>
-        <div class="text">
+        <div className="text">
           <span>READY TO REFINE YOUR WRITING?</span>
           <span>READY TO REFINE YOUR WRITING?</span>
           <span>READY TO REFINE YOUR WRITING?</span>
