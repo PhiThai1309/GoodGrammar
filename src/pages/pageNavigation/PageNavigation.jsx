@@ -5,13 +5,21 @@ import { Grammar, History } from "..";
 import './PageNavigation.css'
 
 const PageNavigation = (props) => {
+  const contentPage = () => {
+    switch (props.content) {
+      case "history": return <History />
+      case "grammar": return <Grammar />
+
+      default: return <></>
+    }
+  }
+
   return (
     <div className="pageNav">
       <div className="background-container">
         <Navbar />
         <div className="content-container">
-          {props.content === "history" ? <History />:<></>}
-          {props.content === "grammar" ? <Grammar />:<></>}
+          {contentPage()}
           {/* <BrowserRouter>
             <Routes>
               <Route index element={<Home />} />
