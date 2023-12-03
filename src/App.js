@@ -1,8 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { useState } from "react";
-import { Home } from "./pages";
-import PageNavigation from "./pages/PageNavigation";
+import { Home, PageNavigation } from "./pages";
 
 function App() {
   return (
@@ -10,7 +9,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="pageNavigation" element={<PageNavigation />} />
+          <Route path="history" element={<PageNavigation content="history"/>} />
+          <Route path="grammar" element={<PageNavigation content="grammar"/>} />
+          <Route path="subscribe" element={<PageNavigation content="subscribe" />} />
         </Routes>
       </BrowserRouter>
     </div>
