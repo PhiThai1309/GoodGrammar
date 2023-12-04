@@ -1,0 +1,39 @@
+.home_header {
+  margin-top: 116px;
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home_header_heading {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.heading_title {
+  width: 80%;
+  max-width: 800px;
+}
+
+.blod-header {
+  position: absolute;
+  top: 1rem;
+  right: -20px;
+  width: 80%;
+  height: 828.232px;
+  padding-right: 0px;
+  z-index: -1;
+}
+
+.home_img_section > img {
+  height: 723px;
+  transform: translate(5%, -8%);
+}
+
+.filled-btn {
+  position: relative;
+  z-index: 1;
+}
