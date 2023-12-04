@@ -28,11 +28,18 @@ const HomeHeading = () => {
         </defs>
       </svg>
       <div className="home_header_heading">
-        <img
+        {/* <img
           className="heading_title"
           src={require("../../../assets/heading-home.png")}
           alt=""
-        />
+        /> */}
+        <h1>
+          Refine Your <span className="underline_text">Writting</span>
+        </h1>
+        <h1 className="highlight_text_wrapper">
+          <div className="highlight_text">Amplify</div>
+          <span> Your Impact!</span>
+        </h1>
       </div>
       <button className="filled-btn">Try now</button>
       <div className="home_img_section">
