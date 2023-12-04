@@ -71,26 +71,37 @@ h1 {
   width: fit-content;
   overflow: hidden;
   white-space: nowrap;
-  background: #575ff23b;
+  background-image: linear-gradient(to left, transparent 50%, white 50%),
+    linear-gradient(#575ff288 50%, #575ff288 50%);
+  background-size: 200%;
+  animation: borderColor 1.5s forwards;
+  animation-delay: 1s;
 }
 
 .highlight_text_container {
   position: relative;
 }
 .highlight_text_container > img {
+  opacity: 0;
   height: 125%;
   position: absolute;
   top: -10px;
   right: -7.5px;
-  animation: borderColor 1.5s infinite;
-  animation-delay: 3.5s;
+  animation: caret 1.5s forwards;
+  animation-delay: 2s;
 }
 
 @keyframes borderColor {
   from {
-    opacity: 1;
+    background-position: 0;
   }
-  50% {
+  to {
+    background-position: -100%;
+  }
+}
+
+@keyframes caret {
+  from {
     opacity: 0;
   }
   to {

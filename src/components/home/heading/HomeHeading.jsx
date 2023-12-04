@@ -22,7 +22,7 @@ const HomeHeading = () => {
       }, 1000);
     });
 
-    return <div className="highlight_text">{string}</div>;
+    return;
   }
 
   return (
@@ -63,7 +63,8 @@ const HomeHeading = () => {
         <h1 className="highlight_text_wrapper">
           <div className="highlight_text_container">
             <img src={require("../../../assets/caret_icon.png")} alt="" />
-            {MyComponent()}
+            {/* {MyComponent()} */}
+            <div className="highlight_text">Amplify</div>
           </div>
           <span> Your Impact!</span>
         </h1>
