@@ -8,6 +8,12 @@
   margin-right: auto;
 }
 
+.home_header .filled-btn {
+  margin-top: 1rem;
+  width: 12rem;
+  height: 3.5rem;
+}
+
 .home_header_heading {
   width: 100%;
   margin-bottom: 16px;
@@ -31,7 +37,7 @@
 
 .home_img_section > img {
   height: 723px;
-  transform: translate(5%, -8%);
+  transform: translate(5%, -10%);
 }
 
 .filled-btn {
@@ -65,9 +71,10 @@ h1 {
   width: 0;
   overflow: hidden;
   white-space: nowrap;
+  border-right: 4px solid rgba(0, 0, 0, 0.726);
   animation: animate 2s steps(7) forwards, blink 0.3s infinite,
-    borderColor 1.75s infinite, reverse;
-  animation-delay: 2s;
+    borderColor 1.75s infinite;
+  animation-delay: 1s;
   background: #575ff23b;
 }
 

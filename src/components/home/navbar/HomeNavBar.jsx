@@ -12,9 +12,10 @@ const HomeNavBar = () => {
         </div>
         <div className="navbar-links">
           <button className="dotted-btn">Sign up</button>
-          <button className="filled-btn">
-            <Link to="grammar">Log in</Link>
-          </button>
+
+          <Link to="grammar">
+            <button className="filled-btn">Log in</button>
+          </Link>
         </div>
       </div>
       <div className="blur_background"></div>

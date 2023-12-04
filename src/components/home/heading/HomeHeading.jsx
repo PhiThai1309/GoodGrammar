@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./HomeHeading.css";
 
 const HomeHeading = () => {
@@ -41,7 +42,9 @@ const HomeHeading = () => {
           <span> Your Impact!</span>
         </h1>
       </div>
-      <button className="filled-btn">Try now</button>
+      <Link to="grammar">
+        <button className="filled-btn">Try now</button>
+      </Link>
       <div className="home_img_section">
         <img src={require("../../../assets/placeholder.png")} alt="" />
       </div>
