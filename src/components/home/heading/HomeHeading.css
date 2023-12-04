@@ -62,11 +62,13 @@ h1 {
   column-gap: 1rem;
 }
 .highlight_text {
-  width: 5.5ch;
+  width: 0;
   overflow: hidden;
   white-space: nowrap;
-  animation: animate 1s steps(8), blink 0.3s step-end infinite alternate;
-  border-right: 4px solid black;
+  animation: animate 2s steps(7) forwards,
+    blink 0.3s step-end infinite alternate, borderColor 2s forwards infinite,
+    reverse;
+  animation-delay: 2s;
   background: #575ff23b;
 }
 
@@ -76,5 +78,17 @@ h1 {
   }
   50% {
     border-color: transparent;
+  }
+  to {
+    width: 5.5ch;
+  }
+}
+
+@keyframes borderColor {
+  from {
+    border-right: 4px solid rgba(0, 0, 0, 0.533);
+  }
+  to {
+    border-right: transparent;
   }
 }
