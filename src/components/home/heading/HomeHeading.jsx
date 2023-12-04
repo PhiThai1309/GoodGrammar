@@ -1,7 +1,30 @@
 import { Link } from "react-router-dom";
 import "./HomeHeading.css";
+import React, { useEffect, useState } from "react";
 
 const HomeHeading = () => {
+  function MyComponent() {
+    const [string, setString] = useState("");
+    const text = ["A", "m", "p", "l", "i", "f", "y"];
+    let index = 0;
+
+    useEffect(() => {
+      //delay 1s during frist load
+      setTimeout(() => {
+        const interval = setInterval(() => {
+          if (index < text.length && string === "") {
+            setString((prev) => {
+              return (prev += text[index++]);
+            });
+          }
+        }, 300);
+        return () => clearInterval(interval);
+      }, 1000);
+    });
+
+    return <div className="highlight_text">{string}</div>;
+  }
+
   return (
     <div className="home_header">
       <svg
@@ -38,7 +61,10 @@ const HomeHeading = () => {
           Refine Your <span className="underline_text">Writting</span>
         </h1>
         <h1 className="highlight_text_wrapper">
-          <div className="highlight_text">Amplify</div>
+          <div className="highlight_text_container">
+            <img src={require("../../../assets/caret_icon.png")} alt="" />
+            {MyComponent()}
+          </div>
           <span> Your Impact!</span>
         </h1>
       </div>
