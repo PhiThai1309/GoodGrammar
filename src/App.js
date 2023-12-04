@@ -9,7 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="history" element={<PageNavigation content="history"/>} />
+          <Route path="history" element={ <PageNavigation content="history"/>} />
           <Route path="grammar" element={<PageNavigation content="grammar"/>} />
           <Route path="subscribe" element={<PageNavigation content="subscribe" />} />
         </Routes>
