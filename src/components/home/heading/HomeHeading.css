@@ -65,9 +65,8 @@ h1 {
   width: 0;
   overflow: hidden;
   white-space: nowrap;
-  animation: animate 2s steps(7) forwards,
-    blink 0.3s step-end infinite alternate, borderColor 2s forwards infinite,
-    reverse;
+  animation: animate 2s steps(7) forwards, blink 0.3s infinite,
+    borderColor 1.75s infinite, reverse;
   animation-delay: 2s;
   background: #575ff23b;
 }
@@ -86,9 +85,12 @@ h1 {
 
 @keyframes borderColor {
   from {
-    border-right: 4px solid rgba(0, 0, 0, 0.533);
+    border-right: 4px solid rgba(0, 0, 0, 0.726);
+  }
+  50% {
+    border-right: transparent;
   }
   to {
-    border-right: transparent;
+    border-right: 4px solid rgba(0, 0, 0, 0.726);
   }
 }
