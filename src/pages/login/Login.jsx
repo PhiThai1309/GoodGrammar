@@ -6,6 +6,7 @@ import {
   useUser,
   RedirectToSignIn,
 } from "@clerk/clerk-react";
+import { Navigate } from "react-router-dom";
 import PageNavigation from "../pageNavigation/PageNavigation";
 
 if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
@@ -17,10 +18,10 @@ const Login = () => {
   return (
     <ClerkProvider publishableKey={clerkPubKey}>
       <SignedIn>
-        <PageNavigation content="grammar" />
+        <Navigate to="/grammar" replace={true} />
       </SignedIn>
       <SignedOut>
-        <RedirectToSignIn />
+        <Navigate to="/home" replace={true} />
       </SignedOut>
     </ClerkProvider>
   );
