@@ -13,7 +13,7 @@ const HomeNavBar = () => {
         <div className="navbar-links">
           <button className="dotted-btn">Sign up</button>
 
-          <Link to="grammar">
+          <Link to="login">
             <button className="filled-btn">Log in</button>
           </Link>
         </div>
