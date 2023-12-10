@@ -8,6 +8,11 @@
   margin-right: auto;
 }
 
+.home_header > a {
+  position: absolute;
+  z-index: 10;
+}
+
 .home_header .filled-btn {
   margin-top: 1rem;
   width: 12rem;
@@ -34,10 +39,15 @@
   padding-right: 0px;
   z-index: -1;
 }
-
+.home_img_section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
 .home_img_section > img {
-  height: 723px;
-  transform: translate(5%, -10%);
+  width: auto;
+  height: auto;
+  max-height: 800px;
+  transform: translate(5%, 0%);
 }
 
 .text_with_underline {
