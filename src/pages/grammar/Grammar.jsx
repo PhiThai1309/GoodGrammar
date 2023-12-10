@@ -34,7 +34,7 @@ const Grammar = (props) => {
 
   return (
     <div className="grammar">
-      <h2>Grammar Checker</h2>
+      {/* <h2>Grammar Checker</h2> */}
 
       <div className="model">
         <h3>Models:</h3>

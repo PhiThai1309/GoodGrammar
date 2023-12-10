@@ -1,7 +1,8 @@
 .grammar {
   box-sizing: border-box;
   min-height: 100vh;
-  padding: 1rem 1rem 1rem 110px;
+  width: 100vw;
+  padding: 1rem;
   max-width: 2108px;
   margin-left: auto;
   margin-right: auto;
