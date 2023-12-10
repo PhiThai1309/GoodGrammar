@@ -111,10 +111,10 @@ const Grammar = () => {
             {/* <button className="filled-btn orange" onClick={clickDownload}>
               Download
             </button> */}
-            <button class="download-button">
-              <div class="docs filled-btn orange">
+            <button className="download-button">
+              <div className="docs filled-btn orange">
                 <svg
-                  class="css-i6dzq1"
+                  className="css-i6dzq1"
                   stroke-linejoin="round"
                   stroke-linecap="round"
                   fill="none"
@@ -132,9 +132,9 @@ const Grammar = () => {
                 </svg>{" "}
                 Download
               </div>
-              <div class="download">
+              <div className="download">
                 <svg
-                  class="css-i6dzq1"
+                  className="css-i6dzq1"
                   stroke-linejoin="round"
                   stroke-linecap="round"
                   fill="none"
