@@ -113,10 +113,10 @@ const Grammar = (props) => {
               <div className="docs filled-btn orange">
                 <svg
                   className="css-i6dzq1"
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
                   fill="none"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke="currentColor"
                   height="20"
                   width="20"
@@ -133,10 +133,10 @@ const Grammar = (props) => {
               <div className="download">
                 <svg
                   className="css-i6dzq1"
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
                   fill="none"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke="currentColor"
                   height="24"
                   width="24"

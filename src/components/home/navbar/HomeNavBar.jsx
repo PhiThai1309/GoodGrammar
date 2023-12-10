@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useClerk } from "@clerk/clerk-react";
 import "./HomeNavBar.css";
-import Signoutbtn from "../../../pages/login/Logout";
+// import Signoutbtn from "../../../pages/login/Logout";
+
 const HomeNavBar = () => {
+  const clerk = useClerk();
+
   return (
     // <ClerkProvider publishableKey={clerkPubKey}>
     <div className="navbar">
@@ -13,10 +17,10 @@ const HomeNavBar = () => {
         </div>
         <div className="navbar-links">
           {/* <Link to="signup"> */}
-          <button className="dotted-btn">Sign up</button>
+          <button className="dotted-btn" onClick={() => clerk.openSignUp()}>Sign up</button>
           {/* </Link> */}
 
-          <Signoutbtn />
+          {/* <Signoutbtn /> */}
 
           <Link to="login">
             <button className="filled-btn">Log in</button>

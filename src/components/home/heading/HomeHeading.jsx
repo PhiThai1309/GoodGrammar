@@ -68,7 +68,7 @@ const HomeHeading = () => {
           <span> Your Impact!</span>
         </h1>
       </div>
-      <Link to="grammar">
+      <Link to="login">
         <button className="filled-btn">Try now</button>
       </Link>
       <div className="home_img_section">

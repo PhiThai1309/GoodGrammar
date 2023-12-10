@@ -29,7 +29,6 @@ function App() {
               path="login"
               element={
                 <div>
-                  {" "}
                   <SignedIn>
                     <Navigate to="/grammar" replace={true} />
                   </SignedIn>

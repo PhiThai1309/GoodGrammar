@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="profile-container">
         <span className="material-symbols-rounded">help</span>
         <span className="material-symbols-rounded">
-          <UserButton />
+          <UserButton afterSignOutUrl="/"/>
         </span>
       </div>
     </nav>
