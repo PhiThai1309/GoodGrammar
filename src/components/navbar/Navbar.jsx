@@ -1,7 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import { RedirectToSignIn, UserButton, useAuth } from "@clerk/clerk-react";
-import { Link } from "react-router-dom";
+import { UserButton } from "@clerk/clerk-react";
 
 // In case the user signs out while on the page.
 
@@ -28,9 +27,10 @@ const Navbar = () => {
       </div>
       <div className="profile-container">
         <span className="material-symbols-rounded">help</span>
-        <span className="material-symbols-rounded">
+        <div className="user_btn">
           <UserButton afterSignOutUrl="/" />
-        </span>
+          <span>Account</span>
+        </div>
       </div>
     </nav>
   );
