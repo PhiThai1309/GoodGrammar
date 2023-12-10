@@ -3,6 +3,7 @@ import { Navbar } from "../../components";
 //import { useState } from "react";
 import { Grammar, History } from "..";
 import "./PageNavigation.css";
+import { RedirectToSignIn, useAuth } from "@clerk/clerk-react";
 
 const PageNavigation = (props) => {
   const contentPage = () => {
@@ -17,14 +18,21 @@ const PageNavigation = (props) => {
     }
   };
 
-  return (
-    <div className="background-container">
-      <div className="navBar_wrapper">
-        <Navbar />
+  const { isLoaded, userId } = useAuth();
+
+  // In case the user signs out while on the page.
+  if (!isLoaded || !userId) {
+    return <RedirectToSignIn to="login" />;
+  } else {
+    return (
+      <div className="background-container">
+        <div className="navBar_wrapper">
+          <Navbar />
+        </div>
+        <>{contentPage()}</>
       </div>
-      <>{contentPage()}</>
-    </div>
-  );
+    );
+  }
 };
 
 export default PageNavigation;

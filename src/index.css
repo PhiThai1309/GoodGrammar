@@ -59,3 +59,10 @@ h1 {
   line-height: normal;
   letter-spacing: -0.9px;
 }
+
+.flex_common {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}

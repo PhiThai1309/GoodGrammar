@@ -1,11 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useClerk } from "@clerk/clerk-react";
+import { UserButton, useAuth, useClerk } from "@clerk/clerk-react";
 import "./HomeNavBar.css";
 // import Signoutbtn from "../../../pages/login/Logout";
 
 const HomeNavBar = () => {
-  const clerk = useClerk();
+  const { isLoaded, userId, sessionId, getToken } = useAuth();
+
+  function loggedIn() {
+    // In case the user signs out while on the page.
+    if (!isLoaded || !userId) {
+      return (
+        <Link to="login">
+          <button className="filled-btn">Log in</button>
+        </Link>
+      );
+    } else {
+      return (
+        <div className="flex_common">
+          <Link to="grammar">
+            <button className="dotted-btn">Access</button>
+          </Link>
+          <UserButton afterSignOutUrl="/" />
+        </div>
+      );
+    }
+  }
 
   return (
     // <ClerkProvider publishableKey={clerkPubKey}>
@@ -16,15 +36,10 @@ const HomeNavBar = () => {
           <p className="logo">Good {<br />} Grammar</p>
         </div>
         <div className="navbar-links">
-          {/* <Link to="signup"> */}
-          <button className="dotted-btn" onClick={() => clerk.openSignUp()}>Sign up</button>
-          {/* </Link> */}
-
-          {/* <Signoutbtn /> */}
-
-          <Link to="login">
-            <button className="filled-btn">Log in</button>
-          </Link>
+          {/* <button className="dotted-btn" onClick={() => clerk.openSignUp()}>
+            Sign up
+          </button> */}
+          {loggedIn()}
         </div>
       </div>
       <div className="blur_background"></div>

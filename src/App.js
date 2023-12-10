@@ -25,19 +25,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
-            <Route
-              path="login"
-              element={
-                <div>
-                  <SignedIn>
-                    <Navigate to="/grammar" replace={true} />
-                  </SignedIn>
-                  <SignedOut>
-                    <RedirectToSignIn />
-                  </SignedOut>
-                </div>
-              }
-            />
+            <Route path="login" element={<Login />} />
             <Route
               path="history"
               element={<PageNavigation content="history" />}

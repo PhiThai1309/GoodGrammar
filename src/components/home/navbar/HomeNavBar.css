@@ -7,9 +7,6 @@
   background: var(--globalnav-background);
   backdrop-filter: var(--globalnav-backdrop-filter);
   -webkit-backdrop-filter: var(--globalnav-backdrop-filter);
-
-  /* filter: blur(50px);
-  -webkit-filter: blur(50px); */
   z-index: 99;
 }
 .navbar-container {
