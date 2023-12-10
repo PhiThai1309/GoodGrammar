@@ -8,7 +8,7 @@ const PageNavigation = (props) => {
   const contentPage = () => {
     switch (props.content) {
       case "history":
-        return <History />;
+        return <History openNav={console.log("lift up")} />;
       case "grammar":
         return <Grammar />;
 
@@ -19,7 +19,9 @@ const PageNavigation = (props) => {
 
   return (
     <div className="background-container">
-      <Navbar />
+      <div className="navBar_wrapper">
+        <Navbar />
+      </div>
       <>{contentPage()}</>
     </div>
   );

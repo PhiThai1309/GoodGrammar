@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import "./Grammar.css";
 
-const Grammar = () => {
+const Grammar = (props) => {
   const [model, setModel] = useState("standard");
 
   const clickDelete = (e) => {};
@@ -34,9 +34,7 @@ const Grammar = () => {
 
   return (
     <div className="grammar">
-      <div className="navbar_container">
-        <h2>Grammar Checker</h2>
-      </div>
+      <h2>Grammar Checker</h2>
 
       <div className="model">
         <h3>Models:</h3>

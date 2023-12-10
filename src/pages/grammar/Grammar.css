@@ -1,10 +1,16 @@
 .grammar {
   box-sizing: border-box;
   min-height: 100vh;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 110px;
   max-width: 1108px;
   margin-left: auto;
   margin-right: auto;
+  flex: 1;
+}
+
+.navbar_container {
+  display: flex;
+  align-items: center;
 }
 
 .model {
@@ -111,7 +117,7 @@ textarea {
 }
 
 .icon-button {
-  background-color: white;
+  background-color: transparent;
   color: black;
   outline: none;
   border: none;

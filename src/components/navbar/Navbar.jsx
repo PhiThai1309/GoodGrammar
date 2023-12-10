@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -8,12 +8,15 @@ const Navbar = () => {
       <div className="navigation-container">
         <CustomLink href="/">
           <span className="material-symbols-rounded">home</span>
+          <span>Home</span>
         </CustomLink>
         <CustomLink href="/grammar">
           <span className="material-symbols-rounded">spellcheck</span>
+          <span>spellcheck</span>
         </CustomLink>
         <CustomLink href="/history">
           <span className="material-symbols-rounded">history</span>
+          <span>history</span>
         </CustomLink>
         <CustomLink href="/subscribe">
           <span className="material-symbols-rounded">workspace_premium</span>
@@ -24,8 +27,8 @@ const Navbar = () => {
         <span className="material-symbols-rounded">account_circle</span>
       </div>
     </nav>
-  )
-}
+  );
+};
 
 function CustomLink({ href, children, ...props }) {
   let path = window.location.pathname;
@@ -40,4 +43,4 @@ function CustomLink({ href, children, ...props }) {
   );
 }
 
-export default Navbar
+export default Navbar;
