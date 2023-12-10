@@ -5,7 +5,7 @@
   margin-right: auto;
 }
 
-.homefeature_container>img {
+.homefeature_container > img {
   margin-top: 2rem;
   margin-bottom: 4rem;
   width: 100%;
@@ -17,16 +17,16 @@
   position: relative;
 }
 
-.section>img {
+.section > img {
   height: 700px;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
-.homefeature_first_section>img {
+.homefeature_first_section > img {
   transform: translateX(-10%);
 }
 
-.homefeature_second_section>img {
+.homefeature_second_section > img {
   transform: translateX(10%);
 }
 
@@ -62,8 +62,11 @@
 
 .orange {
   color: white;
-  background-color: var(----color-orange, #e65603);
+  background-color: var(----color-orange, #e65603) !important;
   backdrop-filter: blur(20px);
+}
+
+.orange_shadow {
   box-shadow: 4px 3px 11px 0px rgba(232, 77, 5, 0.1),
     17px 12px 20px 0px rgba(232, 77, 5, 0.09),
     38px 26px 28px 0px rgba(232, 77, 5, 0.05),
@@ -73,28 +76,31 @@
 
 .green {
   color: white;
-  background-color: var(----gobal-green, #1B4715);
+  background-color: var(----gobal-green, #1b4715);
   backdrop-filter: blur(20px);
-  box-shadow: -8px 8px 24px 0px rgba(19, 51, 16, 0.10), -31px 31px 44px 0px rgba(19, 51, 16, 0.09), -70px 70px 59px 0px rgba(19, 51, 16, 0.05), -124px 125px 70px 0px rgba(19, 51, 16, 0.01), -193px 195px 77px 0px rgba(19, 51, 16, 0.00);
-
+  box-shadow: -8px 8px 24px 0px rgba(19, 51, 16, 0.1),
+    -31px 31px 44px 0px rgba(19, 51, 16, 0.09),
+    -70px 70px 59px 0px rgba(19, 51, 16, 0.05),
+    -124px 125px 70px 0px rgba(19, 51, 16, 0.01),
+    -193px 195px 77px 0px rgba(19, 51, 16, 0);
 }
 
 .push_margin {
   margin-bottom: 5rem;
 }
 
-.section>svg {
+.section > svg {
   position: absolute;
   width: 750px;
   height: 750px;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
-.homefeature_first_section>svg {
+.homefeature_first_section > svg {
   transform: translate(20px, -50px);
 }
 
-.homefeature_second_section>svg {
+.homefeature_second_section > svg {
   top: 2%;
 }
 
@@ -116,7 +122,7 @@
   column-gap: 4px;
 }
 
-.block_title>p {
+.block_title > p {
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -130,5 +136,5 @@
 }
 
 .green_block {
-  color: var(----gobal-green, #1B4715);
+  color: var(----gobal-green, #1b4715);
 }

@@ -40,19 +40,6 @@
   transform: translate(5%, -10%);
 }
 
-.filled-btn {
-  position: relative;
-  z-index: 1;
-}
-
-h1 {
-  font-size: 65px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.9px;
-}
-
 .text_with_underline {
   display: inline-block;
 }

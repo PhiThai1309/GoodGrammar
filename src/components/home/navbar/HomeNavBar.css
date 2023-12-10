@@ -42,7 +42,7 @@
   letter-spacing: -0.23px;
 }
 
-.filled-btn {
+a > .filled-btn {
   background-color: var(--global-green, #1b4715);
   color: var(--global-white, #f6f6f6);
   border: none;

@@ -7,7 +7,6 @@ import {
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 import { Navigate } from "react-router-dom";
-import PageNavigation from "../pageNavigation/PageNavigation";
 
 if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");

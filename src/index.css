@@ -10,8 +10,9 @@
   --globalnav-background: rgba(250, 250, 252, 0.8);
 }
 
-html {
-  font-family: "Inter", sans-serif;
+html,
+textarea {
+  font-family: "Inter", sans-serif !important;
 }
 
 a {
@@ -21,4 +22,40 @@ a {
 
 button:active {
   transform: scale(0.95);
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+.filled-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--global-white, #f6f6f6);
+  border: none;
+  border-radius: 16px;
+  margin: 0rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: -0.5px;
+  height: 48px;
+  min-width: 132px;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 65px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.9px;
 }

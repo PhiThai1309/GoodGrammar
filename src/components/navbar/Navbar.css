@@ -1,4 +1,8 @@
 nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: none;
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   padding: 16px;
   border-radius: 12px;
@@ -7,9 +11,9 @@ nav {
   max-width: 50rem;
   box-sizing: border-box;
   margin: 16px;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 .placeholder {
