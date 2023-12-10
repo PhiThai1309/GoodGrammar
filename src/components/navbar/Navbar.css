@@ -49,11 +49,15 @@ nav:hover {
 }
 
 .profile-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
-
+.profile-container span {
+  margin-top: 8px;
+  margin-left: 12px;
+}
 .selected {
   background-color: var(--color-selected);
   border-radius: 8px;

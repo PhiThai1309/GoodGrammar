@@ -1,5 +1,8 @@
 import React from "react";
 import "./Navbar.css";
+import { UserButton, useAuth } from "@clerk/clerk-react";
+
+// In case the user signs out while on the page.
 
 const Navbar = () => {
   return (
@@ -24,7 +27,9 @@ const Navbar = () => {
       </div>
       <div className="profile-container">
         <span className="material-symbols-rounded">help</span>
-        <span className="material-symbols-rounded">account_circle</span>
+        <span className="material-symbols-rounded">
+          <UserButton />
+        </span>
       </div>
     </nav>
   );
