@@ -2,12 +2,14 @@
   box-sizing: border-box;
   min-height: 100vh;
   padding: 1rem 1rem 1rem 110px;
-  max-width: 1108px;
+  max-width: 2108px;
   margin-left: auto;
   margin-right: auto;
   flex: 1;
 }
-
+.grammar > h2 {
+  margin-bottom: 0 !important;
+}
 .navbar_container {
   display: flex;
   align-items: center;
@@ -15,10 +17,17 @@
 
 .model {
   display: flex;
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
+  padding: 1rem;
   gap: 1rem;
   align-items: center;
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
+  position: sticky;
+  top: 0;
+
+  background: var(--globalnav-background);
+  backdrop-filter: var(--globalnav-backdrop-filter);
+  -webkit-backdrop-filter: var(--globalnav-backdrop-filter);
 }
 
 .model-menu {
@@ -103,6 +112,8 @@ textarea {
 }
 
 .input-buttons {
+  position: sticky;
+  bottom: 0;
   display: flex;
   padding: 1rem;
   background-color: white;
