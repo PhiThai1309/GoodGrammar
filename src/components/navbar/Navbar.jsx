@@ -16,14 +16,15 @@ const Navbar = () => {
         </CustomLink>
         <CustomLink href="/grammar">
           <span className="material-symbols-rounded">spellcheck</span>
-          <span>spellcheck</span>
+          <span>Grammar</span>
         </CustomLink>
         <CustomLink href="/history">
           <span className="material-symbols-rounded">history</span>
-          <span>history</span>
+          <span>History</span>
         </CustomLink>
         <CustomLink href="/subscribe">
           <span className="material-symbols-rounded">workspace_premium</span>
+          <span>Subscription</span>
         </CustomLink>
       </div>
       <div className="profile-container">
