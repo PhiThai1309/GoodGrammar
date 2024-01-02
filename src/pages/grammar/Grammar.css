@@ -226,7 +226,7 @@ textarea {
   line-height: normal;
 }
 
-.grammar_intro > h2 > h2 {
+.grammar_intro > h2 > b {
   display: inline-block;
   color: var(--color-orange);
 }
@@ -241,9 +241,10 @@ textarea {
   padding: 12px;
 }
 
-#below h3 > h3 {
+#below h3 > b {
   display: inline-block;
   color: var(--global-purple);
+  margin-inline: 4px;
 }
 
 .item_1 {

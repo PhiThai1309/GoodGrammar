@@ -6,13 +6,13 @@ const Mouse = () => {
     <div className="mouse-block">
       <a href="#below">
         <div id="mouse-scroll">
-          <div class="mouse">
-            <div class="mouse-in"></div>
+          <div className="mouse">
+            <div className="mouse-in"></div>
           </div>
           <div>
-            <span class="down-arrow-1"></span>
-            <span class="down-arrow-2"></span>
-            <span class="down-arrow-3"></span>
+            <span className="down-arrow-1"></span>
+            <span className="down-arrow-2"></span>
+            <span className="down-arrow-3"></span>
           </div>
         </div>
       </a>
