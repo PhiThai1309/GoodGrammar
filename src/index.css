@@ -66,3 +66,7 @@ h1 {
   align-items: center;
   gap: 1rem;
 }
+
+.green_text {
+  color: var(--global-green);
+}

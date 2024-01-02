@@ -37,7 +37,7 @@ const Grammar = (props) => {
       {/* <h2>Grammar Checker</h2> */}
 
       <div className="model">
-        <h3>Models:</h3>
+        <h3 className="green_text">Models:</h3>
         <ul className="model-menu">
           <li
             onClick={() => {
