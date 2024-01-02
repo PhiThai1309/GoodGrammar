@@ -1,36 +1,45 @@
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Navbar } from '../../components';
+import { Navbar } from "../../components";
 //import { useState } from "react";
 import { Grammar, History } from "..";
-import './PageNavigation.css'
+import "./PageNavigation.css";
+import { RedirectToSignIn, SignedIn, SignedOut, useAuth } from "@clerk/clerk-react";
 
 const PageNavigation = (props) => {
   const contentPage = () => {
     switch (props.content) {
-      case "history": return <History />
-      case "grammar": return <Grammar />
+      case "history":
+        return <History />;
+      case "grammar":
+        return <Grammar />;
 
-      default: return <></>
+      default:
+        return <></>;
     }
-  }
+  };
 
-  return (
-    <div className="pageNav">
-      <div className="background-container">
-        <Navbar />
-        <div className="content-container">
-          {contentPage()}
-          {/* <BrowserRouter>
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path="history" element={<History />} />
-              <Route path="grammar" element={<Grammar />} />
-            </Routes>
-          </BrowserRouter> */}
-        </div>
+  // const { isLoaded, userId } = useAuth();
+
+  // In case the user signs out while on the page.
+  // if (!isLoaded || !userId) {
+  //   return <RedirectToSignIn to="login" />;
+  // } else {
+    return (
+      <div>
+        <SignedIn>
+          <div className="background-container">
+            <div className="navBar_wrapper">
+              <Navbar />
+            </div>
+            <>{contentPage()}</>
+          </div>
+        </SignedIn>
+        <SignedOut>
+          <RedirectToSignIn />
+        </SignedOut>
       </div>
-    </div>
-  );
+    );
+  // }
 };
 
 export default PageNavigation;

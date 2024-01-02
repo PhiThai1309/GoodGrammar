@@ -7,24 +7,16 @@ import {
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 import { Navigate } from "react-router-dom";
-import PageNavigation from "../pageNavigation/PageNavigation";
 
-if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key");
-}
-const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
-
-const Login = () => {
+export default function Login() {
   return (
-    <ClerkProvider publishableKey={clerkPubKey}>
+    <div>
       <SignedIn>
         <Navigate to="/grammar" replace={true} />
       </SignedIn>
       <SignedOut>
-        <Navigate to="/home" replace={true} />
+        <RedirectToSignIn />
       </SignedOut>
-    </ClerkProvider>
+    </div>
   );
-};
-
-export default Login;
+}

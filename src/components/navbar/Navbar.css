@@ -1,15 +1,29 @@
 nav {
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
-  padding: 16px;
   border-radius: 12px;
   background-color: white;
-  width: fit-content;
-  max-width: 50rem;
+  width: 80px;
   box-sizing: border-box;
-  margin: 16px;
+  margin: 1rem;
+  position: fixed;
+  top: 0;
+  height: calc(100vh - 30px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
+
+  transition: all 0.2s ease;
+  overflow: hidden;
+  z-index: 100;
+}
+
+nav:hover {
+  -webkit-transition: width 0.2s ease-in-out;
+  -moz-transition: width 0.2s ease-in-out;
+  -o-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+  width: 200px;
 }
 
 .placeholder {
@@ -20,26 +34,37 @@ nav {
 }
 .navigation-container {
   /* height: 100%; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  padding: 16px;
 }
 
 .navigation-container > span,
 .nav-item {
   /* margin: 12px; */
   padding: 12px;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
   color: black;
 }
 
 .profile-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  padding: 16px;
 }
 
 .selected {
   background-color: var(--color-selected);
   border-radius: 8px;
+}
+.user_btn {
+  width: 100%;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
 }

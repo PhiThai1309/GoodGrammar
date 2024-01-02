@@ -10,8 +10,24 @@
   --globalnav-background: rgba(250, 250, 252, 0.8);
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
 html {
-  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+}
+
+p {
+  margin: 12px 0;
+}
+
+html,
+textarea {
+  font-family: "Inter", sans-serif !important;
 }
 
 a {
@@ -21,4 +37,75 @@ a {
 
 button:active {
   transform: scale(0.95);
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+.filled-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--global-white, #f6f6f6);
+  border: none;
+  border-radius: 16px;
+  margin: 0rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: -0.5px;
+  height: 48px;
+  min-width: 132px;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 65px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.9px;
+}
+
+.flex_common {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flex_common_vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.green_text {
+  color: var(--global-green);
+}
+
+.logo {
+  color: var(--Black, #373737);
+  font-size: 23px;
+  font-weight: bolder;
+  line-height: 26px;
+  letter-spacing: -0.23px;
+}
+
+.logo_small {
+  color: var(--Black, #373737);
+  font-size: 12px;
+  font-weight: bolder;
+  line-height: 14px;
+  letter-spacing: -0.23px;
 }

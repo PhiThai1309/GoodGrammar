@@ -1,25 +1,32 @@
 import "./HomeFooter.css";
-const HomeFooter = () => {
+const HomeFooter = (props) => {
+  const RunningText = () => {
+    if (props.disable) {
+      return null;
+    } else {
+      return (
+        <div className="running_word_wrapper">
+          <div className="text">
+            <span>READY TO REFINE YOUR WRITING?</span>
+            <span>READY TO REFINE YOUR WRITING?</span>
+            <span>READY TO REFINE YOUR WRITING?</span>
+            <span>READY TO REFINE YOUR WRITING?</span>
+            <span>READY TO REFINE YOUR WRITING?</span>
+          </div>
+          <div className="text">
+            <span>READY TO REFINE YOUR WRITING?</span>
+            <span>READY TO REFINE YOUR WRITING?</span>
+            <span>READY TO REFINE YOUR WRITING?</span>
+            <span>READY TO REFINE YOUR WRITING?</span>
+            <span>READY TO REFINE YOUR WRITING?</span>
+          </div>
+        </div>
+      );
+    }
+  };
   return (
     <div>
-      <div className="running_word_wrapper">
-        <div className="text">
-          <span>READY TO REFINE YOUR WRITING?</span>
-          <span>READY TO REFINE YOUR WRITING?</span>
-          <span>READY TO REFINE YOUR WRITING?</span>
-          <span>READY TO REFINE YOUR WRITING?</span>
-          <span>READY TO REFINE YOUR WRITING?</span>
-        </div>
-        <div className="text">
-          <span>READY TO REFINE YOUR WRITING?</span>
-          <span>READY TO REFINE YOUR WRITING?</span>
-          <span>READY TO REFINE YOUR WRITING?</span>
-          <span>READY TO REFINE YOUR WRITING?</span>
-          <span>READY TO REFINE YOUR WRITING?</span>
-        </div>
-        {/* <p className="selector">READY TO REFINE YOUR WRITING? </p>
-        <p>READY TO REFINE YOUR WRITING? </p> */}
-      </div>
+      {RunningText()}
       <div className="footer_wrapper">
         <p className="footer_name">©23</p>
         <div className="footer_container">
