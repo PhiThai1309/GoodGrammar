@@ -1,7 +1,7 @@
 .grammar {
   box-sizing: border-box;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   padding: 1rem;
   max-width: 2108px;
   margin-left: auto;
@@ -205,4 +205,91 @@ textarea {
   .content {
     grid-template-columns: 1fr;
   }
+  .grammar_features {
+    padding: 12px 0 !important;
+  }
+  .grammar_features svg:first-child {
+    right: -4rem !important;
+  }
+  .grammar_features svg:nth-child(4) {
+    left: -6rem !important;
+  }
+}
+
+.grammar_intro p {
+  color: var(--Black, #373737);
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.grammar_intro > h2 > h2 {
+  display: inline-block;
+  color: var(--color-orange);
+}
+
+.grammar_features {
+  position: relative;
+  padding: 12px 5rem;
+  margin-top: 4rem;
+  margin-bottom: 200px;
+}
+#below > div {
+  padding: 12px;
+}
+
+#below h3 > h3 {
+  display: inline-block;
+  color: var(--global-purple);
+}
+
+.item_1 {
+  flex: 1 1;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  z-index: 2;
+}
+
+.item_2 {
+  flex: 1.75 1;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  z-index: 2;
+}
+
+.grammar_features svg:first-child {
+  position: absolute;
+  right: 1rem;
+  top: -4rem;
+}
+
+.grammar_features svg:nth-child(4) {
+  position: absolute;
+  left: -3rem;
+  bottom: -4rem;
+}
+.grammar_features_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.grammar_block {
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.grammar_block h3 {
+  text-align: center;
+}
+.grammar_block div {
+  border-radius: 12px;
+  background-color: white;
+  padding: 22px;
+}
+
+.grammar .footer_wrapper {
+  border-radius: 12px;
 }
