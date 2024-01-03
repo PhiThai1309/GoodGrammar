@@ -1,24 +1,25 @@
 .history-item {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 6px;
-    background: none;
-    border: none;
-    outline: none;
-    gap: 8px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 6px;
+  background: none;
+  border: none;
+  outline: none;
+  gap: 8px;
+  width: 100%;
+  padding: 2px;
 }
 
 .history-item:focus {
-    background: var(--color-selected);
+  background: var(--color-selected);
 }
 
 .history-item p {
-    color: black;
-    font-size: 16px;
-    font-weight: 400;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  color: var(--global-black);
+  font-size: 16px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

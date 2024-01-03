@@ -1,5 +1,5 @@
 .history_container {
-  padding: 1rem;
+  padding: var(--gap);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -11,13 +11,13 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: var(--gap);
   flex: 1;
 }
 
 .history-bar {
   display: flex;
-  padding: 1rem;
+  padding: 0.75rem;
   justify-content: space-between;
   flex-direction: column;
   background-color: white;
@@ -34,7 +34,7 @@
 .history_document {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 .history-text {
   display: flex;
@@ -52,7 +52,7 @@
   padding: 1.5rem;
   font-family: var(--font-family);
   background-color: white;
-  color: black;
+  color: var(--global-black);
   font-size: 20px;
   font-weight: 400;
   resize: none;
@@ -81,21 +81,33 @@
 }
 
 .tips_card {
+  position: relative;
   padding: 1rem;
-  background-color: #1b47153c;
+  background-color: #1b471524;
   border-radius: 12px;
+  overflow: hidden;
 }
 
-.circle_btn{
+.tips_card button {
+  margin-top: 18px;
+  z-index: 2;
+}
+
+.tips_card svg {
+  position: absolute;
+  bottom: -50%;
+  right: -50%;
+}
+
+.circle_btn_small {
   background-color: transparent;
   color: var(--global-green, #1b4715);
   border: 1px solid var(--global-green, #1b4715);
   border-radius: 16px;
-  font-size: 1rem;
+  padding: 4px 12px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.5rem;
   letter-spacing: -0.5px;
-  height: 34px;
-  width: 120px;
   cursor: pointer;
 }

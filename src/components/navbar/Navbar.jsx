@@ -9,7 +9,7 @@ const Navbar = () => {
     <nav>
       <div className="navbar-logo">
         <CustomLink href="/">
-          <p className="logo_small">Good {<br />} Grammar</p>
+          <p className="logo_small_inverted">Good {<br />} Grammar</p>
         </CustomLink>
       </div>
       <div className="navigation-container">

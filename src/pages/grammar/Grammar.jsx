@@ -114,9 +114,7 @@ const Grammar = (props) => {
               placeholder="Corrected text will be shown here"
               disabled
             ></textarea>
-            <div className="input-buttons">
-              <DownloadBtn class="orange" />
-            </div>
+            <DownloadBtn class="orange" />
           </div>
         </div>
       </div>

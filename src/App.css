@@ -20,7 +20,7 @@
   height: 60px;
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: var(--gap);
   padding: 12px;
 }
 
