@@ -152,4 +152,5 @@ h1 {
   font-size: 8px;
   font-weight: bolder;
   line-height: 10px;
+  margin: 0 !important;
 }
