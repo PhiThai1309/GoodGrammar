@@ -4,8 +4,6 @@
   width: 100%;
   padding: 1rem;
   max-width: 2108px;
-  margin-left: auto;
-  margin-right: auto;
   flex: 1;
 }
 .grammar > h2 {
@@ -144,76 +142,6 @@ textarea {
 
 .paraphrase-button {
   border-radius: 0px 12px 12px 0px;
-}
-
-.download-button {
-  position: relative;
-  border-width: 0;
-  background-color: transparent;
-  z-index: 1;
-}
-
-.download-button .docs {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 16px;
-  z-index: 1;
-  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.download {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 70%;
-  margin: 0 auto;
-  z-index: -1;
-  border-top-right-radius: 16px;
-  border-top-left-radius: 16px;
-  transform: translateY(0%);
-  background-color: #01e056;
-  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.download-button:hover .download {
-  transform: translateY(-100%);
-}
-
-.download svg polyline,
-.download svg line {
-  animation: docs 1s infinite;
-}
-
-@keyframes docs {
-  0% {
-    transform: translateY(0%);
-  }
-
-  50% {
-    transform: translateY(-15%);
-  }
-
-  100% {
-    transform: translateY(0%);
-  }
-}
-@media screen and (max-width: 800px) {
-  .content {
-    grid-template-columns: 1fr;
-  }
-  .grammar_features {
-    padding: 12px 0 !important;
-  }
-  .grammar_features svg:first-child {
-    right: -4rem !important;
-  }
-  .grammar_features svg:nth-child(4) {
-    left: -6rem !important;
-  }
 }
 
 .grammar_intro p {

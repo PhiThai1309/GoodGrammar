@@ -45,6 +45,13 @@ h2 {
   margin: 1rem 0;
 }
 
+h4 {
+  color: #7575759c;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 300;
+}
+
 [contenteditable] {
   outline: 0px solid transparent;
 }

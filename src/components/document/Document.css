@@ -6,20 +6,17 @@
     background: none;
     border: none;
     outline: none;
+    gap: 8px;
+    width: 100%;
 }
 
 .history-item:focus {
     background: var(--color-selected);
 }
 
-.history-item span {
-    padding: 1rem;
-}
-
 .history-item p {
-    color: #000;
-    font-family: var(--font-family);
-    font-size: 18px;
+    color: black;
+    font-size: 16px;
     font-weight: 400;
     white-space: nowrap;
     overflow: hidden;
