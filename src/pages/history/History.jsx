@@ -58,12 +58,12 @@ const History = () => {
                   {" "}
                   <stop
                     id="stop1"
-                    stop-color="rgba(27, 71, 21, 0.4)"
+                    stopColor="rgba(27, 71, 21, 0.4)"
                     offset="0%"
                   ></stop>{" "}
                   <stop
                     id="stop2"
-                    stop-color="rgba(165.212, 239.721, 155.052, 0.64)"
+                    stopColor="rgba(165.212, 239.721, 155.052, 0.64)"
                     offset="80%"
                   ></stop>{" "}
                 </linearGradient>{" "}
@@ -73,8 +73,8 @@ const History = () => {
                 d="M28.7,-31.1C36.5,-27.6,41.8,-18,41.8,-8.7C41.9,0.5,36.6,9.3,30.8,16.3C25,23.3,18.6,28.5,11.6,30.4C4.6,32.4,-3.1,31,-10.7,28.6C-18.3,26.2,-25.9,22.7,-31.9,16.4C-37.9,10.1,-42.3,1,-41.2,-7.6C-40.1,-16.2,-33.5,-24.2,-25.8,-27.7C-18,-31.2,-9,-30.3,0.7,-31.1C10.4,-32,20.8,-34.6,28.7,-31.1Z"
                 width="100%"
                 height="100%"
-                transform="translate(80 55)"
-                stroke-width="0"
+                transform="translate(80 60)"
+                strokeWidth="0"
                 stroke="url(#sw-gradient)"
               ></path>{" "}
             </svg>
@@ -85,9 +85,7 @@ const History = () => {
             placeholder="Corrected text will be shown here"
             disabled
           ></textarea>
-          <div className="input-buttons">
-            <DownloadBtn class="green" />
-          </div>
+          <DownloadBtn class="green" />
         </div>
       </div>
     </div>

@@ -2,12 +2,14 @@
 
 :root {
   --gap: 0.5rem;
-  --gap-radius: 10;
+  --gap-radius: 12;
   --color-orange: #e65603;
   --color-selected: #ededed;
   --global-white: #f6f6f6;
   --global-green: #1b4715;
+  --global-green-bright: rgb(31, 305, 133);
   --global-purple: #575ff2;
+  --global-pink: rgb(227, 191, 246);
   --global-black: #1c1d28;
   --globalnav-backdrop-filter: saturate(180%) blur(20px);
   --globalnav-background: rgba(250, 250, 252, 0.8);
@@ -18,6 +20,10 @@
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
+}
+
+.overflow {
+  overflow: hidden;
 }
 
 html {
@@ -92,6 +98,13 @@ h1 {
   letter-spacing: -0.9px;
 }
 
+.flex_space_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
 .flex_common {
   display: flex;
   justify-content: center;
@@ -109,6 +122,10 @@ h1 {
 
 .green_text {
   color: var(--global-green);
+}
+
+.white_text {
+  color: var(--global-white) !important;
 }
 
 .logo {

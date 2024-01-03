@@ -1,0 +1,60 @@
+.offer_plan {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+  z-index: 2;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 24px;
+  flex: 1;
+  max-width: 300px;
+  overflow: hidden;
+  max-height: 400px;
+  padding-top: 3rem;
+}
+
+.plan svg {
+  margin-top: 1rem;
+  flex: 2;
+}
+
+.plan span {
+  opacity: 0;
+}
+
+.plan:hover span {
+  opacity: 1;
+  /* add transition */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.card_below {
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: white;
+  flex: 1;
+  width: 100%;
+}
+
+.orange_card {
+  background-color: rgb(254, 168, 99);
+}
+
+.orange_section_card {
+  background-color: rgb(250, 138, 89);
+}
+.green_section_card {
+  background-color: rgb(71, 182, 121);
+}

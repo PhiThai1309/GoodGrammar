@@ -3,7 +3,13 @@ import { Navbar } from "../../components";
 //import { useState } from "react";
 import { Grammar, History } from "..";
 import "./PageNavigation.css";
-import { RedirectToSignIn, SignedIn, SignedOut, useAuth } from "@clerk/clerk-react";
+import {
+  RedirectToSignIn,
+  SignedIn,
+  SignedOut,
+  useAuth,
+} from "@clerk/clerk-react";
+import Subscription from "../subscription/Subscription";
 
 const PageNavigation = (props) => {
   const contentPage = () => {
@@ -12,7 +18,8 @@ const PageNavigation = (props) => {
         return <History />;
       case "grammar":
         return <Grammar />;
-
+      case "subscribe":
+        return <Subscription />;
       default:
         return <></>;
     }
@@ -24,21 +31,21 @@ const PageNavigation = (props) => {
   // if (!isLoaded || !userId) {
   //   return <RedirectToSignIn to="login" />;
   // } else {
-    return (
-      <div>
-        <SignedIn>
-          <div className="background-container">
-            <div className="navBar_wrapper">
-              <Navbar />
-            </div>
-            <>{contentPage()}</>
+  return (
+    <div>
+      <SignedIn>
+        <div className="background-container">
+          <div className="navBar_wrapper">
+            <Navbar />
           </div>
-        </SignedIn>
-        <SignedOut>
-          <RedirectToSignIn />
-        </SignedOut>
-      </div>
-    );
+          <>{contentPage()}</>
+        </div>
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </div>
+  );
   // }
 };
 
