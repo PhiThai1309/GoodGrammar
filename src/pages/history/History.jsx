@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Document } from "../../components";
 import "./History.css";
 import DownloadBtn from "../../components/downloadBtn/DownloadBtn";
+import UnlockPro from "../../components/unlockPro/UnlockPro";
 
 const History = () => {
   const [selected, setSelected] = useState(null);
@@ -13,6 +14,7 @@ const History = () => {
     <div className="history_container">
       <div className="header">
         <h3>History</h3>
+        <UnlockPro />
       </div>
       <div className="history">
         <div className="history-bar">
