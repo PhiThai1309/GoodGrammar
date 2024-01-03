@@ -80,17 +80,22 @@
   background-color: gainsboro;
 }
 
-/* .input-buttons {
-    display: flex;
-    padding: 2rem 3rem 2.5rem 0;
-    background-color: white;
-    width: 100%;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    justify-content: flex-end;
-} */
-
-/* .download-button {
+.tips_card {
+  padding: 1rem;
+  background-color: #1b47153c;
   border-radius: 12px;
-  height: 44px;
-} */
+}
+
+.circle_btn{
+  background-color: transparent;
+  color: var(--global-green, #1b4715);
+  border: 1px solid var(--global-green, #1b4715);
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: -0.5px;
+  height: 34px;
+  width: 120px;
+  cursor: pointer;
+}

@@ -37,13 +37,13 @@ const History = () => {
             </div>
           </div>
 
-          <div>
+          <div className="tips_card">
             <h3>Quick tips</h3>
             <p>
               Harness the precision of our Grammar AI to effortlessly perfect
               your writing
             </p>
-            <button />
+            <button className="circle_btn"> Learn more </button>
           </div>
         </div>
         <div className="history-text">
