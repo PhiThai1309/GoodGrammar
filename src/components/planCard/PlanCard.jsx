@@ -9,7 +9,7 @@ const PlanCard = (props) => {
           <h3>{props.name}</h3>
           <span className="material-symbols-rounded">arrow_forward_ios</span>
         </div>
-        <p>Some perks included</p>
+        <p>Some perks included!</p>
       </div>
     </div>
   );
