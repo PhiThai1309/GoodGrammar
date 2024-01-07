@@ -49,7 +49,10 @@ function CustomLink({ href, children, ...props }) {
   return (
     <a
       href={href}
-      className={"nav-item" + (path === href ? " selected" : "")}
+      className={
+        "nav-item" +
+        (path === href ? `${" " + path.split("/")[1] + "_nav"}` : "")
+      }
       {...props}
     >
       {children}

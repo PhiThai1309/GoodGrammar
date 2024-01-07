@@ -1,6 +1,5 @@
 nav {
   border-radius: 6px;
-  background-color: white;
   width: 80px;
   box-sizing: border-box;
   margin: var(--gap);
@@ -10,6 +9,8 @@ nav {
   transition: all 0.2s ease;
   z-index: 100;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: white;
+  border: 1px solid rgba(179, 179, 179, 0.441);
 }
 
 .nav_container {
@@ -60,7 +61,7 @@ nav:hover {
 }
 
 .selected {
-  background-color: var(--color-selected);
+  /* background-color: var(--color-selected); */
   border-radius: 8px;
 }
 .user_btn {
@@ -70,4 +71,24 @@ nav:hover {
   flex-direction: row;
   align-items: center;
   gap: 2rem;
+}
+
+.grammar_nav {
+  /* background: rgba(138, 111, 83, 0.8); */
+  /* border-right: 1px solid #e6560365; */
+  background-color: var(--color-orange);
+  border-radius: 8px;
+  color: white;
+}
+
+.history_nav {
+  background-color: var(--global-green);
+  border-radius: 8px;
+  color: white;
+}
+
+.subscribe_nav {
+  background-color: rgb(255, 253, 116);
+  border-radius: 8px;
+  color: var(--global-black);
 }

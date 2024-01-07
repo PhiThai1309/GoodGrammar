@@ -34,7 +34,7 @@
 .history_document {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  /* gap: 2px; */
 }
 .history-text {
   display: flex;
@@ -86,11 +86,11 @@
   background-color: #1b471524;
   border-radius: 12px;
   overflow: hidden;
+  color: var(--global-black);
 }
 
 .tips_card button {
   margin-top: 18px;
-  z-index: 2;
 }
 
 .tips_card svg {
