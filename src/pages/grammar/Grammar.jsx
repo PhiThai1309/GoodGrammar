@@ -88,7 +88,6 @@ const Grammar = (props) => {
           <div className="content-left">
             <div
               className="textarea"
-              contentEditable="true"
               placeholder="Enter text here or import word file"
             ></div>
             <div className="input-buttons">
