@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { UserButton, useAuth, useClerk } from "@clerk/clerk-react";
+import { UserButton, useAuth } from "@clerk/clerk-react";
 import "./HomeNavBar.css";
 // import Signoutbtn from "../../../pages/login/Logout";
 

@@ -1,17 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//import { useState } from "react";
 import { Home, PageNavigation } from "./pages";
 import Login from "./pages/login/Login";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useUser,
-  RedirectToSignIn,
-} from "@clerk/clerk-react";
-import { Navigate } from "react-router-dom";
+import { ClerkProvider } from "@clerk/clerk-react";
 
 if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
