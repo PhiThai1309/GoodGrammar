@@ -11,7 +11,7 @@ const PlanCard = (props) => {
       </div>
       <div className={`card_below ${props.color}`}>
         <div className="flex_space_between">
-          <h3>{props.name}</h3>
+          <h2>{props.name}</h2>
           <span className="material-symbols-rounded">arrow_forward_ios</span>
         </div>
         <ul>

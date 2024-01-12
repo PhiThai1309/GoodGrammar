@@ -60,6 +60,10 @@
   border-top: 1px solid var(--color-selected);
 }
 
+.card_below h2 {
+  margin: 0px;
+}
+
 .card_below ul {
   margin-top: 1rem;
 }
