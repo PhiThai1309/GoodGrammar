@@ -140,7 +140,7 @@ const Grammar = (props) => {
             intelligent tool enhance your writing, ensuring clarity and
             correctness. Experience the confidence that comes with error-free
             expression, thanks to the seamless assistance of our AI Grammar
-            Checker."
+            Checker.
           </p>
         </div>
         <div className="grammar_features_container">
