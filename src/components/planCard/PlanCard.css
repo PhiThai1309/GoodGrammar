@@ -3,28 +3,41 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   height: 100%;
   z-index: 2;
+  box-sizing: border-box;
 }
 
 .plan {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  /* gap: 3rem; */
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   background-color: white;
   border-radius: 24px;
   flex: 1;
   max-width: 300px;
   overflow: hidden;
-  max-height: 400px;
-  padding-top: 3rem;
+  max-height: 500px;
+  cursor: pointer;
+  height: 100%;
+  /* padding: 2rem; */
+  border: 1px solid var(--global-green);
+}
+
+.plan:hover {
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.div_container {
+  margin: 2rem;
 }
 
 .plan svg {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
+  /* margin-bottom: 2rem; */
   flex: 2;
 }
 
@@ -39,13 +52,9 @@
 }
 
 .card_below {
-  padding-top: 1rem;
-  padding-bottom: 3rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  color: white;
   flex: 1;
   width: 100%;
+  padding: 2rem
 }
 
 .orange_card {
@@ -54,6 +63,9 @@
 
 .orange_section_card {
   background-color: rgb(250, 138, 89);
+  transform: scale(1.05);
+  transition: all 0.5s ease-in-out;
+  border: 0px !important;
 }
 .green_section_card {
   background-color: rgb(71, 182, 121);

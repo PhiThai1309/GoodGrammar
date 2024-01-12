@@ -114,13 +114,21 @@ const Subscription = () => {
       <div className="header">
         <h3>Subscription plan</h3>
       </div>
-      <div className="current_plan">
-        <h3>Your Current Plan:</h3>
-        <p className="white_text">Free</p>
-      </div>
       <div className="offer_plan">
-        <PlanCard name="Personal" svg={svgFamily()} color="orange" />
-        <PlanCard name="Family" svg={svgPersonal()} color="green" />
+        <PlanCard name="Free" svg={svgFamily()} des="Limited use" price="$0" />
+        <PlanCard
+          name="Novice"
+          svg={svgFamily()}
+          des="5000 words per file Up to 30 files per week"
+          color="orange"
+          price="$30"
+        />
+        <PlanCard
+          name="Expert"
+          svg={svgPersonal()}
+          des="unlimited words, 100 files/week"
+          price="$50"
+        />
       </div>
     </div>
   );
