@@ -190,6 +190,10 @@ textarea {
   z-index: 2;
 }
 
+.item_1 h3, .item_2 h3{
+  margin: 1rem 0rem;
+}
+
 .grammar_features svg:first-child {
   position: absolute;
   right: 1rem;
