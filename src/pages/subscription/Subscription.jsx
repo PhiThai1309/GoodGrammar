@@ -4,13 +4,7 @@ import "./Subscription.css";
 const Subscription = () => {
   const svgFamily = () => {
     return (
-      <svg
-        width="200"
-        height="200"
-        viewBox="0 0 200 200"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
         {" "}
         <g clipPath="url(#clip0_116_121)">
           {" "}
@@ -44,13 +38,7 @@ const Subscription = () => {
   };
   const svgPersonal = () => {
     return (
-      <svg
-        width="200"
-        height="200"
-        viewBox="0 0 200 200"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
         {" "}
         <path
           fillRule="evenodd"
@@ -115,18 +103,23 @@ const Subscription = () => {
         <h3>Subscription plan</h3>
       </div>
       <div className="offer_plan">
-        <PlanCard name="Free" svg={svgFamily()} des="Limited use" price="$0" />
+        <PlanCard
+          name="Free"
+          svg="money.png"
+          des=" 5000 words per file. Up to 30 files per week"
+          price="$0"
+        />
         <PlanCard
           name="Novice"
-          svg={svgFamily()}
-          des="5000 words per file Up to 30 files per week"
+          svg="coin.png"
+          des="Unlimited word count. Up to 100 files per week"
           color="orange"
           price="$30"
         />
         <PlanCard
           name="Expert"
-          svg={svgPersonal()}
-          des="unlimited words, 100 files/week"
+          svg="coinbag.png"
+          des="Unlimited word count. Unlimited files correction"
           price="$50"
         />
       </div>

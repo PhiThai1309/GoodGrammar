@@ -162,6 +162,9 @@ textarea {
   color: var(--color-orange);
 }
 
+.grammar_features_container {
+  overflow: hidden;
+}
 .grammar_features {
   position: relative;
   padding: 12px 5rem;
@@ -190,7 +193,8 @@ textarea {
   z-index: 2;
 }
 
-.item_1 h3, .item_2 h3{
+.item_1 h3,
+.item_2 h3 {
   margin: 1rem 0rem;
 }
 
@@ -228,4 +232,19 @@ textarea {
 
 .grammar .footer_wrapper {
   border-radius: 12px;
+}
+
+@media screen and (max-width: 800px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+  .grammar_features {
+    padding: 12px 0 !important;
+  }
+  .grammar_features svg:first-child {
+    right: -4rem !important;
+  }
+  .grammar_features svg:nth-child(4) {
+    left: -6rem !important;
+  }
 }

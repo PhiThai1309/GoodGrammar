@@ -47,7 +47,7 @@ nav:hover {
   /* margin: 12px; */
   padding: 12px;
   display: flex;
-  gap: 2rem;
+  gap: 1.57rem;
   align-items: center;
   color: var(--global-black);
 }
@@ -79,16 +79,19 @@ nav:hover {
   background-color: var(--color-orange);
   border-radius: 8px;
   color: white;
+  font-weight: 700;
 }
 
 .history_nav {
   background-color: var(--global-green);
   border-radius: 8px;
   color: white;
+  font-weight: 700;
 }
 
 .subscribe_nav {
-  background-color: rgb(255, 253, 116);
+  background-color: var(--global-yellow);
   border-radius: 8px;
   color: var(--global-black);
+  font-weight: 700;
 }

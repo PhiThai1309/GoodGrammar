@@ -1,10 +1,20 @@
 import React from "react";
 import "./Navbar.css";
-import { UserButton } from "@clerk/clerk-react";
+import { UserButton, useAuth, useSession, useUser } from "@clerk/clerk-react";
+import Clerk from "@clerk/clerk-react";
 
 // In case the user signs out while on the page.
 
 const Navbar = () => {
+  const { getToken, isLoaded, isSignedIn } = useAuth();
+
+  const handleClick = async () => {
+    const token = await getToken();
+    // fetch your data
+    // return token;
+    console.log(token);
+  };
+
   return (
     <nav>
       <div className="nav_container">
@@ -36,6 +46,7 @@ const Navbar = () => {
           {/* <span className="material-symbols-rounded">help</span> */}
           <div className="user_btn">
             <UserButton afterSignOutUrl="/" />
+            <button onClick={handleClick}>test click</button>
             <span>Account</span>
           </div>
         </div>

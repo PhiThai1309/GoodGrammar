@@ -22,9 +22,8 @@
   overflow: hidden;
   max-height: 500px;
   cursor: pointer;
-  height: 100%;
   /* padding: 2rem; */
-  border: 1px solid var(--global-green);
+  /* border: 1px solid var(--global-green); */
 }
 
 .plan:hover {
@@ -32,7 +31,9 @@
 }
 
 .div_container {
-  margin: 2rem;
+  margin: 1.5rem 1.5rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .plan svg {
@@ -54,7 +55,21 @@
 .card_below {
   flex: 1;
   width: 100%;
-  padding: 2rem
+  padding: 1.5rem;
+  /* add top border */
+  border-top: 1px solid var(--color-selected);
+}
+
+.card_below ul {
+  margin-top: 1rem;
+}
+
+.card_below li {
+  margin-bottom: 0.5rem;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.5px;
 }
 
 .orange_card {
@@ -66,7 +81,25 @@
   transform: scale(1.05);
   transition: all 0.5s ease-in-out;
   border: 0px !important;
+  color: white !important;
 }
 .green_section_card {
   background-color: rgb(71, 182, 121);
+}
+
+@media screen and (max-width: 800px) {
+  .offer_plan {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .plan {
+    width: 100%;
+    max-width: 100%;
+    height: fit-content;
+    max-height: fit-content;
+  }
+
+  .orange_section_card {
+    transform: scale(1);
+  }
 }

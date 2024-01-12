@@ -76,7 +76,7 @@
 
 .green {
   color: white;
-  background-color: var(----gobal-green, #1b4715);
+  background-color: var(--global-green);
   backdrop-filter: blur(20px);
   box-shadow: -8px 8px 24px 0px rgba(19, 51, 16, 0.1),
     -31px 31px 44px 0px rgba(19, 51, 16, 0.09),

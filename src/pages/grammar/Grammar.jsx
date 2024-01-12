@@ -183,20 +183,18 @@ const Grammar = (props) => {
             </svg>
             <div className="simple_flex grammar_block">
               <div className="item_1 flex_common_vertical">
-                <h3>Upload file in doc and docx format</h3>
+                <h3>Lastest in-house trainned AI</h3>
                 <img src={placeholder} alt="" />
               </div>
               <div className="item_2 flex_common_vertical">
-                <h3>
-                  Support with the lastest and smartes in-house trainned AI
-                </h3>
-                <img src={placeholder} alt="" />
+                <h3>Fast and reliable</h3>
+                <img src={require("../../assets/feature-speed.png")} alt="" />
               </div>
             </div>
             <div className="simple_flex grammar_block">
               <div className="item_2 flex_common_vertical">
                 <h3>Support doc, docx and pdf format</h3>
-                <img alt="" />
+                <img src={require("../../assets/upload-feature.png")} alt="" />
               </div>
               <div className="item_1 flex_common_vertical">
                 <h3>Download-able file for ease of use</h3>
