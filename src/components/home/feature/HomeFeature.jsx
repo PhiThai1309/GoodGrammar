@@ -31,11 +31,11 @@ const HomeFeature = () => {
         <div className="section_block">
           <div className="block_title orange_block">
             <span className="material-symbols-rounded">format_paragraph</span>
-            <p>Paraphazer</p>
+            <p>Grammar Checker</p>
           </div>
           <div className="section_container orange orange_shadow">
             <p>
-              Transform your text effortlessly with our Paraphraser feature.
+              Transform your text effortlessly with our grammar checker feature.
               Redefine clarity, eliminate redundancy, and express your ideas
               with a fresh perspective. Your writing, reimagined.
             </p>
@@ -70,16 +70,17 @@ const HomeFeature = () => {
         <div className="section_block">
           <div className="block_title green_block">
             <span className="material-symbols-rounded">format_paragraph</span>
-            <p>Paraphazer</p>
+            <p>History</p>
           </div>
           <div className="section_container green push_margin">
             <p>
-              Seamless writing, impeccable results. Introducing our Grammar
-              Checker – your key to polished, error-free communication!
+              Delve into the past with our History feature, effortlessly
+              retracing your writing journey and empowering you with a seamless
+              record of your creative evolution.
             </p>
           </div>
         </div>
-        <img src={require("../../../assets/placeholder1.png")} alt="" />
+        <img src={require("../../../assets/placeholder2.jpeg")} alt="" />
       </div>
     </div>
   );

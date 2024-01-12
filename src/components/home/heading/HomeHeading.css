@@ -46,8 +46,9 @@
 .home_img_section > img {
   width: auto;
   height: auto;
-  max-height: 800px;
+  max-height: 700px;
   transform: translate(5%, 0%);
+  margin-bottom:20px;
 }
 
 .text_with_underline {
