@@ -8,6 +8,8 @@ import UnlockPro from "../../components/unlockPro/UnlockPro";
 
 const Grammar = (props) => {
   const [model, setModel] = useState("standard");
+  const [upload, setUpload] = useState(null);
+  const [download, setDownload] = useState(null);
 
   const clickDelete = (e) => {};
 

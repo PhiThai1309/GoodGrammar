@@ -8,7 +8,7 @@ const History = () => {
   const [selected, setSelected] = useState(null);
 
   // Use for updating document ig
-  useEffect(() => console.log(selected));
+  useEffect(() => console.log(selected), [selected]);
 
   return (
     <div className="history_container">
