@@ -83,6 +83,10 @@
   border: 0px !important;
   color: white !important;
 }
+
+.orange_section_card .card_below {
+  border: 0px;
+}
 .green_section_card {
   background-color: rgb(71, 182, 121);
 }
