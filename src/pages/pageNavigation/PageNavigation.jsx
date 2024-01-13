@@ -12,6 +12,7 @@ import {
 import Subscription from "../subscription/Subscription";
 import { API } from "../../api";
 import { useEffect, useState } from "react";
+import axios from "axios"; // Import axios
 
 const PageNavigation = (props) => {
   const { getToken, isLoaded, isSignedIn } = useAuth();
@@ -24,24 +25,25 @@ const PageNavigation = (props) => {
     const fetchData = async () => {
       try {
         if (isLoaded && isSignedIn) {
+          // Obtain the user token
           const obtainedToken = await getToken({ template: "dev" });
           setToken(obtainedToken);
           console.log(obtainedToken);
 
-          // Fetch subscription data using the obtained token
-          const response = await fetch(API.getSubTier(), {
-            method: "GET",
+          // Fetch subscription data using Axios
+          const response = await axios.get(API.getSubTier(), {
             headers: {
               Authorization: `Bearer ${obtainedToken}`,
               "Content-Type": "application/json",
             },
           });
 
-          if (!response.ok) {
+          const data = response.data;
+
+          // Check if the response contains an error
+          if (response.status !== 200) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
-
-          const data = await response.json();
 
           // Update component state with fetched data
           setSubscriptionStatus(data);

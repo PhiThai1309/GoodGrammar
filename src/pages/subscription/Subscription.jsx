@@ -3,6 +3,7 @@ import { API } from "../../api";
 import PlanCard from "../../components/planCard/PlanCard";
 import "./Subscription.css";
 import { useAuth } from "@clerk/clerk-react";
+import axios from "axios"; // Import axios
 
 const Subscription = (props) => {
   const renderPlanCards = () => {
@@ -40,6 +41,7 @@ const Subscription = (props) => {
   };
 
   const { getToken } = useAuth(); // Assuming your authentication library provides a getToken function
+  const [loading, setLoading] = useState(false);
 
   const [stripePortalLink, setStripePortalLink] = useState(null);
 
@@ -49,27 +51,32 @@ const Subscription = (props) => {
         // Fetch user token
         const token = await getToken({ template: "dev" });
 
-        // Make the request to openStripePortal API with the user token
-        const response = await fetch(API.openStripePortal(), {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`, // Assume token is defined in your component's scope
-            "Content-Type": "application/json",
-          },
-          // You might need to include additional data in the request body if required by your API
-        });
+        // Make the request to openStripePortal API with axios
+        const response = await axios.post(
+          API.openStripePortal(),
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+        const data = response.data;
+
+        // Check if the response contains an error
+        if (data.error) {
+          throw new Error(`API error: ${data.error}`);
         }
-
-        const data = await response.json();
 
         // Update component state with the Stripe Portal link
         setStripePortalLink(data.url);
         console.log(data.url);
+        setLoading(true); // Set loading to false once data is fetched
       } catch (error) {
-        console.error("Error opening Stripe Portal:", error);
+        setLoading(false); // Set loading to false on error
+        console.error("Error opening Stripe Portal:", error.message);
       }
     };
 
@@ -118,12 +125,14 @@ const Subscription = (props) => {
       </svg>
       <div className="header">
         <h3>Subscription plan</h3>
-        <button
-          onClick={() => handleButtonClick(stripePortalLink)}
-          className="dotted-btn"
-        >
-          Payment Setting
-        </button>
+        {loading && (
+          <button
+            onClick={() => handleButtonClick(stripePortalLink)}
+            className="dotted-btn"
+          >
+            Payment Settings
+          </button>
+        )}
       </div>
       <div className="offer_plan">{renderPlanCards()}</div>
     </div>
