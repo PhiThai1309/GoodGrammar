@@ -46,7 +46,7 @@ const Navbar = () => {
           {/* <span className="material-symbols-rounded">help</span> */}
           <div className="user_btn">
             <UserButton afterSignOutUrl="/" />
-            <button onClick={handleClick}>test click</button>
+            {/* <button onClick={handleClick}>test click</button> */}
             <span>Account</span>
           </div>
         </div>
