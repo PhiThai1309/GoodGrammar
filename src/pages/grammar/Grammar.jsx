@@ -88,10 +88,11 @@ const Grammar = (props) => {
         </div>
         <div className="content">
           <div className="content-left">
-            <div
-              className="textarea"
-              placeholder="Enter text here or import word file"
-            ></div>
+            <textarea
+              name="text"
+              placeholder="Imported text will be displayed here"
+              disabled
+            />
             <div className="input-buttons">
               <button className="icon-button" onClick={clickDelete}>
                 <span className="material-symbols-rounded">delete</span>
@@ -100,7 +101,7 @@ const Grammar = (props) => {
                 type="file"
                 id="file"
                 onChange={clickUpload}
-                accept=".doc, .docx, .txt, .pdf"
+                accept=".doc, .docx"
               ></input>
               <label htmlFor="file" className="icon-button">
                 <span className="material-symbols-rounded">upload_file</span>
