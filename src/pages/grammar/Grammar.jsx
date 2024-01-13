@@ -4,7 +4,7 @@ import Mouse from "../../components/mouse/Mouse";
 import placeholder from "../../assets/placeholder1.png";
 import { HomeFooter } from "../../components";
 import DownloadBtn from "../../components/downloadBtn/DownloadBtn";
-import UnlockPro from "../../components/unlockPro/UnlockPro";
+import showSub from "../../components/unlockPro/UnlockPro";
 
 const Grammar = (props) => {
   const [model, setModel] = useState("standard");
@@ -45,7 +45,7 @@ const Grammar = (props) => {
 
       <div className="header">
         <h3>Grammar Checker</h3>
-        <UnlockPro />
+        {showSub(props.sub)}
       </div>
 
       <div className="content_wrapper">

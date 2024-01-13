@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Document } from "../../components";
 import "./History.css";
 import DownloadBtn from "../../components/downloadBtn/DownloadBtn";
-import UnlockPro from "../../components/unlockPro/UnlockPro";
+import showSub from "../../components/unlockPro/UnlockPro";
 
-const History = () => {
+const History = (props) => {
   const [selected, setSelected] = useState(null);
 
   // Use for updating document ig
@@ -14,7 +14,7 @@ const History = () => {
     <div className="history_container">
       <div className="header">
         <h3>History</h3>
-        <UnlockPro />
+        {showSub(props.sub)}
       </div>
       <div className="history">
         <div className="history-bar">

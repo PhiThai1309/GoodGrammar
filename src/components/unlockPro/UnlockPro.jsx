@@ -1,5 +1,13 @@
 import "./UnlockPro.css";
 
+function showSub(sub) {
+  if (sub && sub.name) {
+    return <div>{sub.name === "Free" ? <UnlockPro /> : null}</div>;
+  } else {
+    return null;
+  }
+}
+
 const UnlockPro = () => {
   return (
     <a href="subscribe">
@@ -13,4 +21,4 @@ const UnlockPro = () => {
   );
 };
 
-export default UnlockPro;
+export default showSub;
