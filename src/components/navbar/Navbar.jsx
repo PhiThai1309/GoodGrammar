@@ -9,7 +9,7 @@ const Navbar = () => {
   const { getToken, isLoaded, isSignedIn } = useAuth();
 
   const handleClick = async () => {
-    const token = await getToken();
+    const token = await getToken({ template: "dev" });
     // fetch your data
     // return token;
     console.log(token);
