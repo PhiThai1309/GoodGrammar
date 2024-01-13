@@ -21,6 +21,16 @@ const PlanCard = (props) => {
               })
             : null}
         </ul>
+        {color === "orange" && name !== "Free" && (
+          <div className="centered_align">
+            <button
+              onClick={() => console.log("Unsubscribe clicked")}
+              className="filled-btn green"
+            >
+              Unsubscribe
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

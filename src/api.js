@@ -1,6 +1,4 @@
 let BASE_URL = "https://goodgrammarbackend.onrender.com";
-let TEST_AUTH = BASE_URL + "/test_auth";
-let SUB_TIER = BASE_URL + "/user/get_subscription_tier";
 
 const API = {
   testAuthentication() {
@@ -28,6 +26,11 @@ const API = {
   getAllUsers() {
     return BASE_URL + "/user"; // GET
   },
+
+  //Sub
+  getSubTier() {
+    return BASE_URL + "/user/get_subscription_tier"; //GET
+  },
 };
 
-export { API, BASE_URL, TEST_AUTH, SUB_TIER };
+export { API };

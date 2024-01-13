@@ -10,13 +10,15 @@ import {
   useAuth,
 } from "@clerk/clerk-react";
 import Subscription from "../subscription/Subscription";
-import { BASE_URL, SUB_TIER, TEST_AUTH } from "../../api";
+import { API } from "../../api";
 import { useEffect, useState } from "react";
 
 const PageNavigation = (props) => {
   const { getToken, isLoaded, isSignedIn } = useAuth();
   const [token, setToken] = useState(null);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,48 +26,38 @@ const PageNavigation = (props) => {
         if (isLoaded && isSignedIn) {
           const obtainedToken = await getToken({ template: "dev" });
           setToken(obtainedToken);
+          console.log(obtainedToken);
+
+          // Fetch subscription data using the obtained token
+          const response = await fetch(API.getSubTier(), {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${obtainedToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          // Update component state with fetched data
+          setSubscriptionStatus(data);
+          // Log the data
+          console.log(data);
+          setLoading(true); // Set loading to false once data is fetched
         }
       } catch (error) {
-        console.error("Error obtaining token:", error);
+        setError(error.message);
+        setLoading(false); // Set loading to false on error
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
   }, [isLoaded, isSignedIn, getToken]);
-
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(SUB_TIER, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`, // Assume token is defined in your component's scope
-            "Content-Type": "application/json",
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        // Update component state with fetched data
-        setSubscriptionStatus(data);
-        //console log the data
-        console.log(data);
-        setLoading(false); // Set loading to false once data is fetched
-      } catch (error) {
-        setError(error.message);
-        setLoading(false); // Set loading to false on error
-      }
-    };
-
-    fetchData();
-  }, [TEST_AUTH, token]);
 
   const contentPage = () => {
     switch (props.content) {
@@ -74,6 +66,10 @@ const PageNavigation = (props) => {
       case "grammar":
         return <Grammar sub={subscriptionStatus} />;
       case "subscribe":
+        if (!loading) {
+          // Return a loading message or spinner while data is being fetched
+          return <p>Loading...</p>;
+        }
         return <Subscription sub={subscriptionStatus} />;
       default:
         return <></>;
