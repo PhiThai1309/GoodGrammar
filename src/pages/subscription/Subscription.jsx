@@ -79,7 +79,6 @@ const Subscription = (props) => {
 
         // Update component state with the Stripe Portal link
         setStripePortalLink(data.url);
-        console.log(data);
         setLoading(true); // Set loading to false once data is fetched
       } catch (error) {
         setLoading(false); // Set loading to false on error
@@ -100,7 +99,7 @@ const Subscription = (props) => {
     try {
       // Fetch user token
       const token = await getToken({ template: "dev" });
-      console.log(token);
+      // console.log(token);
       let response = null;
       if (!subStatus) {
         response = await axios.post(
