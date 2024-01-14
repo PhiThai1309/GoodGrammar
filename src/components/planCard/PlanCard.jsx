@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./PlanCard.css";
 import PropTypes from "prop-types";
-import Popup from "../popup/Popup";
 
 const PlanCard = (props) => {
   const {
@@ -10,19 +9,27 @@ const PlanCard = (props) => {
     svg,
     des,
     price,
-    subStatus,
     onSubscribeClick,
     onPopupClick,
+    currentStatus,
   } = props;
+
+  const subStatus = currentStatus === name;
+
   return (
     <div
       onClick={() => {
-        if (subStatus) {
-          onSubscribeClick(id, subStatus);
-        } else {
-          onPopupClick(id);
+        if (name !== "Free") {
+          if (currentStatus !== name && currentStatus !== "Free") {
+            onPopupClick(id);
+          } else {
+            if (currentStatus === "Free") {
+              onSubscribeClick(id, true);
+            } else {
+              onSubscribeClick(id, subStatus);
+            }
+          }
         }
-        console.log(id);
       }}
       className={`plan ${subStatus ? "orange_section_card" : ""}`}
     >
@@ -63,6 +70,7 @@ PlanCard.propTypes = {
   svg: PropTypes.string.isRequired,
   des: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
+  currentStatus: PropTypes.string.isRequired,
   subStatus: PropTypes.bool, // Optional color prop
 };
 

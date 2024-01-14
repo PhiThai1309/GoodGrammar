@@ -40,9 +40,9 @@ const Subscription = (props) => {
         svg={plan.svg}
         des={plan.des}
         price={plan.price}
-        subStatus={props.sub && props.sub.name === plan.name ? true : undefined}
         onSubscribeClick={handleSubscribeClick}
         onPopupClick={handlePopup}
+        currentStatus={props.sub.name}
       />
     ));
   };
