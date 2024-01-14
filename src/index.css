@@ -27,6 +27,10 @@
   overflow: hidden;
 }
 
+.max-width {
+  max-width: 1300px !important;
+}
+
 html {
   scroll-behavior: smooth;
   background-color: rgb(245, 245, 245);
@@ -117,28 +121,6 @@ h1 {
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.9px;
-}
-
-.flex_space_between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.flex_common {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.flex_common_vertical {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
 }
 
 .green_text {

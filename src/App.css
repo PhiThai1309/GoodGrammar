@@ -39,6 +39,28 @@
   justify-content: center;
 }
 
+.flex_space_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flex_common {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flex_common_vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
 /* @media screen and (max-width: 700px) {
   .section__padding {
     padding: 4rem;

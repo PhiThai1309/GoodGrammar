@@ -1,10 +1,10 @@
 .trusted_by_container {
   transform: translateY(-50%);
-
   padding: 0 2rem;
-  max-width: 1108px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .trusted_by_container img {

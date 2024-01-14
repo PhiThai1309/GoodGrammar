@@ -2,7 +2,7 @@ import "./TrustedBy.css";
 
 const TrustedBy = () => {
   return (
-    <div className="trusted_by_container">
+    <div className="trusted_by_container max-width">
       <div className="trusted_by_background">
         {/* <div className="trusted_by_heading"> */}
         <p>Trusted by</p>

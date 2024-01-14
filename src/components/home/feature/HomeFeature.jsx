@@ -2,7 +2,7 @@ import "./HomeFeature.css";
 
 const HomeFeature = () => {
   return (
-    <div className="homefeature_container">
+    <div className="homefeature_container max-width">
       <img src={require("../../../assets/feature_text.png")} alt="" />
       <div className="homefeature_first_section section">
         <svg

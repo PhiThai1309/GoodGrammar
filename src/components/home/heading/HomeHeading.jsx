@@ -26,7 +26,7 @@ const HomeHeading = () => {
   }
 
   return (
-    <div className="home_header">
+    <div className="home_header max-width">
       <svg
         className="blod-header"
         xmlns="http://www.w3.org/2000/svg"
