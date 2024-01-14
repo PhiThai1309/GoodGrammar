@@ -25,6 +25,12 @@
   padding: 12px;
 }
 
+.disable {
+  opacity: 0.5;
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.364) !important;
+}
+
 .right_align {
   display: flex;
   flex-direction: row;

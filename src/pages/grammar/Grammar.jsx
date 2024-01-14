@@ -40,18 +40,21 @@ const Grammar = (props) => {
     console.log(file);
     setUpload(file);
 
-    axios.post(API.getFileContent(), fd)
-    .then(res => {
-      setUploadedText(res.data.respone)
-    })
-    .catch(err => { console.error(err) })
+    axios
+      .post(API.getFileContent(), fd)
+      .then((res) => {
+        setUploadedText(res.data.respone);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const clickParaphrase = async (e) => {
     // Check word count if free user
     if (props.sub.name === "Free") {
       const wordCount = uploadedText.split(/\s+/).length;
-      if (wordCount > 5000) {
+      if (wordCount > 20) {
         setPopupText("Free user can only check file up to 5000 words.");
         setPopup(true);
         return;
@@ -62,18 +65,22 @@ const Grammar = (props) => {
     fd.append("file", upload);
 
     // Get edited file ID
-    const response = await axios.post(API.uploadFile(), fd)
-    .catch(err => { console.error(err); })
+    const response = await axios.post(API.uploadFile(), fd).catch((err) => {
+      console.error(err);
+    });
 
     console.log(response.data.edited_file_id);
 
     const data = {
       file_id: response.data.edited_file_id,
-    }
-    const file = await axios.post(API.getFile(), data, {
-      responseType: 'blob',
-    })
-    .catch(err => { console.error(err); })
+    };
+    const file = await axios
+      .post(API.getFile(), data, {
+        responseType: "blob",
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
     setResult(file.data);
   };
@@ -84,9 +91,9 @@ const Grammar = (props) => {
 
     // Create download link for the file
     const url = URL.createObjectURL(result);
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = url;
-    link.download = fileNameArray.join(".") + "-fixed" + '.' + fileType;
+    link.download = fileNameArray.join(".") + "-fixed" + "." + fileType;
     link.click();
   };
 
@@ -100,10 +107,12 @@ const Grammar = (props) => {
     };
   }
 
+  const closePopup = () => {
+    setPopup(false);
+  };
+
   return (
     <div className="grammar">
-      {/* <h2>Grammar Checker</h2> */}
-
       <div className="header">
         <h3>Grammar Checker</h3>
         {showSub(props.sub)}
@@ -168,7 +177,10 @@ const Grammar = (props) => {
               <label htmlFor="file" className="icon-button">
                 <span className="material-symbols-rounded">upload_file</span>
               </label>
-              <button className="filled-btn orange" onClick={clickParaphrase}>
+              <button
+                className={`filled-btn ${upload ? "orange" : "disable"}`}
+                onClick={clickParaphrase}
+              >
                 Check
               </button>
             </div>
@@ -181,7 +193,11 @@ const Grammar = (props) => {
               value={resultText}
               disabled
             ></textarea>
-            <DownloadBtn class="orange" onClick={clickDownload} isVisible={result !== null} />
+            <DownloadBtn
+              class="orange"
+              onClick={clickDownload}
+              isVisible={result !== null}
+            />
           </div>
         </div>
       </div>
@@ -313,6 +329,8 @@ const Grammar = (props) => {
       </div>
 
       <HomeFooter disable="true" />
+
+      {popUp && <Popup title={popUpText} closePopup={closePopup} />}
     </div>
   );
 };
