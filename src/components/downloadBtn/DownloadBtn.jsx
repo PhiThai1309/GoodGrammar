@@ -2,11 +2,11 @@ import "./DownloadBtn.css";
 
 const DownloadBtn = (props) => {
   return (
-    <div className="input-buttons">
+    <div className="input-buttons" style={{display: props.isVisible ? 'flex' : 'none' }}>
       {/* <button className="filled-btn orange" onClick={clickDownload}>
     Download
   </button> */}
-      <button className="download-button">
+      <button className="download-button" onClick={props.onClick}>
         <div className={"docs filled-btn " + props.class}>
           <svg
             className="css-i6dzq1"

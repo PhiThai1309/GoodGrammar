@@ -27,10 +27,21 @@ const API = {
     return BASE_URL + "/user"; // GET
   },
 
-  //Sub
+  // Sub
   getSubTier() {
     return BASE_URL + "/user/get_subscription_tier"; //GET
   },
+
+  // File
+  getFileContent() {
+    return BASE_URL + "/file/get_content"; // POST
+  },
+  uploadFile() {
+    return BASE_URL + "/file/upload"; // POST
+  },
+  getFile() {
+    return BASE_URL + "/file/get_file"; // POST
+  }
 };
 
 export { API };

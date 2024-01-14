@@ -27,9 +27,8 @@ const PageNavigation = (props) => {
       try {
         if (isLoaded && isSignedIn) {
           // Obtain the user token
-          const obtainedToken = await getToken({ template: "dev" });
+          const obtainedToken = await getToken();
           setToken(obtainedToken);
-          console.log(obtainedToken);
 
           // Fetch subscription data using Axios
           const response = await axios.get(API.getSubTier(), {

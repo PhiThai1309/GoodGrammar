@@ -5,16 +5,31 @@ import placeholder from "../../assets/placeholder1.png";
 import { HomeFooter } from "../../components";
 import DownloadBtn from "../../components/downloadBtn/DownloadBtn";
 import showSub from "../../components/unlockPro/UnlockPro";
+import { API } from "../../api";
+import axios from "axios";
+import Popup from "../../components/popup/Popup";
 
 const Grammar = (props) => {
   const [model, setModel] = useState("standard");
+  const [uploadedText, setUploadedText] = useState("");
   const [upload, setUpload] = useState(null);
-  const [download, setDownload] = useState(null);
+  const [resultText, setResultText] = useState("");
+  const [result, setResult] = useState(null);
+  const [fileId, setFileId] = useState("");
+  const [popUp, setPopup] = useState(false);
+  const [popUpText, setPopupText] = useState("");
 
-  const clickDelete = (e) => {};
+  const clickDelete = (e) => {
+    setUpload(null);
+    setUploadedText("");
+    setResult(null);
+    setResultText("");
+  };
 
-  const clickUpload = (event) => {
+  const clickUpload = async (event) => {
     const file = event.target.files[0];
+    event.target.value = "";
+
     if (!file) {
       console.log("No file selected");
       return;
@@ -22,12 +37,58 @@ const Grammar = (props) => {
 
     const fd = new FormData();
     fd.append("file", file);
-    console.log(fd.get("file"));
+    console.log(file);
+    setUpload(file);
+
+    axios.post(API.getFileContent(), fd)
+    .then(res => {
+      setUploadedText(res.data.respone)
+    })
+    .catch(err => { console.error(err) })
   };
 
-  const clickParaphrase = (e) => {};
+  const clickParaphrase = async (e) => {
+    // Check word count if free user
+    if (props.sub.name === "Free") {
+      const wordCount = uploadedText.split(/\s+/).length;
+      if (wordCount > 5000) {
+        setPopupText("Free user can only check file up to 5000 words.");
+        setPopup(true);
+        return;
+      }
+    }
 
-  const clickDownload = (e) => {};
+    const fd = new FormData();
+    fd.append("file", upload);
+
+    // Get edited file ID
+    const response = await axios.post(API.uploadFile(), fd)
+    .catch(err => { console.error(err); })
+
+    console.log(response.data.edited_file_id);
+
+    const data = {
+      file_id: response.data.edited_file_id,
+    }
+    const file = await axios.post(API.getFile(), data, {
+      responseType: 'blob',
+    })
+    .catch(err => { console.error(err); })
+
+    setResult(file.data);
+  };
+
+  const clickDownload = (e) => {
+    let fileNameArray = upload.name.split(".");
+    const fileType = fileNameArray.pop();
+
+    // Create download link for the file
+    const url = URL.createObjectURL(result);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileNameArray.join(".") + "-fixed" + '.' + fileType;
+    link.click();
+  };
 
   const textbox = useRef(null);
 
@@ -91,6 +152,7 @@ const Grammar = (props) => {
             <textarea
               name="text"
               placeholder="Imported text will be displayed here"
+              value={uploadedText}
               disabled
             />
             <div className="input-buttons">
@@ -116,9 +178,10 @@ const Grammar = (props) => {
             <textarea
               name="text"
               placeholder="Corrected text will be shown here"
+              value={resultText}
               disabled
             ></textarea>
-            <DownloadBtn class="orange" />
+            <DownloadBtn class="orange" onClick={clickDownload} isVisible={result !== null} />
           </div>
         </div>
       </div>
