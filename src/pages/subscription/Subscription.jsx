@@ -9,18 +9,21 @@ const Subscription = (props) => {
   const renderPlanCards = () => {
     const plans = [
       {
+        id: "",
         name: "Free",
         svg: "money.png",
         des: "5000 words per file. Up to 30 files per week",
         price: "$0",
       },
       {
+        id: "price_1OWBIPANL0btWpR2aJ7jistJ",
         name: "Novice",
         svg: "coin.png",
         des: "Unlimited word count. Up to 100 files per week",
         price: "$30",
       },
       {
+        id: "price_1OWBJ8ANL0btWpR2t9tUc97S",
         name: "Expert",
         svg: "coinbag.png",
         des: "Unlimited word count. Unlimited files correction",
@@ -30,12 +33,14 @@ const Subscription = (props) => {
 
     return plans.map((plan) => (
       <PlanCard
+        id={plan.id}
         key={plan.name}
         name={plan.name}
         svg={plan.svg}
         des={plan.des}
         price={plan.price}
         color={props.sub && props.sub.name === plan.name ? "orange" : undefined}
+        onSubscribeClick={handleSubscribeClick}
       />
     ));
   };
@@ -72,7 +77,7 @@ const Subscription = (props) => {
 
         // Update component state with the Stripe Portal link
         setStripePortalLink(data.url);
-        console.log(data.url);
+        console.log(data);
         setLoading(true); // Set loading to false once data is fetched
       } catch (error) {
         setLoading(false); // Set loading to false on error
@@ -86,6 +91,48 @@ const Subscription = (props) => {
   const handleButtonClick = (url) => {
     window.location.href = url;
   };
+
+  const [redirectLink, setRedirectLink] = useState(null);
+
+  const handleSubscribeClick = async (selectedPlan) => {
+    try {
+      // Fetch user token
+      const token = await getToken({ template: "dev" });
+      console.log(token);
+      // Make the request to createCheckoutSession API
+      const response = await axios.post(
+        API.createCheckOutSession(),
+        {
+          price_id: selectedPlan,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = response.data;
+
+      if (!data) {
+        throw new Error("Invalid response from createCheckoutSession API");
+      }
+
+      // Redirect to the link returned by the API
+      setRedirectLink(data.url);
+      console.log(data.url);
+    } catch (error) {
+      console.error("Error creating checkout session:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (redirectLink) {
+      // Navigate to the link when redirectLink changes
+      window.location.href = redirectLink;
+    }
+  }, [redirectLink]);
 
   return (
     <div className="subscribe overflow">

@@ -2,9 +2,15 @@ import "./PlanCard.css";
 import PropTypes from "prop-types";
 
 const PlanCard = (props) => {
-  const { name, svg, des, price, color } = props;
+  const { id, name, svg, des, price, color, onSubscribeClick } = props;
   return (
-    <div className={`plan ${color ? `${color}_section_card` : ""}`}>
+    <div
+      onClick={() => {
+        onSubscribeClick(id);
+        console.log(id);
+      }}
+      className={`plan ${color ? `${color}_section_card` : ""}`}
+    >
       <div className="div_container">
         {props.svg ? <img src={require(`../../assets/${svg}`)} alt="" /> : null}
         <h2>{price}</h2>
@@ -37,6 +43,7 @@ const PlanCard = (props) => {
 };
 
 PlanCard.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   svg: PropTypes.string.isRequired,
   des: PropTypes.string.isRequired,
