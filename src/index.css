@@ -92,6 +92,25 @@ h4 {
   padding: 1rem;
 }
 
+.destroy-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--global-white, #f6f6f6);
+  background-color: rgb(232, 25, 25);
+  border: none;
+  border-radius: 16px;
+  margin: 0rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: -0.5px;
+  height: 48px;
+  min-width: 132px;
+  cursor: pointer;
+  padding: 1rem;
+}
+
 h1 {
   font-size: 65px;
   font-style: normal;

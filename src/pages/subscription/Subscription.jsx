@@ -228,7 +228,14 @@ const Subscription = (props) => {
       </div>
       <div className="offer_plan">{renderPlanCards()}</div>
       {/* Popup overlay */}
-      {showPopup && <Popup closePopup={handlePopup} onYes={handlePopupYes} />}
+      {showPopup && (
+        <Popup
+          title="Click proceed will automatically transfer your current plan to the new
+          plan you have selected. Do you want to proceed?"
+          closePopup={handlePopup}
+          onYes={handlePopupYes}
+        />
+      )}
     </div>
   );
 };
