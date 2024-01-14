@@ -176,7 +176,9 @@ const Grammar = (props) => {
 
             <div className="input-buttons">
               <button className="icon-button" onClick={clickDelete}>
-                <span className="material-symbols-rounded">delete</span>
+                {upload ? (
+                  <span className="material-symbols-rounded">delete</span>
+                ) : null}
               </button>
               <input
                 type="file"
