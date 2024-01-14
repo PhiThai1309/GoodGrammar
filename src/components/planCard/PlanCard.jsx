@@ -13,7 +13,7 @@ const PlanCard = (props) => {
     >
       <div className="div_container">
         {props.svg ? <img src={require(`../../assets/${svg}`)} alt="" /> : null}
-        <h2>{price}</h2>
+        <div className="price_text">{price}</div>
       </div>
       <div className={`card_below ${color}`}>
         <div className="flex_space_between">

@@ -13,21 +13,21 @@ const Subscription = (props) => {
         name: "Free",
         svg: "money.png",
         des: "5000 words per file. Up to 30 files per week",
-        price: "$0",
+        price: "₫0",
       },
       {
         id: "price_1OWBIPANL0btWpR2aJ7jistJ",
         name: "Novice",
         svg: "coin.png",
         des: "Unlimited word count. Up to 100 files per week",
-        price: "$30",
+        price: "₫20,000 / month",
       },
       {
         id: "price_1OWBJ8ANL0btWpR2t9tUc97S",
         name: "Expert",
         svg: "coinbag.png",
         des: "Unlimited word count. Unlimited files correction",
-        price: "$50",
+        price: "₫50,000 / month",
       },
     ];
 
