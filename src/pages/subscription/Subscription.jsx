@@ -39,7 +39,7 @@ const Subscription = (props) => {
         svg={plan.svg}
         des={plan.des}
         price={plan.price}
-        color={props.sub && props.sub.name === plan.name ? "orange" : undefined}
+        subStatus={props.sub && props.sub.name === plan.name ? true : undefined}
         onSubscribeClick={handleSubscribeClick}
       />
     ));
