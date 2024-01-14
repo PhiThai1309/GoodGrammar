@@ -1,12 +1,27 @@
+import { useState } from "react";
 import "./PlanCard.css";
 import PropTypes from "prop-types";
+import Popup from "../popup/Popup";
 
 const PlanCard = (props) => {
-  const { id, name, svg, des, price, subStatus, onSubscribeClick } = props;
+  const {
+    id,
+    name,
+    svg,
+    des,
+    price,
+    subStatus,
+    onSubscribeClick,
+    onPopupClick,
+  } = props;
   return (
     <div
       onClick={() => {
-        onSubscribeClick(id, subStatus);
+        if (subStatus) {
+          onSubscribeClick(id, subStatus);
+        } else {
+          onPopupClick(id);
+        }
         console.log(id);
       }}
       className={`plan ${subStatus ? "orange_section_card" : ""}`}

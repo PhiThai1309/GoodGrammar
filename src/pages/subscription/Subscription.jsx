@@ -4,6 +4,7 @@ import PlanCard from "../../components/planCard/PlanCard";
 import "./Subscription.css";
 import { useAuth } from "@clerk/clerk-react";
 import axios from "axios"; // Import axios
+import Popup from "../../components/popup/Popup";
 
 const Subscription = (props) => {
   const renderPlanCards = () => {
@@ -41,6 +42,7 @@ const Subscription = (props) => {
         price={plan.price}
         subStatus={props.sub && props.sub.name === plan.name ? true : undefined}
         onSubscribeClick={handleSubscribeClick}
+        onPopupClick={handlePopup}
       />
     ));
   };
@@ -155,6 +157,21 @@ const Subscription = (props) => {
     window.location.reload();
   };
 
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupPlanId, setPopupPlanId] = useState(null);
+
+  const handlePopup = (id) => {
+    setShowPopup(!showPopup);
+    setPopupPlanId(id);
+    // console.log(selectedID);
+  };
+
+  const handlePopupYes = async () => {
+    // Assuming you have a selectedPlan and subStatus value to pass to handleSubscribeClick
+    console.log("id:" + popupPlanId);
+    await handleSubscribeClick(popupPlanId, false);
+  };
+
   useEffect(() => {
     if (redirectLink) {
       // Navigate to the link when redirectLink changes
@@ -210,6 +227,8 @@ const Subscription = (props) => {
         )}
       </div>
       <div className="offer_plan">{renderPlanCards()}</div>
+      {/* Popup overlay */}
+      {showPopup && <Popup closePopup={handlePopup} onYes={handlePopupYes} />}
     </div>
   );
 };

@@ -29,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: rgb(245, 245, 245);
 }
 
 p {

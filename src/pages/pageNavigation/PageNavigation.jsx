@@ -13,6 +13,7 @@ import Subscription from "../subscription/Subscription";
 import { API } from "../../api";
 import { useEffect, useState } from "react";
 import axios from "axios"; // Import axios
+import Loading from "../../components/loading/Loading";
 
 const PageNavigation = (props) => {
   const { getToken, isLoaded, isSignedIn } = useAuth();
@@ -70,7 +71,7 @@ const PageNavigation = (props) => {
       case "subscribe":
         if (!loading) {
           // Return a loading message or spinner while data is being fetched
-          return <p>Loading...</p>;
+          return <Loading />;
         }
         return <Subscription sub={subscriptionStatus} />;
       default:
