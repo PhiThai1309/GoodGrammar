@@ -67,6 +67,11 @@
   gap: 1rem;
 }
 
+.relative-container {
+  position: relative;
+  display: inherit;
+  flex: 1;
+}
 /* @media screen and (max-width: 700px) {
   .section__padding {
     padding: 4rem;

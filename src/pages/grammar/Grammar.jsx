@@ -8,6 +8,7 @@ import showSub from "../../components/unlockPro/UnlockPro";
 import { API } from "../../api";
 import axios from "axios";
 import Popup from "../../components/popup/Popup";
+import Loading from "../../components/loading/Loading";
 
 const Grammar = (props) => {
   const [model, setModel] = useState("standard");
@@ -18,6 +19,7 @@ const Grammar = (props) => {
   const [fileId, setFileId] = useState("");
   const [popUp, setPopup] = useState(false);
   const [popUpText, setPopupText] = useState("");
+  const [getLoading, setLoading] = useState(false);
 
   const clickDelete = (e) => {
     setUpload(null);
@@ -27,6 +29,7 @@ const Grammar = (props) => {
   };
 
   const clickUpload = async (event) => {
+    setLoading(true);
     const file = event.target.files[0];
     event.target.value = "";
 
@@ -44,6 +47,7 @@ const Grammar = (props) => {
       .post(API.getFileContent(), fd)
       .then((res) => {
         setUploadedText(res.data.respone);
+        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
@@ -54,7 +58,7 @@ const Grammar = (props) => {
     // Check word count if free user
     if (props.sub.name === "Free") {
       const wordCount = uploadedText.split(/\s+/).length;
-      if (wordCount > 20) {
+      if (wordCount > 5000) {
         setPopupText("Free user can only check file up to 5000 words.");
         setPopup(true);
         return;
@@ -158,12 +162,18 @@ const Grammar = (props) => {
         </div>
         <div className="content">
           <div className="content-left">
-            <textarea
-              name="text"
-              placeholder="Imported text will be displayed here"
-              value={uploadedText}
-              disabled
-            />
+            <div className="relative-container">
+              <textarea
+                name="text"
+                placeholder={
+                  !getLoading ? "Imported text will be displayed here" : null
+                }
+                value={uploadedText}
+                disabled
+              />
+              {getLoading ? <Loading /> : null}
+            </div>
+
             <div className="input-buttons">
               <button className="icon-button" onClick={clickDelete}>
                 <span className="material-symbols-rounded">delete</span>

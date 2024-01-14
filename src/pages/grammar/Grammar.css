@@ -28,6 +28,7 @@
   background: #e656034a;
   backdrop-filter: var(--globalnav-backdrop-filter);
   -webkit-backdrop-filter: var(--globalnav-backdrop-filter);
+  z-index: 20;
 }
 
 .model-menu {
