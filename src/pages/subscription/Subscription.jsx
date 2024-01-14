@@ -27,7 +27,7 @@ const Subscription = (props) => {
         name: "Expert",
         svg: "coinbag.png",
         des: "Unlimited word count. Unlimited files correction",
-        price: "₫50,000 / month",
+        price: "₫30,000 / month",
       },
     ];
 
@@ -54,7 +54,7 @@ const Subscription = (props) => {
     const fetchData = async () => {
       try {
         // Fetch user token
-        const token = await getToken({ template: "dev" });
+        const token = await getToken();
 
         // Make the request to openStripePortal API with axios
         const response = await axios.post(
@@ -94,37 +94,65 @@ const Subscription = (props) => {
 
   const [redirectLink, setRedirectLink] = useState(null);
 
-  const handleSubscribeClick = async (selectedPlan) => {
+  const handleSubscribeClick = async (selectedPlan, subStatus) => {
     try {
       // Fetch user token
       const token = await getToken({ template: "dev" });
       console.log(token);
-      // Make the request to createCheckoutSession API
-      const response = await axios.post(
-        API.createCheckOutSession(),
-        {
-          price_id: selectedPlan,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
+      let response = null;
+      if (!subStatus) {
+        response = await axios.post(
+          API.changeSubscription(),
+          {
+            price_id: selectedPlan,
           },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const data = response.data;
+
+        if (!data) {
+          throw new Error("Invalid response from createCheckoutSession API");
+        } else {
+          handleReload();
         }
-      );
+      } else {
+        // Make the request to createCheckoutSession API
+        response = await axios.post(
+          API.createCheckOutSession(),
+          {
+            price_id: selectedPlan,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const data = response.data;
 
-      const data = response.data;
+        if (!data) {
+          throw new Error("Invalid response from createCheckoutSession API");
+        }
 
-      if (!data) {
-        throw new Error("Invalid response from createCheckoutSession API");
+        // Redirect to the link returned by the API
+        setRedirectLink(data.url);
+        console.log(data.url);
       }
-
-      // Redirect to the link returned by the API
-      setRedirectLink(data.url);
-      console.log(data.url);
     } catch (error) {
       console.error("Error creating checkout session:", error.message);
     }
+  };
+
+  const handleReload = () => {
+    // Reload the page
+    window.location.reload();
   };
 
   useEffect(() => {

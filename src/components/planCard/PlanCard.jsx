@@ -48,7 +48,7 @@ PlanCard.propTypes = {
   svg: PropTypes.string.isRequired,
   des: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  subStatus: PropTypes.string, // Optional color prop
+  subStatus: PropTypes.bool, // Optional color prop
 };
 
 export default PlanCard;
