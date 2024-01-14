@@ -13,7 +13,7 @@
   --global-black: #1c1d28;
   --global-yellow: rgb(254, 209, 47);
   --globalnav-backdrop-filter: saturate(180%) blur(20px);
-  --globalnav-background: rgba(250, 250, 252, 0.8);
+  --globalnav-background: rgba(250, 250, 252, 0.825);
 }
 
 * {

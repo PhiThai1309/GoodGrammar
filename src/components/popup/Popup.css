@@ -9,18 +9,41 @@
   align-items: center;
   justify-content: center;
   z-index: 10000;
+  overflow: hidden;
+}
+
+.popup-content > svg {
+  position: absolute;
+  left: -25%;
+  top: -20%;
+  height: 250px;
+  width: 250px;
+  fill: var(--global-purple);
+  opacity: 0.1;
 }
 
 .popup-content {
-  background: white;
+  overflow: hidden;
+  position: relative;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 24px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   max-width: 400px; /* Adjust the width as needed */
+  background: var(--globalnav-background);
+  backdrop-filter: var(--globalnav-backdrop-filter);
+  -webkit-backdrop-filter: var(--globalnav-backdrop-filter);
 }
+
+.popup-content h3 {
+  position: inherit;
+  z-index: 3;
+}
+
 .popup-button {
+  position: inherit;
   display: flex;
   justify-content: space-between;
+  z-index: 3;
 }
 .popup-content > h3 {
   margin-bottom: 2rem;
