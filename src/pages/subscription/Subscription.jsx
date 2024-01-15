@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { API } from "../../api";
-import PlanCard from "../../components/planCard/PlanCard";
+import { PlanCard, Popup } from "../../components";
 import "./Subscription.css";
 import { useAuth } from "@clerk/clerk-react";
 import axios from "axios"; // Import axios
-import Popup from "../../components/popup/Popup";
 
 const Subscription = (props) => {
   const renderPlanCards = () => {
@@ -98,7 +97,7 @@ const Subscription = (props) => {
   const handleSubscribeClick = async (selectedPlan, subStatus) => {
     try {
       // Fetch user token
-      const token = await getToken({ template: "dev" });
+      const token = await getToken();
       // console.log(token);
       let response = null;
       if (!subStatus) {

@@ -1,22 +1,18 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import "./Grammar.css";
-import Mouse from "../../components/mouse/Mouse";
 import placeholder from "../../assets/placeholder1.png";
-import { HomeFooter } from "../../components";
-import DownloadBtn from "../../components/downloadBtn/DownloadBtn";
-import showSub from "../../components/unlockPro/UnlockPro";
+import { HomeFooter, DownloadBtn, showSub, Popup, Loading, Mouse } from "../../components";
 import { API } from "../../api";
 import axios from "axios";
-import Popup from "../../components/popup/Popup";
-import Loading from "../../components/loading/Loading";
+import { useAuth } from "@clerk/clerk-react";
 
 const Grammar = (props) => {
+  const { getToken } = useAuth();
   const [model, setModel] = useState("standard");
   const [uploadedText, setUploadedText] = useState("");
   const [upload, setUpload] = useState(null);
   const [resultText, setResultText] = useState("");
   const [result, setResult] = useState(null);
-  const [fileId, setFileId] = useState("");
   const [popUp, setPopup] = useState(false);
   const [popUpText, setPopupText] = useState("");
   const [getLoading, setLoading] = useState(false);
@@ -43,10 +39,10 @@ const Grammar = (props) => {
     console.log(file);
     setUpload(file);
 
-    axios
+    await axios
       .post(API.getFileContent(), fd)
       .then((res) => {
-        setUploadedText(res.data.respone);
+        setUploadedText(res.data.response);
         setLoading(false);
       })
       .catch((err) => {
@@ -73,23 +69,33 @@ const Grammar = (props) => {
       console.error(err);
     });
 
-    console.log(response.data.edited_file_id);
+    // Save file ID to history
+    const token = await getToken();
+    const fileId = response.data.edited_file_id;
+    console.log(fileId);
+    const history = await axios.post(API.history(), { fileId: fileId }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(history.data);
 
-    const data = {
-      file_id: response.data.edited_file_id,
-    };
-    const file = await axios
-      .post(API.getFile(), data, {
-        responseType: "blob",
-      })
+    // Get text
+    const text = await axios
+      .get(API.getFileInfo(fileId))
       .catch((err) => {
         console.error(err);
       });
+    setResultText(text.data.content);
 
+    // Get file
+    const file = await axios
+      .get(API.getFile(fileId), { responseType: "blob" })
+      .catch((err) => { console.error(err); });
     setResult(file.data);
   };
 
-  const clickDownload = (e) => {
+  const clickDownload = async (e) => {
     let fileNameArray = upload.name.split(".");
     const fileType = fileNameArray.pop();
 
@@ -278,7 +284,7 @@ const Grammar = (props) => {
               </svg>
               <div className="simple_flex grammar_block">
                 <div className="item_1 flex_common_vertical">
-                  <h3>Lastest in-house trainned AI</h3>
+                  <h3>Latest in-house trained AI</h3>
                   <img src={placeholder} alt="" />
                 </div>
                 <div className="item_2 flex_common_vertical">
@@ -288,7 +294,7 @@ const Grammar = (props) => {
               </div>
               <div className="simple_flex grammar_block">
                 <div className="item_2 flex_common_vertical">
-                  <h3>Support doc, docx and pdf format</h3>
+                  <h3>Support doc and docx format</h3>
                   <img
                     src={require("../../assets/upload-feature.png")}
                     alt=""

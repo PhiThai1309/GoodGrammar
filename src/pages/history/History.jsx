@@ -1,14 +1,99 @@
 import React, { useState, useEffect } from "react";
-import { Document } from "../../components";
+import { Document, DownloadBtn, showSub } from "../../components";
+import { useAuth } from "@clerk/clerk-react";
 import "./History.css";
-import DownloadBtn from "../../components/downloadBtn/DownloadBtn";
-import showSub from "../../components/unlockPro/UnlockPro";
+import axios from "axios";
+import { API } from "../../api";
 
 const History = (props) => {
-  const [selected, setSelected] = useState(null);
+  const { getToken } = useAuth();
+  const [selected, setSelected] = useState(null); // currently selected file in history
+  const [historyId, setHistoryId] = useState(null);
+  const [history, setHistory] = useState([]);
+  const [text, setText] = useState("");
+  const [file, setFile] = useState(null); // download file
 
   // Use for updating document ig
-  useEffect(() => console.log(selected), [selected]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = await getToken();
+        const response = await axios.get(API.history(), {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setHistoryId(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    getHistory();
+  }, [historyId])
+
+  const getHistory = async () => {
+    let list = []
+
+    for (let id in historyId) {
+      const file = await axios.get(API.getFileInfo(historyId[id])).catch((err) => { console.error(err); });
+      const data = file.data;
+      data.id = historyId[id];
+      const date = new Date(data.create_at)
+      const dateString = date.toISOString().slice(0, 10);
+      data.create_at = dateString;
+      list.push(data);
+    }
+    
+    list = list.reverse()
+    setHistory(list);
+    
+    // const groupedItems = list.reduce((groups, file) => {
+    //   const date = file.create_at;
+
+    //   if (!groups[date]) {
+    //     groups[date] = [];
+    //   }
+
+    //   groups[date].push(file);
+    //   return groups;
+    // }, {});
+    // console.log(groupedItems);
+  }
+
+  const DocumentList = ({ list }) => {
+    return (
+      <div className="history_document">
+        {list.map((item, index) => (
+          <Document key={index} id={index} item={item} onClick={() => { documentClick(item) }} />
+        ))}
+      </div>
+    )
+  }
+
+  const documentClick = async (item) => {
+    setSelected(item);
+    setText(item.content);
+
+    await axios.get(API.getFile(item.id), { responseType: "blob" })
+    .then((res) => {
+      setFile(res.data);
+    })
+    .catch((err) => { console.error(err); });
+  }
+
+  const downloadClick = () => {
+    // Create download link for the file
+    const url = URL.createObjectURL(file);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = selected.file_name;
+    link.click();
+  }
 
   return (
     <div className="history_container">
@@ -21,21 +106,7 @@ const History = (props) => {
           <div className="history_document_container">
             <h4>Today</h4>
             <div className="history_document">
-              <Document
-                id="1"
-                title="Document #11231231231231231231231231"
-                onClick={(e) => setSelected(e.target.id)}
-              />
-              <Document
-                id="2"
-                title="Document #2"
-                onClick={(e) => setSelected(e.target.id)}
-              />
-              <Document
-                id="3"
-                title="Document #3"
-                onClick={(e) => setSelected(e.target.id)}
-              />
+              <DocumentList list={history} />
             </div>
           </div>
           <a href="grammar">
@@ -85,8 +156,9 @@ const History = (props) => {
           <textarea
             placeholder="Corrected text will be shown here"
             disabled
+            value={text}
           ></textarea>
-          <DownloadBtn class="green" />
+          <DownloadBtn class="green" isVisible={file !== null} onClick={downloadClick} />
         </div>
       </div>
     </div>
