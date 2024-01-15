@@ -39,8 +39,11 @@ const API = {
   uploadFile() {
     return BASE_URL + "/file/upload"; // POST
   },
-  getFile() {
-    return BASE_URL + "/file/get_file"; // POST
+  getFileInfo(fileId) {
+    return BASE_URL + "/file/get_file_info?file_id=" + fileId; // GET
+  },
+  getFile(fileId) {
+    return BASE_URL + "/file/get_file?file_id=" + fileId; // GET
   }
 };
 

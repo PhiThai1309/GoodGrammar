@@ -16,7 +16,6 @@ const Grammar = (props) => {
   const [upload, setUpload] = useState(null);
   const [resultText, setResultText] = useState("");
   const [result, setResult] = useState(null);
-  const [fileId, setFileId] = useState("");
   const [popUp, setPopup] = useState(false);
   const [popUpText, setPopupText] = useState("");
   const [getLoading, setLoading] = useState(false);
@@ -43,10 +42,10 @@ const Grammar = (props) => {
     console.log(file);
     setUpload(file);
 
-    axios
+    await axios
       .post(API.getFileContent(), fd)
       .then((res) => {
-        setUploadedText(res.data.respone);
+        setUploadedText(res.data.response);
         setLoading(false);
       })
       .catch((err) => {
@@ -73,23 +72,22 @@ const Grammar = (props) => {
       console.error(err);
     });
 
-    console.log(response.data.edited_file_id);
-
-    const data = {
-      file_id: response.data.edited_file_id,
-    };
-    const file = await axios
-      .post(API.getFile(), data, {
-        responseType: "blob",
-      })
+    // Get text
+    const text = await axios
+      .get(API.getFileInfo(response.data.edited_file_id))
       .catch((err) => {
         console.error(err);
       });
+    setResultText(text.data.content);
 
+    // Get file
+    const file = await axios
+      .get(API.getFile(response.data.edited_file_id), { responseType: "blob" })
+      .catch((err) => { console.error(err); });
     setResult(file.data);
   };
 
-  const clickDownload = (e) => {
+  const clickDownload = async (e) => {
     let fileNameArray = upload.name.split(".");
     const fileType = fileNameArray.pop();
 
