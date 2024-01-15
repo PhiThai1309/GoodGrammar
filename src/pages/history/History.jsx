@@ -8,6 +8,7 @@ import { API } from "../../api";
 const History = (props) => {
   const { getToken } = useAuth();
   const [selected, setSelected] = useState(null); // currently selected file in history
+  const [selectedId, setSelectedId] = useState(-1);
   const [historyId, setHistoryId] = useState(null);
   const [history, setHistory] = useState([]);
   const [text, setText] = useState("");
@@ -50,9 +51,9 @@ const History = (props) => {
         });
       const data = file.data;
       data.id = historyId[id];
-      const date = new Date(data.create_at);
-      const dateString = date.toISOString().slice(0, 10);
-      data.create_at = dateString;
+      // const date = new Date(data.create_at);
+      // const dateString = date.toISOString().slice(0, 10);
+      // data.create_at = dateString;
       list.push(data);
     }
 
@@ -79,21 +80,21 @@ const History = (props) => {
         {list.map((item, index) => (
           <Document
             key={index}
-            id={item.id}
+            id={index}
             item={item}
             onClick={() => {
-              documentClick(item);
+              documentClick(item, index);
             }}
-            selected={selected.id}
+            selected={selectedId}
           />
         ))}
       </div>
     );
   };
 
-  const documentClick = async (item) => {
-    console.log(item);
+  const documentClick = async (item, index) => {
     setSelected(item);
+    setSelectedId(index);
     setText(item.content);
 
     await axios
