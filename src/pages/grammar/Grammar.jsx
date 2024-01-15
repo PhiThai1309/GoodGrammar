@@ -274,7 +274,7 @@ const Grammar = (props) => {
               </svg>
               <div className="simple_flex grammar_block">
                 <div className="item_1 flex_common_vertical">
-                  <h3>Lastest in-house trainned AI</h3>
+                  <h3>Latest in-house trained AI</h3>
                   <img src={placeholder} alt="" />
                 </div>
                 <div className="item_2 flex_common_vertical">
@@ -284,7 +284,7 @@ const Grammar = (props) => {
               </div>
               <div className="simple_flex grammar_block">
                 <div className="item_2 flex_common_vertical">
-                  <h3>Support doc, docx and pdf format</h3>
+                  <h3>Support doc and docx format</h3>
                   <img
                     src={require("../../assets/upload-feature.png")}
                     alt=""
