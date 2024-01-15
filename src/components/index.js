@@ -6,3 +6,9 @@ export { default as HomeHeading } from "./home/heading/HomeHeading";
 export { default as HomeNavBar } from "./home/navbar/HomeNavBar";
 export { default as HomeContact } from "./home/contact/HomeContact";
 export { default as HomeFooter } from "./home/footer/HomeFooter";
+export { default as DownloadBtn } from "./downloadBtn/DownloadBtn";
+export { default as showSub } from "./unlockPro/UnlockPro";
+export { default as PlanCard } from "./planCard/PlanCard";
+export { default as Popup } from "./popup/Popup";
+export { default as Loading } from "./loading/Loading";
+export { default as Mouse } from "./mouse/Mouse"

@@ -1,7 +1,7 @@
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "../../components";
 //import { useState } from "react";
-import { Grammar, History } from "..";
+import { Grammar, History, Subscription } from "..";
 import "./PageNavigation.css";
 import {
   RedirectToSignIn,
@@ -9,11 +9,10 @@ import {
   SignedOut,
   useAuth,
 } from "@clerk/clerk-react";
-import Subscription from "../subscription/Subscription";
 import { API } from "../../api";
 import { useEffect, useState } from "react";
 import axios from "axios"; // Import axios
-import Loading from "../../components/loading/Loading";
+import { Loading } from "../../components";
 
 const PageNavigation = (props) => {
   const { getToken, isLoaded, isSignedIn } = useAuth();

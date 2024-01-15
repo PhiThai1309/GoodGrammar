@@ -1,11 +1,11 @@
 import React from 'react'
 import './Document.css'
 
-const Document = ({id, title, onClick}) => {
+const Document = (props) => {
   return (
-    <button className="history-item" id={id} onClick={onClick}>
+    <button className="history-item" id={props.id} onClick={props.onClick}>
         <span className="material-symbols-rounded">draft</span>
-        <p>{title}</p>
+        <p>{props.item.file_name}</p>
     </button>
   )
 }

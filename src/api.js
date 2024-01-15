@@ -26,6 +26,9 @@ const API = {
   getAllUsers() {
     return BASE_URL + "/user"; // GET
   },
+  history() {
+    return BASE_URL + "/user/history"; // GET/POST
+  },
 
   // Sub
   getSubTier() {

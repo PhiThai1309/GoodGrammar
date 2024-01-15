@@ -1,16 +1,13 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import "./Grammar.css";
-import Mouse from "../../components/mouse/Mouse";
 import placeholder from "../../assets/placeholder1.png";
-import { HomeFooter } from "../../components";
-import DownloadBtn from "../../components/downloadBtn/DownloadBtn";
-import showSub from "../../components/unlockPro/UnlockPro";
+import { HomeFooter, DownloadBtn, showSub, Popup, Loading, Mouse } from "../../components";
 import { API } from "../../api";
 import axios from "axios";
-import Popup from "../../components/popup/Popup";
-import Loading from "../../components/loading/Loading";
+import { useAuth } from "@clerk/clerk-react";
 
 const Grammar = (props) => {
+  const { getToken } = useAuth();
   const [model, setModel] = useState("standard");
   const [uploadedText, setUploadedText] = useState("");
   const [upload, setUpload] = useState(null);
@@ -72,9 +69,20 @@ const Grammar = (props) => {
       console.error(err);
     });
 
+    // Save file ID to history
+    const token = await getToken();
+    const fileId = response.data.edited_file_id;
+    console.log(fileId);
+    const history = await axios.post(API.history(), { fileId: fileId }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(history.data);
+
     // Get text
     const text = await axios
-      .get(API.getFileInfo(response.data.edited_file_id))
+      .get(API.getFileInfo(fileId))
       .catch((err) => {
         console.error(err);
       });
@@ -82,7 +90,7 @@ const Grammar = (props) => {
 
     // Get file
     const file = await axios
-      .get(API.getFile(response.data.edited_file_id), { responseType: "blob" })
+      .get(API.getFile(fileId), { responseType: "blob" })
       .catch((err) => { console.error(err); });
     setResult(file.data);
   };
