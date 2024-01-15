@@ -84,7 +84,7 @@ const PageNavigation = (props) => {
   //   return <RedirectToSignIn to="login" />;
   // } else {
   return (
-    <div>
+    <div className="full-width">
       <SignedIn>
         <div className="background-container">
           <div className="navBar_wrapper">
