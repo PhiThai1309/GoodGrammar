@@ -3,6 +3,7 @@
   border-width: 0;
   background-color: transparent;
   z-index: 1;
+  /* add slide from bottom to top animcation */
 }
 
 .download-button .docs {

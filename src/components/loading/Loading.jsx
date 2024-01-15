@@ -1,13 +1,15 @@
 import "./Loading.css";
 
-const Loading = () => {
+const Loading = (props) => {
   //Add a loading popup
   return (
-    <div className="loading">
+    <div className={`loading + ${props.fixed ? "fixed" : null}`}>
       <div
         aria-label="Orange and tan hamster running in a metal wheel"
         role="img"
-        className="wheel-and-hamster"
+        className={`wheel-and-hamster + ${
+          props.fixed ? "fixed_background" : null
+        }`}
       >
         <div className="wheel"></div>
         <div className="hamster">

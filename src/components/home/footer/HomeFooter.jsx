@@ -25,7 +25,7 @@ const HomeFooter = (props) => {
     }
   };
   return (
-    <div>
+    <>
       {RunningText()}
       <div className="footer_wrapper">
         <p className="footer_name">©23</p>
@@ -45,7 +45,7 @@ const HomeFooter = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

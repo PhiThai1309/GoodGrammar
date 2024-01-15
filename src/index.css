@@ -23,6 +23,19 @@
   scroll-behavior: smooth;
 }
 
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  display: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: gainsboro;
+}
+
 .overflow {
   overflow: hidden;
 }

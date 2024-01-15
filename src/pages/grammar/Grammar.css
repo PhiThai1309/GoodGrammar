@@ -67,6 +67,8 @@
   display: flex;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .textarea,
@@ -85,7 +87,7 @@ textarea {
   background-color: white;
   color: var(--global-black);
   resize: none;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
 }
 
@@ -94,19 +96,6 @@ textarea {
   text-align: center;
   font-size: 18px;
   font-weight: 600;
-}
-
-.content textarea::-webkit-scrollbar {
-  width: 6px;
-}
-
-.content textarea::-webkit-scrollbar-track {
-  display: none;
-}
-
-.content textarea::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: gainsboro;
 }
 
 .content .textarea {
@@ -126,6 +115,7 @@ textarea {
   justify-content: flex-end;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  animation: fade-in 0.3s ease-in-out;
 }
 
 .input-buttons input {

@@ -1,7 +1,14 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import "./Grammar.css";
 import placeholder from "../../assets/placeholder1.png";
-import { HomeFooter, DownloadBtn, showSub, Popup, Loading, Mouse } from "../../components";
+import {
+  HomeFooter,
+  DownloadBtn,
+  showSub,
+  Popup,
+  Loading,
+  Mouse,
+} from "../../components";
 import { API } from "../../api";
 import axios from "axios";
 import { useAuth } from "@clerk/clerk-react";
@@ -16,6 +23,7 @@ const Grammar = (props) => {
   const [popUp, setPopup] = useState(false);
   const [popUpText, setPopupText] = useState("");
   const [getLoading, setLoading] = useState(false);
+  const [fullScreenLoading, setFullScreenLoading] = useState(false);
 
   const clickDelete = (e) => {
     setUpload(null);
@@ -51,6 +59,7 @@ const Grammar = (props) => {
   };
 
   const clickParaphrase = async (e) => {
+    setFullScreenLoading(true);
     // Check word count if free user
     if (props.sub.name === "Free") {
       const wordCount = uploadedText.split(/\s+/).length;
@@ -73,25 +82,30 @@ const Grammar = (props) => {
     const token = await getToken();
     const fileId = response.data.edited_file_id;
     console.log(fileId);
-    const history = await axios.post(API.history(), { fileId: fileId }, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const history = await axios.post(
+      API.history(),
+      { fileId: fileId },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     console.log(history.data);
 
     // Get text
-    const text = await axios
-      .get(API.getFileInfo(fileId))
-      .catch((err) => {
-        console.error(err);
-      });
+    const text = await axios.get(API.getFileInfo(fileId)).catch((err) => {
+      console.error(err);
+    });
     setResultText(text.data.content);
+    setFullScreenLoading(false);
 
     // Get file
     const file = await axios
       .get(API.getFile(fileId), { responseType: "blob" })
-      .catch((err) => { console.error(err); });
+      .catch((err) => {
+        console.error(err);
+      });
     setResult(file.data);
   };
 
@@ -123,6 +137,7 @@ const Grammar = (props) => {
 
   return (
     <div className="grammar">
+      {fullScreenLoading ? <Loading fixed="true" /> : null}
       <div className="header">
         <h3>Grammar Checker</h3>
         {showSub(props.sub)}
@@ -131,40 +146,7 @@ const Grammar = (props) => {
       <div className="content_wrapper">
         <div className="model">
           <h3 className="green_text">Models:</h3>
-          <ul className="model-menu">
-            <li
-              onClick={() => {
-                setModel("standard");
-              }}
-              className={model === "standard" ? "selected" : null}
-            >
-              Standard
-            </li>
-            <li
-              onClick={() => {
-                setModel("formal");
-              }}
-              className={model === "formal" ? "selected" : null}
-            >
-              Formal
-            </li>
-            <li
-              onClick={() => {
-                setModel("academic");
-              }}
-              className={model === "academic" ? "selected" : null}
-            >
-              Academic
-            </li>
-            <li
-              onClick={() => {
-                setModel("simple");
-              }}
-              className={model === "simple" ? "selected" : null}
-            >
-              Simple
-            </li>
-          </ul>
+          <h3>LMS AI v1.1</h3>
         </div>
         <div className="content">
           <div className="content-left">

@@ -9,17 +9,34 @@
   gap: 8px;
   width: 100%;
   padding: 2px;
+  justify-content: space-between;
+}
+
+.history-item .flex_common {
+  gap: 0.75rem !important;
 }
 
 .history-item:focus {
   background: var(--color-selected);
 }
 
-.history-item p {
+.document-info p {
   color: var(--global-black);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.simple-button {
+  background-color: transparent;
+  border: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected {
+  background-color: gray !important;
 }

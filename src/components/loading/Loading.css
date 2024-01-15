@@ -8,6 +8,33 @@
   bottom: 0;
   right: 0;
   left: 0;
+  animation: fade-in 0.5s ease-in-out;
+}
+@keyframes fade-in {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.fixed {
+  position: fixed !important;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(84, 84, 84, 0.536);
+}
+
+.fixed_background {
+  background-color: white;
+  border: 40px solid white;
+  box-sizing: content-box;
+  border-radius: 18px;
 }
 
 .wheel-and-hamster {
