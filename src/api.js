@@ -29,6 +29,9 @@ const API = {
   history() {
     return BASE_URL + "/user/history"; // GET/POST
   },
+  deleteFromHistory(fileId) {
+    return BASE_URL + "/user/history/" + fileId; // DELETE
+  },
 
   // Sub
   getSubTier() {

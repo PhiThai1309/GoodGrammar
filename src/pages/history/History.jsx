@@ -15,85 +15,27 @@ const History = (props) => {
   const [file, setFile] = useState(null); // download file
   const [loading, setLoading] = useState(true);
 
+  const fetchData = async () => {      
+    try {
+      const token = await getToken();
+      const response = await axios.get(API.history(), {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+      const reverseList = response.data.reverse()
+      setHistory(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   // Use for updating document ig
   useEffect(() => {
-    const getHistory = async (historyId) => {
-      //setLoading(true);
-  
-      if (!historyId?.length) setLoading(false);
-
-      const endpoints = historyId.reduce((arr, item) => [...arr, API.getFileInfo(item)], []);
-
-      axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
-        (data) => {
-          const list = data.reduce((arr, item) => [item.data, ...arr], []);
-          setHistory(list);
-          setLoading(false);
-        }
-      ).finally(() => {
-        setLoading(false);
-      });
-  
-      // for (let id in historyId) {
-      //   const file = await axios
-      //     .get(API.getFileInfo(historyId[id]))
-      //     .catch((err) => {
-      //       console.error(err);
-      //     });
-      //   const data = file.data;
-      //   data.id = historyId[id];
-  
-      //   if (id == historyId.length - 1) {
-      //     setLoading(false);
-      //   }
-      //   // const date = new Date(data.create_at);
-      //   // const dateString = date.toISOString().slice(0, 10);
-      //   // data.create_at = dateString;
-      //   list.push(data);
-      // }
-  
-      // list = list.reverse();
-      // setHistory(list);
-      //setLoading(false);
-  
-      // const groupedItems = list.reduce((groups, file) => {
-      //   const date = file.create_at;
-  
-      //   if (!groups[date]) {
-      //     groups[date] = [];
-      //   }
-  
-      //   groups[date].push(file);
-      //   return groups;
-      // }, {});
-      // console.log(groupedItems);
-    };
-
-    const fetchData = async () => {
-      //setLoading(true);
-      
-      try {
-        const token = await getToken();
-        const response = await axios.get(API.history(), {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        await getHistory(response.data);
-        // setHistoryId(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
     fetchData();
   }, []);
-
-  // useEffect(() => {
-  //   getHistory();
-  // }, [historyId]);
-
-
 
   const DocumentList = ({ list }) => {
     return (
@@ -103,30 +45,48 @@ const History = (props) => {
             key={index}
             id={index}
             item={item}
-            onClick={() => {
-              documentClick(item, index);
-            }}
-            selected={selectedId}
+            documentClick={() => { documentClick(item); }}
+            deleteClick={() => { deleteClick(item); }}
+            selectedId={selectedId}
           />
         ))}
       </div>
     );
   };
 
-  const documentClick = async (item, index) => {
+  const documentClick = async (item) => {
     setSelected(item);
-    setSelectedId(index);
-    setText(item.content);
+    setSelectedId(item.file_id);
+    // console.log(item.file_id);
 
-    await axios
-      .get(API.getFile(item.id), { responseType: "blob" })
-      .then((res) => {
-        setFile(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    const response = await axios.get(API.getFileInfo(item.file_id)).catch((err) => { console.error(err); });
+    setText(response.data.content);
+
+    const file = await axios.get(API.getFile(item.file_id), { responseType: "blob" }).catch((err) => { console.error(err); });
+    setFile(file.data);
   };
+
+  const deleteClick = async (item) => {
+    if (selected !== null && selected.file_id === item.file_id) {
+      setSelected(null);
+      setSelectedId(-1);
+      setFile(null);
+    }
+
+    const token = await getToken();
+    await axios
+      .delete(API.deleteFromHistory(item.file_id), {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        // console.log(res.data);
+        const newHistory = history.filter((file) => file.file_id !== item.file_id);
+        setHistory(newHistory);    
+      })
+      .catch((err) => { console.error(err); })
+  }
 
   const downloadClick = () => {
     // Create download link for the file
