@@ -37,6 +37,7 @@
   background-color: white;
   border-radius: 12px;
   max-width: 350px;
+  gap: 1.5rem;
 }
 
 .history_document_container {
