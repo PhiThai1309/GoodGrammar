@@ -7,9 +7,9 @@
   border: none;
   outline: none;
   gap: 8px;
+  width: 100%;
   padding: 3px 0.55rem;
   justify-content: space-between;
-  /*overflow: hidden;*/
 }
 
 .history-item .flex_common {
@@ -20,9 +20,9 @@
   background: var(--color-selected);
 }
 
- .document-info {
-   min-width: 0;
- }
+/* .document-info {
+  width: 100%;
+} */
 
 .document-info p {
   color: var(--global-black);
@@ -35,7 +35,7 @@
 
 .simple-button {
   background-color: transparent;
-  border: 0;
+  border: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
