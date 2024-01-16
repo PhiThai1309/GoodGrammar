@@ -144,6 +144,9 @@ h1 {
   color: var(--global-white) !important;
 }
 
+.purple {
+  background-color: var(--global-purple);
+}
 .logo {
   color: var(--global-black);
   font-size: 23px;
