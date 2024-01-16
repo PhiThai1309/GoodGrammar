@@ -18,7 +18,7 @@ const HomeNavBar = () => {
     } else {
       return (
         <div className="flex_common">
-          <Link to="grammar">
+          <Link to="grammar" reloadDocument>
             <button className="dotted-btn">Access</button>
           </Link>
           <UserButton afterSignOutUrl="/" />
