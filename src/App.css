@@ -67,6 +67,10 @@
   gap: 1rem;
 }
 
+.flex_grow {
+  flex-grow: 1;
+}
+
 .relative-container {
   position: relative;
   display: inherit;
