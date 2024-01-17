@@ -12,14 +12,14 @@
   overflow: hidden;
 }
 
-.popup-content > svg {
+.popup-content > img {
   position: absolute;
-  left: -25%;
-  top: -20%;
+  left: -15%;
+  top: -10%;
   height: 250px;
   width: 250px;
   fill: var(--global-purple);
-  opacity: 0.1;
+  opacity: 0.2;
 }
 
 .popup-content {

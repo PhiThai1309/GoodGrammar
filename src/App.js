@@ -12,6 +12,12 @@ const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
 function App() {
   return (
     <ClerkProvider publishableKey={clerkPubKey}>
+      <div className="phone_check">
+        <h2>
+          Currently, this application is not supported on smaller device, please
+          use a tablet or bigger device in order to use
+        </h2>
+      </div>
       <div className="App">
         <BrowserRouter>
           <Routes>

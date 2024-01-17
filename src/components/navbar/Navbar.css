@@ -93,8 +93,9 @@ nav:hover {
 }
 
 .subscribe_nav {
-  background-color: var(--global-yellow);
+  background-color: var(--global-purple);
   border-radius: 8px;
   color: var(--global-black);
   font-weight: 700;
+  color: white;
 }

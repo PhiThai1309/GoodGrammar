@@ -30,6 +30,7 @@ const Grammar = (props) => {
     setUploadedText("");
     setResult(null);
     setResultText("");
+    setLoading(false);
   };
 
   const clickUpload = async (event) => {
@@ -179,7 +180,7 @@ const Grammar = (props) => {
                 <span className="material-symbols-rounded">upload_file</span>
               </label>
               <button
-                className={`filled-btn ${upload ? "green" : "disable"}`}
+                className={`filled-btn ${upload ? "orange" : "disable"}`}
                 onClick={clickParaphrase}
               >
                 Check
@@ -226,26 +227,57 @@ const Grammar = (props) => {
             </div>
           </div>
           <div className="grammar_features_container">
-            <h2>Why use AI Grammar Checker?</h2>
+            <div className="sticky_heading">
+              <p className="logo_small_inverted">Good {<br />} Grammar</p>
+              <h1>
+                Why use AI <span className="underline_text">Gramar</span>{" "}
+                Checker?
+              </h1>
+              <p>
+                Why settle for ordinary when your writing can be{" "}
+                <span className="highlight_text purple">extraordinary</span>?
+                Our AI Grammar Checker is your ticket to polished,{" "}
+                <span className="underline_text">error-free</span> content.
+              </p>
+            </div>
+
             <div className="grammar_features">
-              <div className="grammar_block green">
-                <h3>Latest in-house trained AI</h3>
-                <img src={placeholder} alt="" />
-              </div>
-              <div className="grammar_block orange">
-                <h3>Fast and reliable</h3>
-                <img src={require("../../assets/feature-speed.png")} alt="" />
-              </div>
-              <div className="grammar_block purple">
-                <h3>Support doc and docx format</h3>
-                <img src={require("../../assets/upload-feature.png")} alt="" />
+              <div className="grammar_block yellow">
+                <img src={require("../../assets/star.png")} alt="" />
+                <h2>Latest in-house trained AI</h2>
+                <p>
+                  Experience unparalleled linguistic prowess with our latest
+                  in-house trained AI, a cutting-edge innovation that elevates
+                  the precision and depth of language understanding to new
+                  heights.
+                </p>
               </div>
               <div className="grammar_block yellow">
-                <h3>Download-able file for ease of use</h3>
-                <img
-                  src={require("../../assets/download-feature.png")}
-                  alt=""
-                />
+                <img src={require("../../assets/lilghning.png")} alt="" />
+                <h2>Fast and reliable</h2>
+                <p>
+                  Swift and dependable, our advanced AI brings you a writing
+                  experience that is both fast and reliable, ensuring seamless
+                  assistance whenever you need it.
+                </p>
+              </div>
+              <div className="grammar_block yellow">
+                <img src={require("../../assets/doc.png")} alt="" />{" "}
+                <h2>Support doc and docx format</h2>
+                <p>
+                  Seamlessly handle your documents with support for both doc and
+                  docx formats, providing flexibility and convenience for all
+                  your writing needs
+                </p>
+              </div>
+              <div className="grammar_block yellow">
+                <img src={require("../../assets/file.png")} alt="" />
+                <h2>Download-able file for ease of use</h2>
+                <p>
+                  Unlock the gateway to effortless brilliance with our
+                  seamlessly downloadable files. Designed for unparalleled ease
+                  of use.
+                </p>
               </div>
             </div>
           </div>

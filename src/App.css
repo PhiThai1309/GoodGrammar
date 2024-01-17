@@ -72,17 +72,27 @@
   display: inherit;
   flex: 1;
 }
-/* @media screen and (max-width: 700px) {
-  .section__padding {
-    padding: 4rem;
+
+.phone_check {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .App {
+    display: none;
   }
 
-  .section__margin {
-    margin: 4rem;
+  .phone_check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    padding: 4rem;
   }
 }
 
-@media screen and (max-width: 550px) {
+/* @media screen and (max-width: 550px) {
   .section__padding {
     padding: 4rem 2rem;
   }

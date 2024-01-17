@@ -157,12 +157,12 @@ textarea {
 
 .grammar_intro p {
   opacity: 0.75;
-  color: var(--global-black, #373737c6);
+  color: #fffffffa;
   /* text-align: center; */
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
 }
 
@@ -180,31 +180,56 @@ textarea {
 
 .grammar_features_container {
   display: flex;
-  padding: 1rem;
+  padding: 4rem 2rem 4rem 2rem;
   gap: 4rem;
   justify-content: space-between;
+  background-color: var(--global-green);
+  border-radius: 12px;
+  margin-bottom: 4rem;
 }
 
-.grammar_features_container h2 {
+.sticky_heading {
   position: sticky;
-  top: 1rem;
+  top: 4rem;
   height: fit-content;
+  height: fit-content;
+  color: white;
+}
+
+.sticky_heading p:nth-child(3) {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 30px;
+  letter-spacing: 0.5px;
+  margin-top: 1rem !important;
+}
+
+.sticky_heading p:first-child {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 25px;
+  letter-spacing: 0.5px;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem !important;
 }
 
 .grammar_features {
   position: relative;
   margin-bottom: 200px;
   display: flex;
-  gap: 10vh;
+  gap: 8vh;
   flex-direction: column;
   max-width: 30rem;
 }
 
 #below h3 > b {
   display: inline-block;
-  color: var(--global-purple);
+  color: var(--global-yellow);
   margin-inline: 4px;
-  font-size: larger;
+  font-size: 24px;
   font-weight: 900;
   letter-spacing: 0.5px;
 }
@@ -244,17 +269,17 @@ textarea {
   border-radius: 12px;
 }
 
-.grammar_block h3 {
-  text-align: center;
-}
 .grammar_block {
   border-radius: 12px;
-  padding: 4rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  position: sticky;
+  /* position: sticky; */
   top: 1rem;
+}
+
+.grammar_block img {
+  width: 100px;
 }
 
 .grammar .footer_wrapper {
@@ -264,6 +289,7 @@ textarea {
 @media screen and (max-width: 800px) {
   .content {
     grid-template-columns: 1fr;
+    min-height: 650px;
   }
   /* .grammar_features_container {
     overflow: hidden;
