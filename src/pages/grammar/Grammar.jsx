@@ -167,9 +167,7 @@ const Grammar = (props) => {
                 <button className="icon-button" onClick={clickDelete}>
                   <span className="material-symbols-rounded">delete</span>
                 </button>
-              ) : (
-                <h5>Upload file</h5>
-              )}
+              ) : null}
               <input
                 type="file"
                 id="file"
@@ -177,6 +175,7 @@ const Grammar = (props) => {
                 accept=".doc, .docx"
               ></input>
               <label htmlFor="file" className="icon-button">
+                {upload ? null : <h5>Upload file &nbsp;</h5>}
                 <span className="material-symbols-rounded">upload_file</span>
               </label>
               <button
@@ -241,7 +240,7 @@ const Grammar = (props) => {
                 <h3>Support doc and docx format</h3>
                 <img src={require("../../assets/upload-feature.png")} alt="" />
               </div>
-              <div className="grammar_block">
+              <div className="grammar_block yellow">
                 <h3>Download-able file for ease of use</h3>
                 <img
                   src={require("../../assets/download-feature.png")}

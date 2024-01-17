@@ -59,6 +59,31 @@
   /* 33.947px */
 }
 
+.orange {
+  color: white;
+  background-color: var(----color-orange, #e65603) !important;
+  backdrop-filter: blur(20px);
+}
+
+.orange_shadow {
+  box-shadow: 4px 3px 11px 0px rgba(232, 77, 5, 0.1),
+    17px 12px 20px 0px rgba(232, 77, 5, 0.09),
+    38px 26px 28px 0px rgba(232, 77, 5, 0.05),
+    67px 47px 33px 0px rgba(232, 77, 5, 0.01),
+    104px 73px 36px 0px rgba(232, 77, 5, 0);
+}
+
+.green {
+  color: white;
+  background-color: var(--global-green);
+  backdrop-filter: blur(20px);
+  box-shadow: -8px 8px 24px 0px rgba(19, 51, 16, 0.1),
+    -31px 31px 44px 0px rgba(19, 51, 16, 0.09),
+    -70px 70px 59px 0px rgba(19, 51, 16, 0.05),
+    -124px 125px 70px 0px rgba(19, 51, 16, 0.01),
+    -193px 195px 77px 0px rgba(19, 51, 16, 0);
+}
+
 .push_margin {
   margin-bottom: 5rem;
 }
