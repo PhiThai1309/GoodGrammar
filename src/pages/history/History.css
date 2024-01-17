@@ -57,13 +57,12 @@
 
 .history-bar {
   display: flex;
-  padding-top: 1.25rem !important;
-  padding: 1rem;
+  padding: 1.25rem 0.5rem 1rem 1rem;
   justify-content: space-between;
   flex-direction: column;
   background-color: white;
   border-radius: 12px;
-  max-width: 350px;
+  min-width: 250px;
   gap: 1.5rem;
 }
 
