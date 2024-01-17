@@ -24,6 +24,7 @@ const History = (props) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      groupByDate(response.data);
       console.log(response.data);
       const reverseList = response.data.reverse();
       setHistory(response.data);
@@ -141,6 +142,40 @@ const History = (props) => {
         setWidth(event.clientX - 108);
       }
     }
+  };
+
+  const isDatesEqual = (d1, d2) => {
+    const date1 = new Date(d1);
+    const date2 = new Date(d2);
+    date1.setHours(0, 0, 0, 0);
+    date2.setHours(0, 0, 0, 0);
+    return date1.getTime() === date2.getTime();
+  };
+
+  const groupByDate = (array) => {
+    const today = new Date();
+    const yesterday = new Date(today - 86400000);
+    return array.reduce(
+      (grouped, cur) => {
+        const { create_at } = cur;
+        const date = new Date(create_at);
+
+        if (isDatesEqual(today, date)) {
+          grouped["today"].push(cur);
+        } else if (isDatesEqual(yesterday, date)) {
+          grouped["yesterday"].push(cur);
+        } else {
+          grouped["other"].push(cur);
+        }
+
+        return grouped;
+      },
+      {
+        today: [],
+        yesterday: [],
+        other: [],
+      }
+    );
   };
 
   if (loading) return <Loading />;
