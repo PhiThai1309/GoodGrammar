@@ -195,7 +195,7 @@ const Grammar = (props) => {
               disabled
             ></textarea>
             <DownloadBtn
-              class="orange"
+              className="orange"
               onClick={clickDownload}
               isVisible={result !== null}
             />

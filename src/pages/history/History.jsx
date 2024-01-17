@@ -162,69 +162,67 @@ const History = (props) => {
                 <h4>Today</h4>
                 <DocumentList list={history} selected={selected} />
               </div>
-              <a href="grammar">
-                <div className="tips_card">
-                  <div className="tips_card_container">
-                    <h3>Quick tips</h3>
-                    <p className="paragraph">
-                      Harness the precision of our Grammar AI to effortlessly
-                      perfect your writing
-                    </p>
+              <div className="tips_card">
+                <div className="tips_card_container">
+                  <h3>Quick tips</h3>
+                  <p className="paragraph">
+                    Harness the precision of our Grammar AI to effortlessly
+                    perfect your writing
+                  </p>
 
-                    {props.sub?.name === "Free" ? (
-                      showSub(props.sub)
-                    ) : (
-                      <button className="circle_btn_small"> Learn more </button>
-                    )}
-                  </div>
-
-                  <svg
-                    id="sw-js-blob-svg"
-                    viewBox="0 0 100 100"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {" "}
-                    <defs>
-                      {" "}
-                      <linearGradient
-                        id="sw-gradient"
-                        x1="0"
-                        x2="1"
-                        y1="1"
-                        y2="0"
-                      >
-                        {" "}
-                        <stop
-                          id="stop1"
-                          stopColor="rgba(27, 71, 21, 0.4)"
-                          offset="0%"
-                        ></stop>{" "}
-                        <stop
-                          id="stop2"
-                          stopColor="rgba(165.212, 239.721, 155.052, 0.64)"
-                          offset="80%"
-                        ></stop>{" "}
-                      </linearGradient>{" "}
-                    </defs>{" "}
-                    <path
-                      fill="url(#sw-gradient)"
-                      d="M28.7,-31.1C36.5,-27.6,41.8,-18,41.8,-8.7C41.9,0.5,36.6,9.3,30.8,16.3C25,23.3,18.6,28.5,11.6,30.4C4.6,32.4,-3.1,31,-10.7,28.6C-18.3,26.2,-25.9,22.7,-31.9,16.4C-37.9,10.1,-42.3,1,-41.2,-7.6C-40.1,-16.2,-33.5,-24.2,-25.8,-27.7C-18,-31.2,-9,-30.3,0.7,-31.1C10.4,-32,20.8,-34.6,28.7,-31.1Z"
-                      width="100%"
-                      height="100%"
-                      transform="translate(80 60)"
-                      strokeWidth="0"
-                      stroke="url(#sw-gradient)"
-                    ></path>{" "}
-                  </svg>
+                  {props.sub?.name === "Free" ? (
+                    showSub(props.sub)
+                  ) : (
+                    <button className="circle_btn_small"> Learn more </button>
+                  )}
                 </div>
-              </a>
+
+                <svg
+                  id="sw-js-blob-svg"
+                  viewBox="0 0 100 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  {" "}
+                  <defs>
+                    {" "}
+                    <linearGradient
+                      id="sw-gradient"
+                      x1="0"
+                      x2="1"
+                      y1="1"
+                      y2="0"
+                    >
+                      {" "}
+                      <stop
+                        id="stop1"
+                        stopColor="rgba(27, 71, 21, 0.4)"
+                        offset="0%"
+                      ></stop>{" "}
+                      <stop
+                        id="stop2"
+                        stopColor="rgba(165.212, 239.721, 155.052, 0.64)"
+                        offset="80%"
+                      ></stop>{" "}
+                    </linearGradient>{" "}
+                  </defs>{" "}
+                  <path
+                    fill="url(#sw-gradient)"
+                    d="M28.7,-31.1C36.5,-27.6,41.8,-18,41.8,-8.7C41.9,0.5,36.6,9.3,30.8,16.3C25,23.3,18.6,28.5,11.6,30.4C4.6,32.4,-3.1,31,-10.7,28.6C-18.3,26.2,-25.9,22.7,-31.9,16.4C-37.9,10.1,-42.3,1,-41.2,-7.6C-40.1,-16.2,-33.5,-24.2,-25.8,-27.7C-18,-31.2,-9,-30.3,0.7,-31.1C10.4,-32,20.8,-34.6,28.7,-31.1Z"
+                    width="100%"
+                    height="100%"
+                    transform="translate(80 60)"
+                    strokeWidth="0"
+                    stroke="url(#sw-gradient)"
+                  ></path>{" "}
+                </svg>
+              </div>
             </div>
             <div
               className="resize"
               style={{ width: "10px" }}
               onMouseDown={handleMouseDown}
             >
-              <span class="material-symbols-rounded">more_vert</span>
+              <span className="material-symbols-rounded">more_vert</span>
             </div>
           </div>
         </div>
@@ -237,7 +235,7 @@ const History = (props) => {
             value={text}
           ></textarea>
           <DownloadBtn
-            class="green"
+            className="green"
             isVisible={file !== null}
             onClick={downloadClick}
           />

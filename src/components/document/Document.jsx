@@ -15,7 +15,7 @@ const Document = (props) => {
         <p>{props.item.file_name}</p>
       </div>
       <button className="simple-button" onClick={props.deleteClick}>
-        <span class="material-symbols-rounded">delete</span>
+        <span className="material-symbols-rounded">delete</span>
       </button>
     </div>
   );

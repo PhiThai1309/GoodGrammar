@@ -7,7 +7,7 @@ const DownloadBtn = (props) => {
     Download
   </button> */}
       <button className="download-button" onClick={props.onClick}>
-        <div className={"docs filled-btn " + props.class}>
+        <div className={"docs filled-btn " + props.className}>
           <svg
             className="css-i6dzq1"
             strokeLinejoin="round"
