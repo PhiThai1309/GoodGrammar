@@ -61,7 +61,9 @@
   justify-content: space-between;
   flex-direction: column;
   background-color: white;
-  border-radius: 12px;
+  /* border-radius: 12px; */
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
   min-width: 250px;
   gap: 1.5rem;
 }
@@ -145,4 +147,11 @@
   line-height: 1.5rem;
   letter-spacing: -0.5px;
   cursor: pointer;
+}
+
+.inner-group {
+  margin-bottom: 1rem;
+}
+.inner-group > h3 {
+  color: var(--global-green);
 }

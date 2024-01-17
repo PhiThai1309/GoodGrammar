@@ -4,6 +4,7 @@ import { useAuth } from "@clerk/clerk-react";
 import "./History.css";
 import axios from "axios";
 import { API } from "../../api";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const History = (props) => {
   const { getToken } = useAuth();
@@ -15,6 +16,7 @@ const History = (props) => {
   const [file, setFile] = useState(null); // download file
   const [loading, setLoading] = useState(true);
   const [fullScreenLoading, setFullScreenLoading] = useState(false);
+  let groupedData = null;
 
   const fetchData = async () => {
     try {
@@ -24,10 +26,11 @@ const History = (props) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      groupByDate(response.data);
+      groupedData = groupByDate(response.data);
+      console.log(groupedData);
       console.log(response.data);
       const reverseList = response.data.reverse();
-      setHistory(response.data);
+      setHistory(groupedData);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -39,23 +42,37 @@ const History = (props) => {
     fetchData();
   }, []);
 
+  const capitalizeFirstLetter = (str) => {
+    return str
+      .replace(/\b\w/g, (char) => char.toUpperCase())
+      .replace(/([a-z])([A-Z])/g, "$1 $2");
+  };
+
   const DocumentList = ({ list }) => {
     return (
       <div className="history_document">
-        {list.map((item, index) => (
-          <Document
-            key={index}
-            id={index}
-            item={item}
-            documentClick={() => {
-              documentClick(item);
-            }}
-            deleteClick={() => {
-              deleteClick(item);
-            }}
-            selectedId={selectedId}
-          />
-        ))}
+        {/* map array in array and put it in a tag <Document /> */}
+        {Object.keys(list).map((row) =>
+          list[row].length > 0 ? (
+            <div key={row} className="inner-group">
+              <h3>{capitalizeFirstLetter(row)}</h3>
+              {list[row].map((item, index) => (
+                <Document
+                  key={index}
+                  id={item.file_id}
+                  item={item}
+                  documentClick={() => {
+                    documentClick(item);
+                  }}
+                  deleteClick={() => {
+                    deleteClick(item);
+                  }}
+                  selectedId={selectedId}
+                />
+              ))}
+            </div>
+          ) : null
+        )}
       </div>
     );
   };
@@ -154,7 +171,14 @@ const History = (props) => {
 
   const groupByDate = (array) => {
     const today = new Date();
-    const yesterday = new Date(today - 86400000);
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+
+    const thisWeek = new Date();
+    const lastSunday = thisWeek.getDate() - thisWeek.getDay();
+    thisWeek.setDate(lastSunday + 1);
+
+    const thisMonth = new Date(today.getFullYear(), today.getMonth(), 1);
     return array.reduce(
       (grouped, cur) => {
         const { create_at } = cur;
@@ -164,15 +188,20 @@ const History = (props) => {
           grouped["today"].push(cur);
         } else if (isDatesEqual(yesterday, date)) {
           grouped["yesterday"].push(cur);
+        } else if (date >= thisWeek && date <= today) {
+          grouped["thisWeek"].push(cur);
+        } else if (date >= thisMonth && date <= today) {
+          grouped["thisMonth"].push(cur);
         } else {
           grouped["other"].push(cur);
         }
-
         return grouped;
       },
       {
         today: [],
         yesterday: [],
+        thisWeek: [],
+        thisMonth: [],
         other: [],
       }
     );
@@ -194,7 +223,6 @@ const History = (props) => {
           <div className="history_content">
             <div className="history-bar" style={{ width: width }}>
               <div className="history_document_container">
-                <h4>Today</h4>
                 <DocumentList list={history} selected={selected} />
               </div>
               <div className="tips_card">
@@ -208,7 +236,9 @@ const History = (props) => {
                   {props.sub?.name === "Free" ? (
                     showSub(props.sub)
                   ) : (
-                    <button className="circle_btn_small"> Learn more </button>
+                    <NavLink to="/subscribe">
+                      <button className="circle_btn_small">Learn more</button>
+                    </NavLink>
                   )}
                 </div>
 
