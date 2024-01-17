@@ -14,6 +14,7 @@ const History = (props) => {
   const [text, setText] = useState("");
   const [file, setFile] = useState(null); // download file
   const [loading, setLoading] = useState(true);
+  const [fullScreenLoading, setFullScreenLoading] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -59,6 +60,9 @@ const History = (props) => {
   };
 
   const documentClick = async (item) => {
+    setText("");
+    setFile(null);
+    setFullScreenLoading(true);
     setSelected(item);
     setSelectedId(item.file_id);
     // console.log(item.file_id);
@@ -69,7 +73,7 @@ const History = (props) => {
         console.error(err);
       });
     setText(response.data.content);
-
+    setFullScreenLoading(false);
     const file = await axios
       .get(API.getFile(item.file_id), { responseType: "blob" })
       .catch((err) => {
@@ -167,7 +171,7 @@ const History = (props) => {
                       perfect your writing
                     </p>
 
-                    {props.sub ? (
+                    {props.sub?.name === "Free" ? (
                       showSub(props.sub)
                     ) : (
                       <button className="circle_btn_small"> Learn more </button>
@@ -226,6 +230,7 @@ const History = (props) => {
         </div>
 
         <div className="history-text">
+          {fullScreenLoading ? <Loading /> : null}
           <textarea
             placeholder="Corrected text will be shown here"
             disabled

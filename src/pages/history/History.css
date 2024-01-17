@@ -81,6 +81,7 @@
 }
 
 .history-text {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex: 2;
@@ -88,13 +89,9 @@
 }
 
 .history-text textarea {
-  height: 100%;
-  width: 100%;
-  border: 2px solid transparent;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border: 0;
+  border-radius: 12px;
   padding: 1.5rem;
-  font-family: var(--font-family);
   background-color: white;
   color: var(--global-black);
   font-size: 14px;
@@ -107,7 +104,7 @@
   color: #d9d9d9;
   text-align: center;
   font-family: var(--color-orange);
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 600;
 }
 
