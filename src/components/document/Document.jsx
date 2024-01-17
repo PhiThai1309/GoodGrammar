@@ -12,7 +12,7 @@ const Document = (props) => {
     >
       <div className="document-info flex_common" onClick={props.documentClick}>
         <span className="material-symbols-rounded">description</span>
-        <p>{props.item.file_name}</p>
+        <p className="paragraph">{props.item.file_name}</p>
       </div>
       <button className="simple-button" onClick={props.deleteClick}>
         <span className="material-symbols-rounded">delete</span>
