@@ -117,7 +117,7 @@ const Grammar = (props) => {
     const url = URL.createObjectURL(result);
     const link = document.createElement("a");
     link.href = url;
-    link.download = fileNameArray.join(".") + "(edited)" + "." + fileType;
+    link.download = fileNameArray.join(".") + "-fixed" + "." + fileType;
     link.click();
   };
 
