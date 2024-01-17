@@ -14,7 +14,7 @@ const Document = (props) => {
         <span className="material-symbols-rounded">description</span>
         <p className="paragraph">{props.item.file_name}</p>
       </div>
-      <button className="simple-button" onClick={props.deleteClick}>
+      <button className="simple-button" onClick={props.openPopup}>
         <span className="material-symbols-rounded">delete</span>
       </button>
     </div>

@@ -289,6 +289,7 @@ textarea {
 @media screen and (max-width: 800px) {
   .content {
     grid-template-columns: 1fr;
+    min-height: 650px;
   }
   /* .grammar_features_container {
     overflow: hidden;

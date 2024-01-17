@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Document, DownloadBtn, Loading, showSub } from "../../components";
+import {
+  Document,
+  DownloadBtn,
+  Loading,
+  Popup,
+  showSub,
+} from "../../components";
 import { useAuth } from "@clerk/clerk-react";
 import "./History.css";
 import axios from "axios";
@@ -64,10 +70,11 @@ const History = (props) => {
                   documentClick={() => {
                     documentClick(item);
                   }}
-                  deleteClick={() => {
-                    deleteClick(item);
-                  }}
+                  // deleteClick={() => {
+                  //   deleteClick(item);
+                  // }}
                   selectedId={selectedId}
+                  openPopup={() => handlePopup(item)}
                 />
               ))}
             </div>
@@ -76,6 +83,17 @@ const History = (props) => {
       </div>
     );
   };
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  function handlePopup(item) {
+    setShowPopup(!showPopup);
+    setSelectedItem(item);
+  }
+
+  function handlePopupYes() {
+    deleteClick(selectedItem);
+  }
 
   const documentClick = async (item) => {
     setText("");
@@ -115,11 +133,16 @@ const History = (props) => {
         },
       })
       .then((res) => {
-        // console.log(res.data);
-        const newHistory = history.filter(
-          (file) => file.file_id !== item.file_id
-        );
-        setHistory(newHistory);
+        // Iterate over the properties of history object
+        const updatedHistory = {};
+        for (const key in history) {
+          if (Object.hasOwnProperty.call(history, key)) {
+            updatedHistory[key] = history[key].filter(
+              (file) => file.file_id !== item.file_id
+            );
+          }
+        }
+        setHistory(updatedHistory);
       })
       .catch((err) => {
         console.error(err);
@@ -268,6 +291,13 @@ const History = (props) => {
           />
         </div>
       </div>
+      {showPopup && (
+        <Popup
+          title="Do you want to delete this file from History?"
+          closePopup={handlePopup}
+          onYes={handlePopupYes}
+        />
+      )}
     </div>
   );
 };
