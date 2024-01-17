@@ -30,6 +30,7 @@ const Grammar = (props) => {
     setUploadedText("");
     setResult(null);
     setResultText("");
+    setLoading(false);
   };
 
   const clickUpload = async (event) => {
@@ -179,7 +180,7 @@ const Grammar = (props) => {
                 <span className="material-symbols-rounded">upload_file</span>
               </label>
               <button
-                className={`filled-btn ${upload ? "green" : "disable"}`}
+                className={`filled-btn ${upload ? "orange" : "disable"}`}
                 onClick={clickParaphrase}
               >
                 Check
@@ -226,9 +227,22 @@ const Grammar = (props) => {
             </div>
           </div>
           <div className="grammar_features_container">
-            <h2>Why use AI Grammar Checker?</h2>
+            <div className="sticky_heading">
+              <p className="logo_small_inverted">Good {<br />} Grammar</p>
+              <h1>
+                Why use AI <span className="underline_text">Gramar</span>{" "}
+                Checker?
+              </h1>
+              <p>
+                Why settle for ordinary when your writing can be{" "}
+                <span className="highlight_text purple">extraordinary</span>?
+                Our AI Grammar Checker is your ticket to polished,{" "}
+                <span className="underline_text">error-free</span> content.
+              </p>
+            </div>
+
             <div className="grammar_features">
-              <div className="grammar_block purple white_text">
+              <div className="grammar_block yellow">
                 <img src={require("../../assets/star.png")} alt="" />
                 <h2>Latest in-house trained AI</h2>
                 <p>
@@ -238,7 +252,7 @@ const Grammar = (props) => {
                   heights.
                 </p>
               </div>
-              <div className="grammar_block orange">
+              <div className="grammar_block yellow">
                 <img src={require("../../assets/lilghning.png")} alt="" />
                 <h2>Fast and reliable</h2>
                 <p>
@@ -256,7 +270,7 @@ const Grammar = (props) => {
                   your writing needs
                 </p>
               </div>
-              <div className="grammar_block green">
+              <div className="grammar_block yellow">
                 <img src={require("../../assets/file.png")} alt="" />
                 <h2>Download-able file for ease of use</h2>
                 <p>

@@ -180,15 +180,40 @@ textarea {
 
 .grammar_features_container {
   display: flex;
-  padding: 1rem;
+  padding: 4rem 2rem 4rem 2rem;
   gap: 4rem;
   justify-content: space-between;
+  background-color: var(--global-green);
+  border-radius: 12px;
+  margin-bottom: 4rem;
 }
 
-.grammar_features_container h2 {
+.sticky_heading {
   position: sticky;
-  top: 1rem;
+  top: 4rem;
   height: fit-content;
+  height: fit-content;
+  color: white;
+}
+
+.sticky_heading p:nth-child(3) {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 30px;
+  letter-spacing: 0.5px;
+  margin-top: 1rem !important;
+}
+
+.sticky_heading p:first-child {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 25px;
+  letter-spacing: 0.5px;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem !important;
 }
 
 .grammar_features {
@@ -246,10 +271,10 @@ textarea {
 
 .grammar_block {
   border-radius: 12px;
-  padding: 4rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  position: sticky;
+  /* position: sticky; */
   top: 1rem;
 }
 

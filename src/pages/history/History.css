@@ -55,6 +55,10 @@
   cursor: col-resize;
 }
 
+.resize span {
+  opacity: 0.25;
+}
+
 .history-bar {
   display: flex;
   padding: 1.25rem 0.25rem 1rem 1rem;
