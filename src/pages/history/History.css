@@ -33,6 +33,12 @@
   flex-direction: column;
 }
 
+.history_content {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 78px);
+}
+
 .resize {
   display: flex;
   flex-direction: column;
@@ -69,6 +75,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  height: calc(100% - 163px);
+  overflow: auto;
 }
 
 .history_document {
@@ -118,6 +126,11 @@
   overflow: hidden;
   color: var(--global-black);
   flex-grow: 1;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.tips_card_container {
+  position: inherit;
+  z-index: 4;
 }
 
 .tips_card button {
@@ -128,6 +141,7 @@
   position: absolute;
   bottom: -50%;
   right: -50%;
+  z-index: 2;
 }
 
 .circle_btn_small {

@@ -151,9 +151,8 @@ const History = (props) => {
         <div className="simple_flex history_left">
           <div className="header green">
             <h3>History</h3>
-            {showSub(props.sub)}
           </div>
-          <div className="simple_flex flex_grow">
+          <div className="history_content">
             <div className="history-bar" style={{ width: width }}>
               <div className="history_document_container">
                 <h4>Today</h4>
@@ -161,12 +160,20 @@ const History = (props) => {
               </div>
               <a href="grammar">
                 <div className="tips_card">
-                  <h3>Quick tips</h3>
-                  <p className="paragraph">
-                    Harness the precision of our Grammar AI to effortlessly
-                    perfect your writing
-                  </p>
-                  <button className="circle_btn_small"> Learn more </button>
+                  <div className="tips_card_container">
+                    <h3>Quick tips</h3>
+                    <p className="paragraph">
+                      Harness the precision of our Grammar AI to effortlessly
+                      perfect your writing
+                    </p>
+
+                    {props.sub ? (
+                      showSub(props.sub)
+                    ) : (
+                      <button className="circle_btn_small"> Learn more </button>
+                    )}
+                  </div>
+
                   <svg
                     id="sw-js-blob-svg"
                     viewBox="0 0 100 100"
