@@ -193,7 +193,7 @@ const History = (props) => {
         } else if (date >= thisMonth && date <= today) {
           grouped["thisMonth"].push(cur);
         } else {
-          grouped["other"].push(cur);
+          grouped["Older"].push(cur);
         }
         return grouped;
       },
