@@ -57,7 +57,7 @@
 
 .history-bar {
   display: flex;
-  padding: 1.25rem 0.5rem 1rem 1rem;
+  padding: 1.25rem 0.25rem 1rem 1rem;
   justify-content: space-between;
   flex-direction: column;
   background-color: white;

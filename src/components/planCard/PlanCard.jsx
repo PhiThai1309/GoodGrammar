@@ -37,7 +37,7 @@ const PlanCard = (props) => {
         {props.svg ? <img src={require(`../../assets/${svg}`)} alt="" /> : null}
         <div className="price_text">{price}</div>
       </div>
-      <div className={`card_below ${subStatus ? "orange" : ""}`}>
+      <div className={`card_below ${subStatus ? "purple" : ""}`}>
         <div className="flex_space_between">
           <h2>{name}</h2>
           <span className="material-symbols-rounded">arrow_forward_ios</span>

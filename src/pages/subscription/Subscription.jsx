@@ -218,7 +218,7 @@ const Subscription = (props) => {
         {loading && (
           <button
             onClick={() => handleButtonClick(stripePortalLink)}
-            className="dotted-btn"
+            className="dotted-btn-purple"
           >
             Payment Settings
           </button>

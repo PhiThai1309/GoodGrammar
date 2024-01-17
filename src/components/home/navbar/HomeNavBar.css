@@ -67,3 +67,20 @@ a > .filled-btn {
   padding: 0 1.2rem;
   animation: fadeIn 0.5s ease-in-out;
 }
+
+.dotted-btn-purple {
+  background-color: transparent;
+  color: var(--global-purple);
+  border: 1px solid var(--global-purple);
+  border-radius: 16px;
+  margin: 0rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: -0.5px;
+  height: 48px;
+  min-width: 132px;
+  cursor: pointer;
+  padding: 0 1.2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}

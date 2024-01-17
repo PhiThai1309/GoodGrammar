@@ -287,7 +287,7 @@ const History = (props) => {
               style={{ width: "10px" }}
               onMouseDown={handleMouseDown}
             >
-              <span className="material-symbols-rounded">more_vert</span>
+              <span className="material-symbols-rounded">drag_indicator</span>
             </div>
           </div>
         </div>
