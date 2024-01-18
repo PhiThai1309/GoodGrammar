@@ -8,7 +8,7 @@ import axios from "axios"; // Import axios
 const Subscription = (props) => {
   const [plans, setPlans] = useState([
     {
-      id: "",
+      id: "0",
       name: "Free",
       svg: "money.png",
       des: "5000 words per file. Up to 30 files per week",
@@ -41,7 +41,7 @@ const Subscription = (props) => {
         price={plan.price}
         onSubscribeClick={handleSubscribeClick}
         onPopupClick={handlePopup}
-        currentStatus={props.sub.name}
+        currentStatus={props.sub}
       />
     ));
   };
@@ -143,7 +143,7 @@ const Subscription = (props) => {
 
         // Redirect to the link returned by the API
         setRedirectLink(data.url);
-        console.log(data.url);
+        // console.log(data.url);
       }
     } catch (error) {
       console.error("Error creating checkout session:", error.message);
@@ -172,13 +172,12 @@ const Subscription = (props) => {
 
   const handleCheckboxChange = (event) => {
     const { checked } = event.target;
-    console.log("eqewq" + checked);
-    setIsChecked(checked);
-    if (isChecked) {
-      console.log(isChecked);
-      setPlans([
+    setIsChecked(() => checked);
+    if (!checked) {
+      console.log("true");
+      setPlans(() => [
         {
-          id: "1",
+          id: "0",
           name: "Free",
           svg: "money.png",
           des: "5000 words per file. Up to 30 files per week",
@@ -199,11 +198,9 @@ const Subscription = (props) => {
           price: "₫30,000 / month",
         },
       ]);
-
-      console.log(plans);
     } else {
-      console.log(isChecked);
-      setPlans([
+      console.log("false");
+      setPlans(() => [
         {
           id: "0",
           name: "Free",
@@ -226,7 +223,6 @@ const Subscription = (props) => {
           price: "₫30,000 / month",
         },
       ]);
-      console.log(plans);
     }
   };
 
