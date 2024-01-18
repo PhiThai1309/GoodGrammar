@@ -47,7 +47,7 @@ const PageNavigation = (props) => {
           // Update component state with fetched data
           setSubscriptionStatus(data);
           // Log the data
-          console.log(data);
+          // console.log(data);
           setLoading(true); // Set loading to false once data is fetched
         }
       } catch (error) {

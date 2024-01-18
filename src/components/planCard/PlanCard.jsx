@@ -16,14 +16,23 @@ const PlanCard = (props) => {
 
   const subStatus = currentStatus === name;
 
+  function debug() {
+    console.log("curent: " + currentStatus.price_id);
+    console.log(currentStatus);
+    console.log("id   " + id);
+    // console.log(currentStatus.subscription_id === id);
+    // console.log(id);
+    // console.log(name);
+  }
+
   return (
     <div
       onClick={() => {
         if (name !== "Free") {
-          if (currentStatus !== name && currentStatus !== "Free") {
+          if (currentStatus.price_id !== id) {
             onPopupClick(id);
           } else {
-            if (currentStatus === "Free") {
+            if (currentStatus.name === "Free") {
               onSubscribeClick(id, true);
             } else {
               onSubscribeClick(id, subStatus);
@@ -31,13 +40,26 @@ const PlanCard = (props) => {
           }
         }
       }}
-      className={`plan ${subStatus ? "orange_section_card" : ""}`}
+      className={`plan ${
+        currentStatus.price_id === id ||
+        (currentStatus.price_id === undefined && name === "Free")
+          ? "orange_section_card"
+          : ""
+      }`}
     >
+      {debug()}
       <div className="div_container">
         {props.svg ? <img src={require(`../../assets/${svg}`)} alt="" /> : null}
         <div className="price_text">{price}</div>
       </div>
-      <div className={`card_below ${subStatus ? "purple" : ""}`}>
+      <div
+        className={`card_below ${
+          currentStatus.price_id === id ||
+          (currentStatus.price_id === undefined && name === "Free")
+            ? "purple"
+            : ""
+        }`}
+      >
         <div className="flex_space_between">
           <h2>{name}</h2>
           <span className="material-symbols-rounded">arrow_forward_ios</span>
@@ -70,7 +92,7 @@ PlanCard.propTypes = {
   svg: PropTypes.string.isRequired,
   des: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  currentStatus: PropTypes.string.isRequired,
+  currentStatus: PropTypes.object.isRequired,
   subStatus: PropTypes.bool, // Optional color prop
 };
 

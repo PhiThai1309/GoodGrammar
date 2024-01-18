@@ -6,49 +6,49 @@ import { useAuth } from "@clerk/clerk-react";
 import axios from "axios"; // Import axios
 
 const Subscription = (props) => {
-  const renderPlanCards = () => {
-    const plans = [
-      {
-        id: "",
-        name: "Free",
-        svg: "money.png",
-        des: "5000 words per file. Up to 30 files per week",
-        price: "₫0",
-      },
-      {
-        id: "price_1OWBIPANL0btWpR2aJ7jistJ",
-        name: "Novice",
-        svg: "coin.png",
-        des: "Unlimited word count. Up to 100 files per week",
-        price: "₫20,000 / month",
-      },
-      {
-        id: "price_1OWBJ8ANL0btWpR2t9tUc97S",
-        name: "Expert",
-        svg: "coinbag.png",
-        des: "Unlimited word count. Unlimited files correction",
-        price: "₫30,000 / month",
-      },
-    ];
+  const [plans, setPlans] = useState([
+    {
+      id: "0",
+      name: "Free",
+      svg: "money.png",
+      des: "5000 words per file. Up to 30 files per week",
+      price: "₫0",
+    },
+    {
+      id: "price_1OWBIPANL0btWpR2aJ7jistJ",
+      name: "Novice",
+      svg: "coin.png",
+      des: "Unlimited word count. Up to 100 files per week",
+      price: "₫20,000 / month",
+    },
+    {
+      id: "price_1OWBJ8ANL0btWpR2t9tUc97S",
+      name: "Expert",
+      svg: "coinbag.png",
+      des: "Unlimited word count. Unlimited files correction",
+      price: "₫30,000 / month",
+    },
+  ]);
 
+  const renderPlanCards = () => {
     return plans.map((plan) => (
       <PlanCard
         id={plan.id}
-        key={plan.name}
+        key={plan.id}
         name={plan.name}
         svg={plan.svg}
         des={plan.des}
         price={plan.price}
         onSubscribeClick={handleSubscribeClick}
         onPopupClick={handlePopup}
-        currentStatus={props.sub.name}
+        currentStatus={props.sub}
       />
     ));
   };
 
   const { getToken } = useAuth(); // Assuming your authentication library provides a getToken function
   const [loading, setLoading] = useState(false);
-
+  const [isChecked, setIsChecked] = useState(false);
   const [stripePortalLink, setStripePortalLink] = useState(null);
 
   useEffect(() => {
@@ -143,7 +143,7 @@ const Subscription = (props) => {
 
         // Redirect to the link returned by the API
         setRedirectLink(data.url);
-        console.log(data.url);
+        // console.log(data.url);
       }
     } catch (error) {
       console.error("Error creating checkout session:", error.message);
@@ -168,6 +168,62 @@ const Subscription = (props) => {
     // Assuming you have a selectedPlan and subStatus value to pass to handleSubscribeClick
     console.log("id:" + popupPlanId);
     await handleSubscribeClick(popupPlanId, false);
+  };
+
+  const handleCheckboxChange = (event) => {
+    const { checked } = event.target;
+    setIsChecked(() => checked);
+    if (!checked) {
+      console.log("true");
+      setPlans(() => [
+        {
+          id: "0",
+          name: "Free",
+          svg: "money.png",
+          des: "5000 words per file. Up to 30 files per week",
+          price: "₫0",
+        },
+        {
+          id: "price_1OWBIPANL0btWpR2aJ7jistJ",
+          name: "Novice",
+          svg: "coin.png",
+          des: "Unlimited word count. Up to 100 files per week",
+          price: "₫20,000 / month",
+        },
+        {
+          id: "price_1OWBJ8ANL0btWpR2t9tUc97S",
+          name: "Expert",
+          svg: "coinbag.png",
+          des: "Unlimited word count. Unlimited files correction",
+          price: "₫30,000 / month",
+        },
+      ]);
+    } else {
+      console.log("false");
+      setPlans(() => [
+        {
+          id: "0",
+          name: "Free",
+          svg: "money.png",
+          des: "5000 words per file. Up to 30 files per week",
+          price: "₫0",
+        },
+        {
+          id: "price_1OXcQ6ANL0btWpR2slMn1jDd",
+          name: "Novice",
+          svg: "coin.png",
+          des: "Unlimited word count. Up to 100 files per week",
+          price: "₫20,000 / month",
+        },
+        {
+          id: "price_1OWBJ8ANL0btWpR2VshukNOL",
+          name: "Expert",
+          svg: "coinbag.png",
+          des: "Unlimited word count. Unlimited files correction",
+          price: "₫30,000 / month",
+        },
+      ]);
+    }
   };
 
   useEffect(() => {
@@ -224,16 +280,30 @@ const Subscription = (props) => {
           </button>
         )}
       </div>
-      <div className="offer_plan">{renderPlanCards()}</div>
-      {/* Popup overlay */}
-      {showPopup && (
-        <Popup
-          title="Click proceed will automatically transfer your current plan to the new
+      <div className="yearly_container">
+        <div className="toggle-button-cover">
+          <div className="button2 r" id="button-3">
+            <input
+              type="checkbox"
+              className="checkbox"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
+            <div className="knobs"></div>
+            <div className="layer"></div>
+          </div>
+        </div>
+        <div className="offer_plan">{renderPlanCards()}</div>
+        {/* Popup overlay */}
+        {showPopup && (
+          <Popup
+            title="Click proceed will automatically transfer your current plan to the new
           plan you have selected. Do you want to proceed?"
-          closePopup={handlePopup}
-          onYes={handlePopupYes}
-        />
-      )}
+            closePopup={handlePopup}
+            onYes={handlePopupYes}
+          />
+        )}
+      </div>
     </div>
   );
 };
