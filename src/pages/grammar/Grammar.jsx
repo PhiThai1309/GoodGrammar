@@ -61,7 +61,9 @@ const Grammar = (props) => {
 
   const clickParaphrase = async (e) => {
     setFullScreenLoading(true);
-    // Check word count if free user
+    const token = await getToken();
+
+    // Check word count
     if (props.sub.name === "Free") {
       const wordCount = uploadedText.split(/\s+/).length;
       if (wordCount > 5000) {
@@ -69,30 +71,50 @@ const Grammar = (props) => {
         setPopup(true);
         return;
       }
+    } 
+
+    // Check weekly limit
+    if (props.sub.name !== "Expert") {
+      const history = await axios.get(API.history(), {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      let count = 0;
+      for (let index in history.data) {
+        const date = new Date(history.data[index].create_at);
+        const thisWeek = new Date();
+        const lastSunday = thisWeek.getDate() - thisWeek.getDay();
+        thisWeek.setDate(lastSunday + 1);
+
+        if (date >= thisWeek) {
+          count++;
+        }
+      }
+
+      if (props.sub.name === "Free" && count >= 30) {
+        setPopupText("Free user can only check files up to 30 times per week.");
+        setPopup(true);
+      } else if (props.sub.name === "Novice" && count >= 100) {
+        setPopupText("Novice user can only check files up to 100 times per week.");
+        setPopup(true);
+      }
     }
 
     const fd = new FormData();
     fd.append("file", upload);
 
     // Get edited file ID
-    const response = await axios.post(API.uploadFile(), fd).catch((err) => {
+    const response = await axios.post(API.uploadFile(), fd, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).catch((err) => {
       console.error(err);
     });
-
-    // Save file ID to history
-    const token = await getToken();
+    // console.log(response.data);
     const fileId = response.data.edited_file_id;
-    console.log(fileId);
-    const history = await axios.post(
-      API.history(),
-      { fileId: fileId },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    console.log(history.data);
 
     // Get text
     const text = await axios.get(API.getFileInfo(fileId)).catch((err) => {
@@ -122,15 +144,13 @@ const Grammar = (props) => {
     link.click();
   };
 
-  const textbox = useRef(null);
-
-  function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-      width,
-      height,
-    };
-  }
+  // function getWindowDimensions() {
+  //   const { innerWidth: width, innerHeight: height } = window;
+  //   return {
+  //     width,
+  //     height,
+  //   };
+  // }
 
   const closePopup = () => {
     setPopup(false);
@@ -147,7 +167,7 @@ const Grammar = (props) => {
       <div className="content_wrapper">
         <div className="model">
           <h3 className="green_text">Models:</h3>
-          <h3>LMS AI v1.1</h3>
+          <h3>LLM AI v1.1</h3>
         </div>
         <div className="content">
           <div className="content-left">

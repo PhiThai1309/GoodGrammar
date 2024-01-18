@@ -22,6 +22,8 @@ const History = (props) => {
   const [file, setFile] = useState(null); // download file
   const [loading, setLoading] = useState(true);
   const [fullScreenLoading, setFullScreenLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -33,7 +35,7 @@ const History = (props) => {
       });
       const reverseList = response.data.reverse();
       const groupedData = groupByDate(reverseList);
-      // console.log(groupedData);
+      console.log(groupedData);
       // console.log(response.data);
       setHistory(groupedData);
       setLoading(false);
@@ -82,8 +84,6 @@ const History = (props) => {
       </div>
     );
   };
-  const [showPopup, setShowPopup] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
 
   function handlePopup(item) {
     setShowPopup(!showPopup);
