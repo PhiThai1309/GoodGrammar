@@ -29,10 +29,13 @@ const PlanCard = (props) => {
     <div
       onClick={() => {
         if (name !== "Free") {
-          if (currentStatus.price_id !== id) {
+          if (
+            currentStatus.price_id !== id &&
+            currentStatus.price_id !== undefined
+          ) {
             onPopupClick(id);
           } else {
-            if (currentStatus.name === "Free") {
+            if (currentStatus.price_id === undefined) {
               onSubscribeClick(id, true);
             } else {
               onSubscribeClick(id, subStatus);

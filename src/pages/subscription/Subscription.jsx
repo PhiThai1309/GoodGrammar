@@ -213,14 +213,14 @@ const Subscription = (props) => {
           name: "Novice",
           svg: "coin.png",
           des: "Unlimited word count. Up to 100 files per week",
-          price: "₫20,000 / month",
+          price: "₫200,000 / year",
         },
         {
           id: "price_1OWBJ8ANL0btWpR2VshukNOL",
           name: "Expert",
           svg: "coinbag.png",
           des: "Unlimited word count. Unlimited files correction",
-          price: "₫30,000 / month",
+          price: "₫300,000 / year",
         },
       ]);
     }
