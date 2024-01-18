@@ -222,7 +222,7 @@ textarea {
   display: flex;
   gap: 8vh;
   flex-direction: column;
-  max-width: 30rem;
+  max-width: 70rem;
 }
 
 #below h3 > b {
