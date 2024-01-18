@@ -11,6 +11,7 @@ import {
 import { API } from "../../api";
 import axios from "axios";
 import { useAuth } from "@clerk/clerk-react";
+import { diff_match_patch } from "diff-match-patch";
 
 const Grammar = (props) => {
   const { getToken } = useAuth();
@@ -23,12 +24,36 @@ const Grammar = (props) => {
   const [getLoading, setLoading] = useState(false);
   const [fullScreenLoading, setFullScreenLoading] = useState(false);
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Optional: Adds smooth scrolling effect
+    });
+  };
+
+  const highlightDifferences = () => {
+    if (!uploadedText || !resultText) return;
+    const dmp = new diff_match_patch();
+    const diffs = dmp.diff_main(uploadedText, resultText);
+    dmp.diff_cleanupSemantic(diffs);
+
+    const highlightedText = diffs
+      .map(([op, text]) => {
+        const className = op === 1 ? "added" : op === -1 ? "removed" : "";
+        return `<span class="${className}">${text}</span>`;
+      })
+      .join("");
+
+    return { __html: highlightedText };
+  };
+
   const clickDelete = (e) => {
     setUpload(null);
     setUploadedText("");
     setResult(null);
     setResultText("");
     setLoading(false);
+    handleScrollToTop();
   };
 
   const clickUpload = async (event) => {
@@ -71,7 +96,7 @@ const Grammar = (props) => {
         setPopup(true);
         return;
       }
-    } 
+    }
 
     // Check weekly limit
     if (props.sub.name !== "Expert") {
@@ -99,7 +124,9 @@ const Grammar = (props) => {
         setPopupText("Free user can only check files up to 30 times per week.");
         setPopup(true);
       } else if (props.sub.name === "Novice" && count >= 100) {
-        setPopupText("Novice user can only check files up to 100 times per week.");
+        setPopupText(
+          "Novice user can only check files up to 100 times per week."
+        );
         setPopup(true);
       }
     }
@@ -108,13 +135,15 @@ const Grammar = (props) => {
     fd.append("file", upload);
 
     // Get edited file ID
-    const response = await axios.post(API.uploadFile(), fd, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).catch((err) => {
-      console.error(err);
-    });
+    const response = await axios
+      .post(API.uploadFile(), fd, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     // console.log(response.data);
     const fileId = response.data.edited_file_id;
 
@@ -135,7 +164,7 @@ const Grammar = (props) => {
   };
 
   const clickDownload = async (e) => {
-    const fileName = upload.name.replace('.docx', '-fixed.docx');
+    const fileName = upload.name.replace(".docx", "-fixed.docx");
 
     // Create download link for the file
     const url = URL.createObjectURL(result);
@@ -202,12 +231,25 @@ const Grammar = (props) => {
           </div>
 
           <div className="content-right">
-            <textarea
+            {/* <textarea
               name="text"
               placeholder="Corrected text will be shown here"
               value={resultText}
               disabled
-            ></textarea>
+            ></textarea> */}
+
+            <div
+              className="result_content"
+              style={{ whiteSpace: "pre-wrap" }}
+              dangerouslySetInnerHTML={highlightDifferences()}
+            />
+
+            {!resultText && (
+              <div className="placeholder_result">
+                <h2>Corrected text will be shown here</h2>
+              </div>
+            )}
+
             <DownloadBtn
               className="orange"
               onClick={clickDownload}
@@ -278,9 +320,9 @@ const Grammar = (props) => {
                 <img src={require("../../assets/doc.png")} alt="" />{" "}
                 <h2>Support docx format</h2>
                 <p>
-                  Seamlessly handle your documents with support for
-                  docx format, providing flexibility and convenience for all
-                  your writing needs.
+                  Seamlessly handle your documents with support for docx format,
+                  providing flexibility and convenience for all your writing
+                  needs.
                 </p>
               </div>
               <div className="grammar_block yellow">

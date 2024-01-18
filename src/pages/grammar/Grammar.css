@@ -70,6 +70,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
+  position: relative;
 }
 
 .textarea,
@@ -77,6 +78,12 @@ textarea {
   flex: 1;
 }
 
+.result_content {
+  height: 100%;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.result_content,
 .content textarea,
 .textarea {
   display: inline-block;
@@ -90,6 +97,23 @@ textarea {
   resize: none;
   font-size: 14px;
   font-weight: 400;
+}
+
+.content textarea {
+  min-height: 400px;
+}
+.placeholder_result {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.placeholder_result h2 {
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 1.5rem 1rem;
 }
 
 .content textarea::placeholder {
@@ -295,4 +319,12 @@ textarea {
     overflow: hidden;
     gap: 1rem;
   } */
+}
+
+.added {
+  background-color: #aaffaa; /* Light green for added text */
+}
+
+.removed {
+  background-color: #ffaaaa; /* Light red for removed text */
 }
