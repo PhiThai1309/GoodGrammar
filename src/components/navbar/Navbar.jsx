@@ -1,7 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import { UserButton, useAuth, useSession, useUser } from "@clerk/clerk-react";
-import Clerk from "@clerk/clerk-react";
+import { UserButton } from "@clerk/clerk-react";
 import { NavLink } from "react-router-dom";
 
 // In case the user signs out while on the page.
@@ -48,7 +47,6 @@ const Navbar = () => {
 };
 
 function CustomLink({ href, children, ...props }) {
-  let path = window.location.pathname;
   return (
     <NavLink
       to={href}

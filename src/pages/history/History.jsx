@@ -10,13 +10,12 @@ import { useAuth } from "@clerk/clerk-react";
 import "./History.css";
 import axios from "axios";
 import { API } from "../../api";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const History = (props) => {
   const { getToken } = useAuth();
   const [selected, setSelected] = useState(null); // currently selected file in history
   const [selectedId, setSelectedId] = useState(-1);
-  // const [historyId, setHistoryId] = useState(null);
   const [history, setHistory] = useState([]);
   const [text, setText] = useState("");
   const [file, setFile] = useState(null); // download file
@@ -24,6 +23,8 @@ const History = (props) => {
   const [fullScreenLoading, setFullScreenLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [width, setWidth] = useState(300);
+  const [mouseDown, setMouseDown] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -47,7 +48,7 @@ const History = (props) => {
   // Use for updating document ig
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   const capitalizeFirstLetter = (str) => {
     return str
@@ -156,9 +157,6 @@ const History = (props) => {
     link.download = selected.file_name;
     link.click();
   };
-
-  const [width, setWidth] = useState(300);
-  const [mouseDown, setMouseDown] = useState(false);
 
   const handleMouseDown = (event) => {
     setMouseDown(true);

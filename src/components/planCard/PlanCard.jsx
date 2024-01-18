@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./PlanCard.css";
 import PropTypes from "prop-types";
 

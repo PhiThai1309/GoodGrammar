@@ -5,7 +5,7 @@ import "./HomeNavBar.css";
 // import Signoutbtn from "../../../pages/login/Logout";
 
 const HomeNavBar = () => {
-  const { isLoaded, userId, sessionId, getToken } = useAuth();
+  const { isLoaded, userId } = useAuth();
 
   function loggedIn() {
     // In case the user signs out while on the page.

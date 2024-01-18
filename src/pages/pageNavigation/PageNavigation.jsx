@@ -16,10 +16,8 @@ import { Loading } from "../../components";
 
 const PageNavigation = (props) => {
   const { getToken, isLoaded, isSignedIn } = useAuth();
-  const [token, setToken] = useState(null);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +25,6 @@ const PageNavigation = (props) => {
         if (isLoaded && isSignedIn) {
           // Obtain the user token
           const obtainedToken = await getToken();
-          setToken(obtainedToken);
 
           // Fetch subscription data using Axios
           const response = await axios.get(API.getSubTier(), {
@@ -51,7 +48,6 @@ const PageNavigation = (props) => {
           setLoading(true); // Set loading to false once data is fetched
         }
       } catch (error) {
-        setError(error.message);
         setLoading(false); // Set loading to false on error
         console.error("Error fetching data:", error);
       }

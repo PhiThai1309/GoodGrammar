@@ -1,6 +1,5 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import "./Grammar.css";
-import placeholder from "../../assets/placeholder1.png";
 import {
   HomeFooter,
   DownloadBtn,
@@ -15,7 +14,6 @@ import { useAuth } from "@clerk/clerk-react";
 
 const Grammar = (props) => {
   const { getToken } = useAuth();
-  const [model, setModel] = useState("standard");
   const [uploadedText, setUploadedText] = useState("");
   const [upload, setUpload] = useState(null);
   const [resultText, setResultText] = useState("");
@@ -36,18 +34,20 @@ const Grammar = (props) => {
   const clickUpload = async (event) => {
     setLoading(true);
     const file = event.target.files[0];
-    event.target.value = "";
+    event.target.value = ""; // Reset event target to enable same upload
 
     if (!file) {
       console.log("No file selected");
       return;
     }
 
+    // Create FormData to upload file to back end server
     const fd = new FormData();
     fd.append("file", file);
     console.log(file);
     setUpload(file);
 
+    // Change text to display uploaded text preview
     await axios
       .post(API.getFileContent(), fd)
       .then((res) => {
@@ -81,6 +81,7 @@ const Grammar = (props) => {
         },
       });
 
+      // Count the number of documents uploaded this week
       let count = 0;
       for (let index in history.data) {
         const date = new Date(history.data[index].create_at);
@@ -93,6 +94,7 @@ const Grammar = (props) => {
         }
       }
 
+      // Compare with the limit for Free and Novice users
       if (props.sub.name === "Free" && count >= 30) {
         setPopupText("Free user can only check files up to 30 times per week.");
         setPopup(true);
@@ -133,24 +135,15 @@ const Grammar = (props) => {
   };
 
   const clickDownload = async (e) => {
-    let fileNameArray = upload.name.split(".");
-    const fileType = fileNameArray.pop();
+    const fileName = upload.name.replace('.docx', '-fixed.docx');
 
     // Create download link for the file
     const url = URL.createObjectURL(result);
     const link = document.createElement("a");
     link.href = url;
-    link.download = fileNameArray.join(".") + "-fixed" + "." + fileType;
+    link.download = fileName;
     link.click();
   };
-
-  // function getWindowDimensions() {
-  //   const { innerWidth: width, innerHeight: height } = window;
-  //   return {
-  //     width,
-  //     height,
-  //   };
-  // }
 
   const closePopup = () => {
     setPopup(false);
