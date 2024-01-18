@@ -38,6 +38,10 @@
   justify-content: flex-end;
 }
 
+.right_align_text {
+  text-align: right;
+}
+
 .centered_align {
   display: flex;
   flex-direction: row;

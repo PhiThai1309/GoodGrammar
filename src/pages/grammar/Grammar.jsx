@@ -85,82 +85,127 @@ const Grammar = (props) => {
   };
 
   const clickParaphrase = async (e) => {
-    setFullScreenLoading(true);
-    const token = await getToken();
+    try {
+      setFullScreenLoading(true);
+      const token = await getToken();
 
-    // Check word count
-    if (props.sub.name === "Free") {
-      const wordCount = uploadedText.split(/\s+/).length;
-      if (wordCount > 5000) {
-        setPopupText("Free user can only check file up to 5000 words.");
-        setPopup(true);
-        return;
-      }
-    }
-
-    // Check weekly limit
-    if (props.sub.name !== "Expert") {
-      const history = await axios.get(API.history(), {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      // Count the number of documents uploaded this week
-      let count = 0;
-      for (let index in history.data) {
-        const date = new Date(history.data[index].create_at);
-        const thisWeek = new Date();
-        const lastSunday = thisWeek.getDate() - thisWeek.getDay();
-        thisWeek.setDate(lastSunday + 1);
-
-        if (date >= thisWeek) {
-          count++;
+      // Check word count
+      if (props.sub.name === "Free") {
+        console.log("free tier!!!");
+        const wordCount = uploadedText.split(/\s+/).length;
+        if (wordCount > 5000) {
+          setPopupText("Free user can only check file up to 5000 words.");
+          setPopup(true);
+          return;
         }
       }
 
-      // Compare with the limit for Free and Novice users
-      if (props.sub.name === "Free" && count >= 30) {
-        setPopupText("Free user can only check files up to 30 times per week.");
-        setPopup(true);
-      } else if (props.sub.name === "Novice" && count >= 100) {
-        setPopupText(
-          "Novice user can only check files up to 100 times per week."
-        );
+      // Check weekly limit
+      if (props.sub.name !== "Expert") {
+        const history = await axios.get(API.history(), {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        // Count the number of documents uploaded this week
+        let count = 0;
+        for (let index in history.data) {
+          const date = new Date(history.data[index].create_at);
+          const thisWeek = new Date();
+          const lastSunday = thisWeek.getDate() - thisWeek.getDay();
+          thisWeek.setDate(lastSunday + 1);
+
+          if (date >= thisWeek) {
+            count++;
+          }
+        }
+
+        // Compare with the limit for Free and Novice users
+        if (props.sub.name === "Free" && count >= 30) {
+          setPopupText(
+            "Free user can only check files up to 30 times per week."
+          );
+          setPopup(true);
+        } else if (props.sub.name === "Novice" && count >= 100) {
+          setPopupText(
+            "Novice user can only check files up to 100 times per week."
+          );
+          setPopup(true);
+        }
+      }
+
+      const fd = new FormData();
+      fd.append("file", upload);
+
+      // Get edited file ID
+      const response = await axios
+        .post(API.uploadFile(), fd, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+
+      // Check if the response is successful
+      if (response.status === 200) {
+        const fileId = response.data.edited_file_id;
+
+        // Get text
+        const textResponse = await axios.get(API.getFileInfo(fileId));
+
+        // Check if the response is successful
+        if (textResponse.status === 200) {
+          setResultText(textResponse.data.content);
+        } else {
+          // Handle error when fetching text
+          setPopupText("Error fetching text. Please try again.");
+          setPopup(true);
+        }
+        // console.log(response.data);
+        // const fileId = response.data.edited_file_id;
+
+        // Get text
+        // const text = await axios.get(API.getFileInfo(fileId)).catch((err) => {
+        //   console.error(err);
+        // });
+        // setResultText(text.data.content);
+        // setFullScreenLoading(false);
+
+        // Get file
+        // const file = await axios
+        //   .get(API.getFile(fileId), { responseType: "blob" })
+        //   .catch((err) => {
+        //     console.error(err);
+        //   });
+        // setResult(file.data);
+        // Get file
+        const fileResponse = await axios.get(API.getFile(fileId), {
+          responseType: "blob",
+        });
+
+        // Check if the response is successful
+        if (fileResponse.status === 200) {
+          setResult(fileResponse.data);
+        } else {
+          // Handle error when fetching file
+          setPopupText("Error fetching file. Please try again.");
+          setPopup(true);
+        }
+      } else {
+        // Handle error when uploading file
+        setPopupText("Error uploading file. Please try again.");
         setPopup(true);
       }
+    } catch (error) {
+      console.error(error);
+      setPopupText("An unexpected error occurred. Please try again.");
+      setPopup(true);
+    } finally {
+      setFullScreenLoading(false);
     }
-
-    const fd = new FormData();
-    fd.append("file", upload);
-
-    // Get edited file ID
-    const response = await axios
-      .post(API.uploadFile(), fd, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    // console.log(response.data);
-    const fileId = response.data.edited_file_id;
-
-    // Get text
-    const text = await axios.get(API.getFileInfo(fileId)).catch((err) => {
-      console.error(err);
-    });
-    setResultText(text.data.content);
-    setFullScreenLoading(false);
-
-    // Get file
-    const file = await axios
-      .get(API.getFile(fileId), { responseType: "blob" })
-      .catch((err) => {
-        console.error(err);
-      });
-    setResult(file.data);
   };
 
   const clickDownload = async (e) => {
@@ -188,8 +233,42 @@ const Grammar = (props) => {
 
       <div className="content_wrapper">
         <div className="model">
-          <h3 className="green_text">Models:</h3>
-          <h3>LLM AI v1.1</h3>
+          <div style={{ gap: "8px" }} className="simple_flex">
+            <h3 className="green_text">Models:</h3>
+            <h3>LLM AI v1.1</h3>
+          </div>
+          {resultText ? (
+            <div style={{ gap: "12px" }} className="simple_flex">
+              <div
+                style={{ gap: "8px", alignItems: "center" }}
+                className="simple_flex"
+              >
+                <div
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    border: "1px solid white",
+                  }}
+                  className="removed"
+                />
+                <p>Deleted text</p>
+              </div>
+              <div
+                style={{ gap: "8px", alignItems: "center" }}
+                className="simple_flex"
+              >
+                <div
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    border: "1px solid white",
+                  }}
+                  className="added"
+                />
+                <p>Added text</p>
+              </div>
+            </div>
+          ) : null}
         </div>
         <div className="content">
           <div className="content-left">

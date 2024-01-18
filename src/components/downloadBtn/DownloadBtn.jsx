@@ -2,10 +2,16 @@ import "./DownloadBtn.css";
 
 const DownloadBtn = (props) => {
   return (
-    <div className="input-buttons" style={{display: props.isVisible ? 'flex' : 'none' }}>
+    <div
+      className="input-buttons"
+      style={{ display: props.isVisible ? "flex" : "none" }}
+    >
       {/* <button className="filled-btn orange" onClick={clickDownload}>
     Download
   </button> */}
+      <p className="paragraph right_align_text">
+        Download the file to see the final result!
+      </p>
       <button className="download-button" onClick={props.onClick}>
         <div className={"docs filled-btn " + props.className}>
           <svg
