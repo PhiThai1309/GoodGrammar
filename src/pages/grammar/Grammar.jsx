@@ -93,8 +93,23 @@ const Grammar = (props) => {
       if (props.sub.name === "Free") {
         console.log("free tier!!!");
         const wordCount = uploadedText.split(/\s+/).length;
-        if (wordCount > 5000) {
-          setPopupText("Free user can only check file up to 5000 words.");
+        if (wordCount > 2000) {
+          setPopupText(
+            "Free user can only check file up to 2000 words. Upgrade your account to continue."
+          );
+          setPopup(true);
+          return;
+        }
+      }
+
+      if (props.sub.name === "Novice") {
+        console.log("Novice");
+        const wordCount = uploadedText.split(/\s+/).length;
+        console.log(wordCount);
+        if (wordCount > 10000) {
+          setPopupText(
+            "Novice user can only check file up to 10000 words. Upgrade your account to continue."
+          );
           setPopup(true);
           return;
         }
@@ -294,7 +309,7 @@ const Grammar = (props) => {
             </div>
 
             <div className="input-buttons">
-              {upload ? (
+              {upload && !getLoading ? (
                 <button className="icon-button" onClick={clickDelete}>
                   <span className="material-symbols-rounded">delete</span>
                 </button>
@@ -306,11 +321,13 @@ const Grammar = (props) => {
                 accept=".docx"
               ></input>
               <label htmlFor="file" className="icon-button">
-                {upload ? null : <h5>Upload file &nbsp;</h5>}
+                {upload && !getLoading ? null : <h5>Upload file &nbsp;</h5>}
                 <span className="material-symbols-rounded">upload_file</span>
               </label>
               <button
-                className={`filled-btn ${upload ? "orange" : "disable"}`}
+                className={`filled-btn ${
+                  upload && !getLoading ? "orange" : "disable"
+                }`}
                 onClick={clickParaphrase}
               >
                 Check
