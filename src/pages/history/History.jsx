@@ -22,7 +22,6 @@ const History = (props) => {
   const [file, setFile] = useState(null); // download file
   const [loading, setLoading] = useState(true);
   const [fullScreenLoading, setFullScreenLoading] = useState(false);
-  let groupedData = null;
 
   const fetchData = async () => {
     try {
@@ -32,10 +31,10 @@ const History = (props) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      groupedData = groupByDate(response.data);
-      console.log(groupedData);
-      console.log(response.data);
       const reverseList = response.data.reverse();
+      const groupedData = groupByDate(reverseList);
+      // console.log(groupedData);
+      // console.log(response.data);
       setHistory(groupedData);
       setLoading(false);
     } catch (error) {
