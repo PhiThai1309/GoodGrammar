@@ -48,7 +48,7 @@ const History = (props) => {
   // Use for updating document ig
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   const capitalizeFirstLetter = (str) => {
     return str
