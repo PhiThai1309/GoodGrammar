@@ -26,7 +26,7 @@
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   /* transform: translateY(8px); */
-  background: #ffbc957c;
+  background: #ffb4897c;
   backdrop-filter: var(--globalnav-backdrop-filter);
   -webkit-backdrop-filter: var(--globalnav-backdrop-filter);
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
