@@ -194,14 +194,23 @@ const Grammar = (props) => {
         <div className="content">
           <div className="content-left">
             <div className="relative-container">
-              <textarea
+              {/* <textarea
                 name="text"
                 placeholder={
                   !getLoading ? "Imported text will be displayed here" : null
                 }
                 value={uploadedText}
                 disabled
-              />
+              /> */}
+              <div className="input_content" contentEditable={false}>
+                {!uploadedText && !getLoading ? (
+                  <div className="placeholder_result">
+                    <h2>Please upload .docx file from the button below</h2>
+                  </div>
+                ) : (
+                  <div>{uploadedText}</div>
+                )}
+              </div>
               {getLoading ? <Loading /> : null}
             </div>
 

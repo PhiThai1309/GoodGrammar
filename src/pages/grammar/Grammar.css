@@ -78,12 +78,14 @@ textarea {
   flex: 1;
 }
 
-.result_content {
+.result_content,
+.input_content {
   height: 100%;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 .result_content,
+.input_content,
 .content textarea,
 .textarea {
   display: inline-block;
@@ -98,7 +100,12 @@ textarea {
   font-size: 14px;
   font-weight: 400;
 }
-
+.input_content .placeholder_result {
+  max-width: 92%;
+}
+.input_content .placeholder_result h2 {
+  margin: 0;
+}
 .content textarea {
   min-height: 400px;
 }
