@@ -193,7 +193,7 @@ const Grammar = (props) => {
                 type="file"
                 id="file"
                 onChange={clickUpload}
-                accept=".doc, .docx"
+                accept=".docx"
               ></input>
               <label htmlFor="file" className="icon-button">
                 {upload ? null : <h5>Upload file &nbsp;</h5>}
@@ -283,11 +283,11 @@ const Grammar = (props) => {
               </div>
               <div className="grammar_block yellow">
                 <img src={require("../../assets/doc.png")} alt="" />{" "}
-                <h2>Support doc and docx format</h2>
+                <h2>Support docx format</h2>
                 <p>
-                  Seamlessly handle your documents with support for both doc and
-                  docx formats, providing flexibility and convenience for all
-                  your writing needs
+                  Seamlessly handle your documents with support for
+                  docx format, providing flexibility and convenience for all
+                  your writing needs.
                 </p>
               </div>
               <div className="grammar_block yellow">
