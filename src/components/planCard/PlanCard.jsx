@@ -14,7 +14,7 @@ const PlanCard = (props) => {
     currentStatus,
   } = props;
 
-  const subStatus = currentStatus === name;
+  const subStatus = currentStatus.name === name;
 
   function debug() {
     console.log("curent: " + currentStatus.price_id);
@@ -71,7 +71,8 @@ const PlanCard = (props) => {
               })
             : null}
         </ul>
-        {subStatus && name !== "Free" && (
+        {currentStatus.price_id === id ||
+        (currentStatus.price_id === undefined && name === "Free") ? (
           <div className="centered_align">
             <button
               onClick={() => console.log("Unsubscribe clicked")}
@@ -80,7 +81,7 @@ const PlanCard = (props) => {
               Unsubscribe
             </button>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
