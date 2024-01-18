@@ -99,6 +99,9 @@ textarea {
   font-weight: 400;
 }
 
+.content textarea {
+  min-height: 400px;
+}
 .placeholder_result {
   position: absolute;
   display: flex;

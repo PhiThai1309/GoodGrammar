@@ -24,6 +24,13 @@ const Grammar = (props) => {
   const [getLoading, setLoading] = useState(false);
   const [fullScreenLoading, setFullScreenLoading] = useState(false);
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Optional: Adds smooth scrolling effect
+    });
+  };
+
   const highlightDifferences = () => {
     if (!uploadedText || !resultText) return;
     const dmp = new diff_match_patch();
@@ -46,6 +53,7 @@ const Grammar = (props) => {
     setResult(null);
     setResultText("");
     setLoading(false);
+    handleScrollToTop();
   };
 
   const clickUpload = async (event) => {
@@ -156,7 +164,7 @@ const Grammar = (props) => {
   };
 
   const clickDownload = async (e) => {
-    const fileName = upload.name.replace('.docx', '-fixed.docx');
+    const fileName = upload.name.replace(".docx", "-fixed.docx");
 
     // Create download link for the file
     const url = URL.createObjectURL(result);
