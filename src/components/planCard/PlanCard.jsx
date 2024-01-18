@@ -41,7 +41,8 @@ const PlanCard = (props) => {
         }
       }}
       className={`plan ${
-        currentStatus.price_id === id || currentStatus.name === name
+        currentStatus.price_id === id ||
+        (currentStatus.price_id === undefined && name === "Free")
           ? "orange_section_card"
           : ""
       }`}
@@ -53,7 +54,8 @@ const PlanCard = (props) => {
       </div>
       <div
         className={`card_below ${
-          currentStatus.price_id === id || currentStatus.name === name
+          currentStatus.price_id === id ||
+          (currentStatus.price_id === undefined && name === "Free")
             ? "purple"
             : ""
         }`}
