@@ -83,6 +83,8 @@ const Grammar = (props) => {
       })
       .catch((err) => {
         console.error(err);
+        setPopupText("Error uploading file. Please try again.");
+        setPopup(true)
       });
   };
 
@@ -90,67 +92,6 @@ const Grammar = (props) => {
     try {
       setFullScreenLoading(true);
       const token = await getToken();
-
-      // Check word count
-      if (props.sub.name === "Free") {
-        console.log("free tier!!!");
-        const wordCount = uploadedText.split(/\s+/).length;
-        if (wordCount > 2000) {
-          setPopupText(
-            "Free user can only check file up to 2000 words. Upgrade your account to continue."
-          );
-          setPopup(true);
-          return;
-        }
-      }
-
-      if (props.sub.name === "Novice") {
-        console.log("Novice");
-        const wordCount = uploadedText.split(/\s+/).length;
-        console.log(wordCount);
-        if (wordCount > 10000) {
-          setPopupText(
-            "Novice user can only check file up to 10000 words. Upgrade your account to continue."
-          );
-          setPopup(true);
-          return;
-        }
-      }
-
-      // Check weekly limit
-      if (props.sub.name !== "Expert") {
-        const history = await axios.get(API.history(), {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        // Count the number of documents uploaded this week
-        let count = 0;
-        for (let index in history.data) {
-          const date = new Date(history.data[index].create_at);
-          const thisWeek = new Date();
-          const lastSunday = thisWeek.getDate() - thisWeek.getDay();
-          thisWeek.setDate(lastSunday + 1);
-
-          if (date >= thisWeek) {
-            count++;
-          }
-        }
-
-        // Compare with the limit for Free and Novice users
-        if (props.sub.name === "Free" && count >= 30) {
-          setPopupText(
-            "Free user can only check files up to 30 times per week."
-          );
-          setPopup(true);
-        } else if (props.sub.name === "Novice" && count >= 100) {
-          setPopupText(
-            "Novice user can only check files up to 100 times per week."
-          );
-          setPopup(true);
-        }
-      }
 
       const fd = new FormData();
       fd.append("file", upload);
@@ -162,60 +103,49 @@ const Grammar = (props) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .catch((err) => {
-          console.error(err);
-        });
+        .catch((error) => {
+          const msg = error.response.data.message;
+
+          if (msg === "Wordcount threshold reached") {
+            setPopupText("Your word file has exceed the word count limit for the current subscription plan. Consider upgrading to a higher subscription tier if you want to proceed.");
+          } else if (msg === "User has reached the upload threshold") {
+            setPopupText("You have reached the upload threshold for your current subscription plan. Consider upgrading to a higher subscription tier if you want to proceed.");
+          } else {
+            setPopupText("An unexpected error occurred. Please try again.");
+          }
+
+          setPopup(true);
+        })
 
       // Check if the response is successful
-      if (response.status === 200) {
+      if (response !== undefined && response.status === 200) {
         const fileId = response.data.edited_file_id;
 
         // Get text
-        const textResponse = await axios.get(API.getFileInfo(fileId));
-
-        // Check if the response is successful
-        if (textResponse.status === 200) {
-          setResultText(textResponse.data.content);
-        } else {
-          // Handle error when fetching text
+        const textResponse = await axios.get(API.getFileInfo(fileId)).catch((error) => {
           setPopupText("Error fetching text. Please try again.");
           setPopup(true);
-        }
-        // console.log(response.data);
-        // const fileId = response.data.edited_file_id;
-
-        // Get text
-        // const text = await axios.get(API.getFileInfo(fileId)).catch((err) => {
-        //   console.error(err);
-        // });
-        // setResultText(text.data.content);
-        // setFullScreenLoading(false);
-
-        // Get file
-        // const file = await axios
-        //   .get(API.getFile(fileId), { responseType: "blob" })
-        //   .catch((err) => {
-        //     console.error(err);
-        //   });
-        // setResult(file.data);
-        // Get file
-        const fileResponse = await axios.get(API.getFile(fileId), {
-          responseType: "blob",
         });
 
         // Check if the response is successful
-        if (fileResponse.status === 200) {
-          setResult(fileResponse.data);
-        } else {
+        if (textResponse !== undefined && textResponse.status === 200) {
+          setResultText(textResponse.data.content);
+        }
+        
+        // Get file
+        const fileResponse = await axios.get(API.getFile(fileId), {
+          responseType: "blob",
+        }).catch((error) => {
           // Handle error when fetching file
           setPopupText("Error fetching file. Please try again.");
           setPopup(true);
+        })
+
+        // Check if the response is successful
+        if (fileResponse !== undefined && fileResponse.status === 200) {
+          setResult(fileResponse.data);
         }
-      } else {
-        // Handle error when uploading file
-        setPopupText("Error uploading file. Please try again.");
-        setPopup(true);
-      }
+      } 
     } catch (error) {
       console.error(error);
       setPopupText("An unexpected error occurred. Please try again.");

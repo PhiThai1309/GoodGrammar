@@ -45,7 +45,7 @@ const History = (props) => {
     }
   };
 
-  // Use for updating document ig
+  // Fetch history data when entering history page
   useEffect(() => {
     fetchData();
   }, []);
@@ -56,6 +56,7 @@ const History = (props) => {
       .replace(/([a-z])([A-Z])/g, "$1 $2");
   };
 
+  // Render documents
   const DocumentList = ({ list }) => {
     return (
       <div className="history_document">
