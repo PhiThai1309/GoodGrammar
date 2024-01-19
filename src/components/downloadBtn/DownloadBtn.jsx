@@ -9,9 +9,21 @@ const DownloadBtn = (props) => {
       {/* <button className="filled-btn orange" onClick={clickDownload}>
     Download
   </button> */}
-      <p className="paragraph right_align_text">
+      {/* <p className="paragraph right_align_text">
         Download the file to see the final result!
-      </p>
+      </p> */}
+      <p className="paragraph right_align_text">Hide changes</p>
+      <label className="toggle-switch">
+        <input
+          type="checkbox"
+          checked={props.state}
+          onChange={props.mergeChange}
+        />
+        <div className="toggle-switch-background">
+          <div className="toggle-switch-handle"></div>
+        </div>
+      </label>
+
       <button className="download-button" onClick={props.onClick}>
         <div className={"docs filled-btn " + props.className}>
           <svg

@@ -23,6 +23,7 @@ const Grammar = (props) => {
   const [popUpText, setPopupText] = useState("");
   const [getLoading, setLoading] = useState(false);
   const [fullScreenLoading, setFullScreenLoading] = useState(false);
+  const [mergedChanges, setMergedChanges] = useState(false);
 
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -54,6 +55,7 @@ const Grammar = (props) => {
     setResultText("");
     setLoading(false);
     handleScrollToTop();
+    setMergedChanges(false);
   };
 
   const clickUpload = async (event) => {
@@ -76,15 +78,17 @@ const Grammar = (props) => {
     await axios
       .post(API.getFileContent(), fd)
       .then((res) => {
+        handleScrollToTop();
+        setMergedChanges(false);
         setResult(null);
-        setResultText("");    
+        setResultText("");
         setUploadedText(res.data.response);
         setLoading(false);
       })
       .catch((err) => {
         console.error(err);
         setPopupText("Error uploading file. Please try again.");
-        setPopup(true)
+        setPopup(true);
       });
   };
 
@@ -107,45 +111,53 @@ const Grammar = (props) => {
           const msg = error.response.data.message;
 
           if (msg === "Wordcount threshold reached") {
-            setPopupText("Your word file has exceed the word count limit for the current subscription plan. Consider upgrading to a higher subscription tier if you want to proceed.");
+            setPopupText(
+              "Your word file has exceed the word count limit for the current subscription plan. Consider upgrading to a higher subscription tier if you want to proceed."
+            );
           } else if (msg === "User has reached the upload threshold") {
-            setPopupText("You have reached the upload threshold for your current subscription plan. Consider upgrading to a higher subscription tier if you want to proceed.");
+            setPopupText(
+              "You have reached the upload threshold for your current subscription plan. Consider upgrading to a higher subscription tier if you want to proceed."
+            );
           } else {
             setPopupText("An unexpected error occurred. Please try again.");
           }
 
           setPopup(true);
-        })
+        });
 
       // Check if the response is successful
       if (response !== undefined && response.status === 200) {
         const fileId = response.data.edited_file_id;
 
         // Get text
-        const textResponse = await axios.get(API.getFileInfo(fileId)).catch((error) => {
-          setPopupText("Error fetching text. Please try again.");
-          setPopup(true);
-        });
+        const textResponse = await axios
+          .get(API.getFileInfo(fileId))
+          .catch((error) => {
+            setPopupText("Error fetching text. Please try again.");
+            setPopup(true);
+          });
 
         // Check if the response is successful
         if (textResponse !== undefined && textResponse.status === 200) {
           setResultText(textResponse.data.content);
         }
-        
+
         // Get file
-        const fileResponse = await axios.get(API.getFile(fileId), {
-          responseType: "blob",
-        }).catch((error) => {
-          // Handle error when fetching file
-          setPopupText("Error fetching file. Please try again.");
-          setPopup(true);
-        })
+        const fileResponse = await axios
+          .get(API.getFile(fileId), {
+            responseType: "blob",
+          })
+          .catch((error) => {
+            // Handle error when fetching file
+            setPopupText("Error fetching file. Please try again.");
+            setPopup(true);
+          });
 
         // Check if the response is successful
         if (fileResponse !== undefined && fileResponse.status === 200) {
           setResult(fileResponse.data);
         }
-      } 
+      }
     } catch (error) {
       console.error(error);
       setPopupText("An unexpected error occurred. Please try again.");
@@ -275,22 +287,33 @@ const Grammar = (props) => {
               disabled
             ></textarea> */}
 
-            <div
-              className="result_content"
-              style={{ whiteSpace: "pre-wrap" }}
-              dangerouslySetInnerHTML={highlightDifferences()}
-            />
+            {mergedChanges ? (
+              <div
+                className="result_content"
+                style={{ whiteSpace: "pre-wrap" }}
+              >
+                {resultText}
+              </div>
+            ) : (
+              <div
+                className="result_content"
+                style={{ whiteSpace: "pre-wrap" }}
+                dangerouslySetInnerHTML={highlightDifferences()}
+              />
+            )}
 
             {!resultText && (
               <div className="placeholder_result">
                 <h2>Corrected text will be shown here</h2>
               </div>
             )}
-
+            {console.log(mergedChanges)}
             <DownloadBtn
               className="orange"
               onClick={clickDownload}
               isVisible={result !== null}
+              state={mergedChanges}
+              mergeChange={() => setMergedChanges(() => !mergedChanges)}
             />
           </div>
         </div>
