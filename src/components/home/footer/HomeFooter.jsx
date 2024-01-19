@@ -35,7 +35,7 @@ const HomeFooter = (props) => {
           </div>
           <div className="footer_name_wrapper">
             <ul>
-              <li>Team name</li>
+              <li>Team Good Grammar</li>
               <li>Thai Manh Phi</li>
               <li>Nguyen Vu Minh Duy</li>
               <li>Le Minh Quan</li>
