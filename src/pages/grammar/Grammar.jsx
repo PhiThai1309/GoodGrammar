@@ -76,6 +76,8 @@ const Grammar = (props) => {
     await axios
       .post(API.getFileContent(), fd)
       .then((res) => {
+        setResult(null);
+        setResultText("");    
         setUploadedText(res.data.response);
         setLoading(false);
       })
