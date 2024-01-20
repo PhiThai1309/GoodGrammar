@@ -59,6 +59,11 @@ const Grammar = (props) => {
   };
 
   const clickUpload = async (event) => {
+    handleScrollToTop();
+    setUploadedText("");
+    setMergedChanges(false);
+    setResult(null);
+    setResultText("");
     setLoading(true);
     const file = event.target.files[0];
     event.target.value = ""; // Reset event target to enable same upload
@@ -78,10 +83,6 @@ const Grammar = (props) => {
     await axios
       .post(API.getFileContent(), fd)
       .then((res) => {
-        handleScrollToTop();
-        setMergedChanges(false);
-        setResult(null);
-        setResultText("");
         setUploadedText(res.data.response);
         setLoading(false);
       })

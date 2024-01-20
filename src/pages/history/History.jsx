@@ -26,6 +26,7 @@ const History = (props) => {
   const [width, setWidth] = useState(300);
   const [mouseDown, setMouseDown] = useState(false);
 
+  //Fetch the data to get the list of history after fetching the token
   const fetchData = async () => {
     try {
       const token = await getToken();
@@ -50,6 +51,7 @@ const History = (props) => {
     fetchData();
   }, []);
 
+  //This function is use to captitalize the first letter from the word that is used to group the history list by date.
   const capitalizeFirstLetter = (str) => {
     return str
       .replace(/\b\w/g, (char) => char.toUpperCase())
@@ -87,15 +89,18 @@ const History = (props) => {
     );
   };
 
+  //Handle popup function
   function handlePopup(item) {
     setShowPopup(!showPopup);
     setSelectedItem(item);
   }
 
+  //Handle when user click yes in the popup function
   function handlePopupYes() {
     deleteClick(selectedItem);
   }
 
+  //Handle function to fetch the document data when user click on each document
   const documentClick = async (item) => {
     setText("");
     setFile(null);
@@ -119,6 +124,7 @@ const History = (props) => {
     setFile(file.data);
   };
 
+  //Handle the delete click for each element in the list of history
   const deleteClick = async (item) => {
     if (selected !== null && selected.file_id === item.file_id) {
       setSelected(null);
@@ -126,6 +132,7 @@ const History = (props) => {
       setFile(null);
     }
 
+    //Fetch the token again
     const token = await getToken();
     await axios
       .delete(API.deleteFromHistory(item.file_id), {
@@ -150,6 +157,7 @@ const History = (props) => {
       });
   };
 
+  //Handle the download function for the download button to download the .docx file after enhance by the AI
   const downloadClick = () => {
     // Create download link for the file
     const url = URL.createObjectURL(file);
@@ -159,20 +167,24 @@ const History = (props) => {
     link.click();
   };
 
+  //Handle mouse down function
   const handleMouseDown = (event) => {
     setMouseDown(true);
     event.preventDefault();
   };
 
+  //Handle mouse up function
   const handleMouseUp = (_event) => {
     setMouseDown(false);
   };
 
+  //Get window dimension
   const getWindowDimensions = () => {
     const { innerWidth: width, innerHeight: height } = window;
     return { width, height };
   };
 
+  //Handle mouse move to enable the resize event on the card
   const handleMouseMove = (event) => {
     if (mouseDown) {
       // check if the remaining width is < 250px comapred to window size
@@ -182,6 +194,7 @@ const History = (props) => {
     }
   };
 
+  //Check and compare 2 Date
   const isDatesEqual = (d1, d2) => {
     const date1 = new Date(d1);
     const date2 = new Date(d2);
@@ -190,6 +203,7 @@ const History = (props) => {
     return date1.getTime() === date2.getTime();
   };
 
+  //function to group document history by date (today, yesterday, this week, this month and older)
   const groupByDate = (array) => {
     const today = new Date();
     const yesterday = new Date();
@@ -286,6 +300,7 @@ const History = (props) => {
             className="green"
             isVisible={file !== null}
             onClick={downloadClick}
+            hideButtonChanges={"true"}
           />
         </div>
       </div>

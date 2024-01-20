@@ -12,17 +12,22 @@ const DownloadBtn = (props) => {
       {/* <p className="paragraph right_align_text">
         Download the file to see the final result!
       </p> */}
-      <p className="paragraph right_align_text">Hide changes</p>
-      <label className="toggle-switch">
-        <input
-          type="checkbox"
-          checked={props.state}
-          onChange={props.mergeChange}
-        />
-        <div className="toggle-switch-background">
-          <div className="toggle-switch-handle"></div>
-        </div>
-      </label>
+      {console.log(props.hideButtonChanges)}
+      {!props.hideButtonChanges ? (
+        <>
+          <p className="paragraph right_align_text">Hide changes</p>
+          <label className="toggle-switch">
+            <input
+              type="checkbox"
+              checked={props.state}
+              onChange={props.mergeChange}
+            />
+            <div className="toggle-switch-background">
+              <div className="toggle-switch-handle"></div>
+            </div>
+          </label>
+        </>
+      ) : null}
 
       <button className="download-button" onClick={props.onClick}>
         <div className={"docs filled-btn " + props.className}>
