@@ -1,47 +1,88 @@
-# Getting Started with Create React App
+# GoodGrammar
+![image](https://github.com/PhiThai1309/GoodGrammar/assets/71892904/ce53fbb4-dade-46d7-bc08-6f5e87427db3)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
+- [Overview](#Overview)
+- [Functionalities](#Functionalities)
+- [How to run](#How-to-run)
+- [Built with](#Built-with)
+- [Author](#author)
 
-### `npm install`
+## Overview
+Introducing one of the most revolutionary grammar correction tools for authors and scholars called Good Grammar. This tool will make your writing experience much easier by allowing you to upload materials easily. Our system uses the fine-tuned Large Language Model API to correct the English for each paragraph. This ensures that the grammar and clarity are outstanding.
 
-### `npm install @clerk/clerk-react`
+## Functionalities
+- File upload: .docx file types are supported for uploading.
+- Automated Text Refinement:
+  - Automatically analyzing and improving each paragraph of the content. The system uses an AI application programming interface (API).
+  - Grammar, typographical problems, word usage, and punctuation are all addressed by this API.
+- Merge and Download:
+  -	After receiving responses from the application programming interface (API), the system integrates the modified paragraphs back into the original document.
+  -	After the API has analyzed the document, users can download it for future usage.
+- User Subscription Management: Users can subscribe to different plans and users with subscriptions are granted access according to the status of their subscriptions.
+  - Free: 2000 words per file, Up to 30 files per week
+  - Novice: 10000 word count, Up to 100 files per week
+  - Expert: Unlimited word count, Unlimited file correction
 
-## Available Scripts
 
-In the project directory, you can run:
+- History management:
+  -	Users can browse back to view the uploaded file history as well as download the corrected version text file.
+  -	Users can also delete files from history to clean up the history list for easier file management.
+- Account management: Users have full control over their account settings. They can easily change email addresses, connect to other services, set passwords, check active devices, and even delete their account if needed.
+- Payment Integration: The integration of third-party payment mechanisms, such as Stripe, makes it possible to have a subscription process that is both secure and seamless.
 
-### `npm start`
-
-Runs the app in the development mode.\
+## How to run
+### For Front-end:
+1.	Clone project from Github repository: 
+```
+clone https://github.com/PhiThai1309/GoodGrammar.git
+```
+2.	Install required packages:
+```
+npm install
+```
+3.	Create a new .env file to root of the project to store authentication to Clerk:
+```
+REACT_APP_CLERK_PUBLISHABLE_KEY = pk_test_YWRhcHRlZC1zdGFyZmlzaC00MS5jbGVyay5hY2NvdW50cy5kZXYk
+```
+4.	Run the app:
+```
+npm start
+```
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### For back-end
+1.	Clone project from Github repository: 
+```
+clone https://github.com/RenuzitV/GoodGrammarBackend.git
+```
+2.	Install the required packages:
+```
+pip install -r requirements.txt
+```
+4.	Create a .env file based on `.env.example`
+5.	Run the app:
+```
+python.exe -m flask run
+```
 
-### `npm test`
+## Built with
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=js" />
+  <img src="https://skillicons.dev/icons?i=css">
+  <img src="https://skillicons.dev/icons?i=react">
+  <img src="https://skillicons.dev/icons?i=vscode">
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-	ReactJS, CSS
+-	Github & Git
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Author
+- Frontend & Designer: Thai Manh Phi
+- Frontend: Le Minh Quan
+- Backend: Nguyen Vu Minh Duy
+- Backend: Trieu Hoang Khang
+- Backend: Trieu Tran Tri Thuc
 
 ## Learn More
 
@@ -49,26 +90,3 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
