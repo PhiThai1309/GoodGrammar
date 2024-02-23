@@ -13,24 +13,28 @@
 Introducing one of the most revolutionary grammar correction tools for authors and scholars called Good Grammar. This tool will make your writing experience much easier by allowing you to upload materials easily. Our system uses the fine-tuned Large Language Model API to correct the English for each paragraph. This ensures that the grammar and clarity are outstanding.
 
 ## Functionalities
-- File upload: .docx file types are supported for uploading.
-- Automated Text Refinement:
+### File upload
+- .docx file types are supported for uploading.
+### Automated Text Refinement
   - Automatically analyzing and improving each paragraph of the content. The system uses an AI application programming interface (API).
   - Grammar, typographical problems, word usage, and punctuation are all addressed by this API.
-- Merge and Download:
+### Merge and Download
   -	After receiving responses from the application programming interface (API), the system integrates the modified paragraphs back into the original document.
   -	After the API has analyzed the document, users can download it for future usage.
-- User Subscription Management: Users can subscribe to different plans and users with subscriptions are granted access according to the status of their subscriptions.
+### User Subscription Management
+Users can subscribe to different plans and users with subscriptions are granted access according to the status of their subscriptions.
   - Free: 2000 words per file, Up to 30 files per week
   - Novice: 10000 word count, Up to 100 files per week
   - Expert: Unlimited word count, Unlimited file correction
 
 
-- History management:
+### History management
   -	Users can browse back to view the uploaded file history as well as download the corrected version text file.
   -	Users can also delete files from history to clean up the history list for easier file management.
-- Account management: Users have full control over their account settings. They can easily change email addresses, connect to other services, set passwords, check active devices, and even delete their account if needed.
-- Payment Integration: The integration of third-party payment mechanisms, such as Stripe, makes it possible to have a subscription process that is both secure and seamless.
+### Account management
+- Users have full control over their account settings. They can easily change email addresses, connect to other services, set passwords, check active devices, and even delete their account if needed.
+### Payment Integration
+- The integration of third-party payment mechanisms, such as Stripe, makes it possible to have a subscription process that is both secure and seamless.
 
 ## How to run
 ### For Front-end:
