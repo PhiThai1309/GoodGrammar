@@ -1,10 +1,11 @@
 # GoodGrammar
-![image](https://github.com/PhiThai1309/GoodGrammar/assets/71892904/ce53fbb4-dade-46d7-bc08-6f5e87427db3)
+![image](https://github.com/PhiThai1309/GoodGrammar/assets/71892904/09034383-d995-4ab0-b3a6-4005329834a8)
 
 ## Table of contents
 - [Overview](#Overview)
 - [Functionalities](#Functionalities)
 - [How to run](#How-to-run)
+- [Screenshot](#Screenshot)
 - [Built with](#Built-with)
 - [Author](#author)
 
@@ -65,6 +66,46 @@ pip install -r requirements.txt
 ```
 python.exe -m flask run
 ```
+## Screenshot
+
+<table>
+  <tr>
+    <td>Login</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/c8db0987-0954-4187-b62e-297d5cbfd67e"></td>
+   </tr>
+ </table>
+
+<table>
+  <tr>
+    <td>Grammar page</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/05c8aa01-9417-4e1a-b692-b36e30a7cbda"></td>
+  </tr>
+</table>
+
+ <table>
+  <tr>
+    <td>History page</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/3607b8e5-4ea7-47d8-9667-747d64586763"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>Subscription page</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/c13d66f0-a1dc-498e-9f22-184d4da715c9"></td>
+    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/80799289-429b-4c55-bc92-74b901d3b66c"></td>
+  </tr>
+</table>
+
+
 
 ## Built with
 <p align="center">
