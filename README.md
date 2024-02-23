@@ -68,43 +68,19 @@ python.exe -m flask run
 ```
 ## Screenshot
 
-<table>
-  <tr>
-    <td>Login</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/c8db0987-0954-4187-b62e-297d5cbfd67e"></td>
-   </tr>
- </table>
+### Login/ Signup
+<img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/c8db0987-0954-4187-b62e-297d5cbfd67e">
 
-<table>
-  <tr>
-    <td>Grammar page</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/05c8aa01-9417-4e1a-b692-b36e30a7cbda"></td>
-  </tr>
-</table>
 
- <table>
-  <tr>
-    <td>History page</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/3607b8e5-4ea7-47d8-9667-747d64586763"></td>
-  </tr>
-</table>
+### Grammar page
+<img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/05c8aa01-9417-4e1a-b692-b36e30a7cbda">
 
-<table>
-  <tr>
-    <td>Subscription page</td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/c13d66f0-a1dc-498e-9f22-184d4da715c9"></td>
-    <td><img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/80799289-429b-4c55-bc92-74b901d3b66c"></td>
-  </tr>
-</table>
+### History page
+<img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/3607b8e5-4ea7-47d8-9667-747d64586763">
 
+### Subscription page
+<img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/c13d66f0-a1dc-498e-9f22-184d4da715c9">
+<img src="https://github.com/PhiThai1309/GoodGrammar/assets/71892904/80799289-429b-4c55-bc92-74b901d3b66c">
 
 
 ## Built with
