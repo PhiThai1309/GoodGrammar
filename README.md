@@ -97,6 +97,7 @@ python.exe -m flask run
 
 -	ReactJS, CSS
 -	Github & Git
+-	Figma <a href="https://www.figma.com/file/8sXaJ5RSHLgLzVv8ArmgIo/GoodGrammar?type=design&node-id=0%3A1&mode=design&t=K6cdLz3iLBR5Nd5s-1"> (Design link) </a>
 
 ## Author
 - Frontend & Designer: Thai Manh Phi
